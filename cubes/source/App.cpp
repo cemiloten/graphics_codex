@@ -21,12 +21,14 @@ int main(int argc, const char* argv[]) {
     // settings.window.width            = 1024; settings.window.height       = 768;
     //settings.window.width               = 1900; settings.window.height       = 900;
     //settings.window.width             = 1920; settings.window.height       = 1080;
-    settings.window.width               = OSWindow::primaryDisplayWindowSize().x - 40; settings.window.height = OSWindow::primaryDisplayWindowSize().y - 100; settings.window.height -= (settings.window.height & 1);
+    settings.window.width  = OSWindow::primaryDisplayWindowSize().x - 40;
+    settings.window.height = OSWindow::primaryDisplayWindowSize().y - 100;
+    settings.window.height -= (settings.window.height & 1);
 
     settings.window.fullScreen          = false;
     settings.window.resizable           = ! settings.window.fullScreen;
     settings.window.framed              = ! settings.window.fullScreen;
-    settings.window.defaultIconFilename = "icon.png";
+    //settings.window.defaultIconFilename = "icon.png";
 
     // Set to true for a significant performance boost if your app can't render at 60fps, or if
     // you *want* to render faster than the display.

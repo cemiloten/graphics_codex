@@ -1,6 +1,11 @@
+temp
 x64
 build
+Debug
+Release
+.vs
 *.db
 *.opendb
 data-files\log.txt
 data-files\g3d-license.txt
+
