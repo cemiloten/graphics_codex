@@ -28,7 +28,7 @@ int main(int argc, const char* argv[]) {
     settings.window.fullScreen          = false;
     settings.window.resizable           = ! settings.window.fullScreen;
     settings.window.framed              = ! settings.window.fullScreen;
-    //settings.window.defaultIconFilename = "icon.png";
+    settings.window.defaultIconFilename = "icon.png";
 
     // Set to true for a significant performance boost if your app can't render at 60fps, or if
     // you *want* to render faster than the display.
