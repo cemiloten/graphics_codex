@@ -5,7 +5,7 @@
         cubeModel = ArticulatedModel::Specification {
             filename = "model/cube/cube.obj";
             preprocess = {
-                setMaterial(all(), Color3(1, 1, 0));
+                setMaterial(all(), Color3(1, 1, 1));
             };
         };
     };
@@ -21,7 +21,7 @@
             frame = CFrame::fromXYZYPRDegrees(-15, 207, -41, -164, -77, 77);
             shadowMapSize = Vector2int16(2048, 2048);
             spotHalfAngleDegrees = 5;
-            // spotSquare = true;
+            //spotSquare = true;
             type = "SPOT";
         };
 
