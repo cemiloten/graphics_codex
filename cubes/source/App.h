@@ -7,7 +7,7 @@
 #pragma once
 #include <G3D/G3D.h>
 
-/** \brief Application framework. */
+/** \brief Application framework. adding something for test. */
 class App : public GApp {
 protected:
 

@@ -1,88 +1,87 @@
 Application Log
-Start: Fri Dec 28 17:29:16 2018
+Start: Sat Dec 29 18:25:26 2018
 
 WARNING: AudioDevice is not enabled. Set G3DSpecification::audio = true before invoking initGLG3D() to enable audio.
-Initializing System::findDataFile took 0.003796s
+Initializing System::findDataFile took 0.002921s
 
 Entering GApp::GApp()
-cwd = C:\dev\graphics_codex\cubes\data-files
-System::setAppDataDir("C:\dev\graphics_codex\cubes\data-files")
-Initializing System::findDataFile took 0.001257s
+cwd = /Users/cemil/dev/graphics/graphics_codex/cubes/data-files
+System::setAppDataDir("/Users/cemil/dev/graphics/graphics_codex/cubes/data-files")
+Initializing System::findDataFile took 0.003530s
 Setting video mode
-wglSwapIntervalEXT(1);
 Setting initial rendering state.
 Done setting initial state.
 104 ImageFormats:
               Format  Readable    Writeable
-                  L8  Yes         Yes
-                 L16  Yes         Yes
-                L16F  Yes         Yes
-                L32F  Yes         Yes
-                  A8  Yes         Yes
-                 A16  Yes         Yes
-                A16F  Yes         Yes
-                A32F  Yes         Yes
-                 LA4  Yes         Yes
-                 LA8  Yes         Yes
-                LA16  Yes         Yes
-               LA16F  Yes         Yes
-               LA32F  Yes         Yes
-                RGB5  Yes         Yes
-              RGB5A1  Yes         Yes
-                RGB8  Yes         Yes
-               RGB10  Yes         Yes
-             RGB10A2  Yes         Yes
-               RGB16  Yes         Yes
-              RGB16F  Yes         Yes
-              RGB32F  Yes         Yes
-          R11G11B10F  Yes         Yes
+                  L8  No          No 
+                 L16  No          No 
+                L16F  No          No 
+                L32F  No          No 
+                  A8  No          No 
+                 A16  No          No 
+                A16F  No          No 
+                A32F  No          No 
+                 LA4  No          No 
+                 LA8  No          No 
+                LA16  No          No 
+               LA16F  No          No 
+               LA32F  No          No 
+                RGB5  Yes         No 
+              RGB5A1  Yes         No 
+                RGB8  Yes         No 
+               RGB10  Yes         No 
+             RGB10A2  Yes         No 
+               RGB16  Yes         No 
+              RGB16F  Yes         No 
+              RGB32F  Yes         No 
+          R11G11B10F  Yes         No 
              RGB9E5F  Yes         No 
-               RGB8I  Yes         Yes
-              RGB8UI  Yes         Yes
-              RGBA8I  Yes         Yes
-             RGBA8UI  Yes         Yes
-          RGB8_SNORM  Yes         Yes
-         RGBA8_SNORM  Yes         Yes
-         RGB16_SNORM  Yes         Yes
-        RGBA16_SNORM  Yes         Yes
-                BGR8  Yes         Yes
-               BGRA8  Yes         Yes
-                  R8  Yes         Yes
-                 R8I  Yes         Yes
-                R8UI  Yes         Yes
-            R8_SNORM  Yes         Yes
-                 R16  Yes         Yes
-                R16I  Yes         Yes
-               R16UI  Yes         Yes
-           R16_SNORM  Yes         Yes
-                R16F  Yes         Yes
-                R32I  Yes         Yes
-               R32UI  Yes         Yes
-                 RG8  Yes         Yes
-                RG8I  Yes         Yes
-               RG8UI  Yes         Yes
-           RG8_SNORM  Yes         Yes
-                RG16  Yes         Yes
-               RG16I  Yes         Yes
-              RG16UI  Yes         Yes
-          RG16_SNORM  Yes         Yes
-               RG16F  Yes         Yes
-               RG32I  Yes         Yes
-              RG32UI  Yes         Yes
-                R32F  Yes         Yes
-               RG32F  Yes         Yes
-               RGBA8  Yes         Yes
-              RGBA16  Yes         Yes
-             RGBA16F  Yes         Yes
-             RGBA32F  Yes         Yes
-             RGBA16I  Yes         Yes
-            RGBA16UI  Yes         Yes
-              RGB32I  Yes         Yes
-             RGB32UI  Yes         Yes
-             RGBA32I  Yes         Yes
-            RGBA32UI  Yes         Yes
-               RGBA4  Yes         Yes
-               RGBA2  Yes         Yes
+               RGB8I  Yes         No 
+              RGB8UI  Yes         No 
+              RGBA8I  Yes         No 
+             RGBA8UI  Yes         No 
+          RGB8_SNORM  Yes         No 
+         RGBA8_SNORM  Yes         No 
+         RGB16_SNORM  Yes         No 
+        RGBA16_SNORM  Yes         No 
+                BGR8  Yes         No 
+               BGRA8  Yes         No 
+                  R8  Yes         No 
+                 R8I  Yes         No 
+                R8UI  Yes         No 
+            R8_SNORM  Yes         No 
+                 R16  Yes         No 
+                R16I  Yes         No 
+               R16UI  Yes         No 
+           R16_SNORM  Yes         No 
+                R16F  Yes         No 
+                R32I  Yes         No 
+               R32UI  Yes         No 
+                 RG8  Yes         No 
+                RG8I  Yes         No 
+               RG8UI  Yes         No 
+           RG8_SNORM  Yes         No 
+                RG16  Yes         No 
+               RG16I  Yes         No 
+              RG16UI  Yes         No 
+          RG16_SNORM  Yes         No 
+               RG16F  Yes         No 
+               RG32I  Yes         No 
+              RG32UI  Yes         No 
+                R32F  Yes         No 
+               RG32F  Yes         No 
+               RGBA8  Yes         No 
+              RGBA16  Yes         No 
+             RGBA16F  Yes         No 
+             RGBA32F  Yes         No 
+             RGBA16I  Yes         No 
+            RGBA16UI  Yes         No 
+              RGB32I  Yes         No 
+             RGB32UI  Yes         No 
+             RGBA32I  Yes         No 
+            RGBA32UI  Yes         No 
+               RGBA4  Yes         No 
+               RGBA2  Yes         No 
        YUV420_PLANAR  No          No 
               YUV422  No          No 
               YUV444  No          No 
@@ -90,10 +89,10 @@ Done setting initial state.
            RGBA_DXT1  Yes         No 
            RGBA_DXT3  Yes         No 
            RGBA_DXT5  Yes         No 
-               SRGB8  Yes         Yes
-              SRGBA8  Yes         Yes
-                 SL8  Yes         Yes
-                SLA8  Yes         Yes
+               SRGB8  Yes         No 
+              SRGBA8  Yes         No 
+                 SL8  No          No 
+                SLA8  No          No 
            SRGB_DXT1  Yes         No 
           SRGBA_DXT1  Yes         No 
           SRGBA_DXT3  Yes         No 
@@ -104,7 +103,7 @@ Done setting initial state.
             DEPTH32F  Yes         No 
             STENCIL1  No          No 
             STENCIL4  No          No 
-            STENCIL8  Yes         No 
+            STENCIL8  No          No 
            STENCIL16  No          No 
     DEPTH24_STENCIL8  Yes         No 
 
@@ -118,535 +117,843 @@ Red                                8 bits   ok
 Green                              8 bits   ok
 Blue                               8 bits   ok
 FSAA                       1     1    ok
-Width                 1848 pixels           ok
-Height                 892 pixels           ok
+Width                 1240 pixels           ok
+Height                 700 pixels           ok
 Mode                   Windowed             ok
 
 This driver does support G3D 10:
-GLSL version 4.10                   yes - GLSL version on this driver is 4.60
-GPU Supports OpenGL 4.1 or later    yes - OpenGL version on this driver is 4.6
+GLSL version 4.10                   yes - GLSL version on this driver is 4.10
+GPU Supports OpenGL 4.1 or later    yes - OpenGL version on this driver is 4.1
             GL_ARB_sample_shading   yes - Optional
 
 
 Done initializing RenderDevice.
-Network StartupSystem = { 
-    App { 
-        Name = "C:\\dev\\graphics_codex\\cubes\\x64\\Debug\\cubes.exe"
-        cwd = "C:\\dev\\graphics_codex\\cubes\\data-files"
-    } 
-    
-    OS { 
-        Name = "Windows 6.2 build 9200 Platform 2 "
-    } 
-    
-    CPU { 
-        Architecture = "Intel/AMD x64"
-        Num HW Threads = 8 
-    } 
-    
-    G3D { 
-        Link version = 100100 
-        Compile version = "G3D Innovation Engine 10.01 (Debug)"
-        G3DSpecification::deployMode = No 
-        G3D10DATA = "C:\\g3d\\G3D10\\data-files;C:\\g3d\\data10\\common;C:\\g3d\\data10\\game;C:\\g3d\\data10\\research"
-    } 
-    
-    GPU = { 
-        Chipset = "GeForce GTX 1070/PCIe/SSE2;"
-        Vendor = "NVIDIA Corporation;"
-        Driver = "Unknown (Can't find driver);"
-        OpenGL version = "4.6.0 NVIDIA 397.64;"
-        Textures = 32 ;
-        Texture coordinates = 8 ;
-        Texture units = 4 ;
-        GL_MAX_TEXTURE_SIZE = 32768 ;
-        GL_MAX_CUBE_MAP_TEXTURE_SIZE = 32768 ;
-        GL_MAX_COLOR_ATTACHMENTS = 8 ;
-    } ; 
-    
-    Window = { 
-        API = "GLFW;"
-        Version = "3.3.0 Win32 WGL EGL VisualC;"
-        
-        In focus = true; 
-        Centered = true; 
-        Framed = true; 
-        Visible = true; 
-        Resizable = true; 
-        Full screen = false; 
-        Top = 0 ;
-        Left = 0 ;
-        Width = 1848 ;
-        Height = 892 ;
-        Refresh rate = -1 ;
-        
-        Alpha bits = 0 ;
-        Red bits = 8 ;
-        Green bits = 8 ;
-        Blue bits = 8 ;
-        Depth bits = 24 ;
-        Stencil bits = 8 ;
-        Asynchronous = false; 
-        Stereo = false; 
-        FSAA samples = 1 ;
-        GL extensions = [ GL_NV_query_resource_tag,
-             GL_ARB_gl_spirv,
-             GL_NV_vertex_buffer_unified_memory,
-             GL_NV_conditional_render,
-             GL_ARB_shader_texture_image_samples,
-             GL_ARB_spirv_extensions,
-             GL_ARB_compute_shader,
-             GL_EXT_separate_shader_objects,
-             GL_NV_shader_atomic_counters,
-             GL_ARB_half_float_pixel,
-             GL_NVX_blend_equation_advanced_multi_draw_buffers,
-             GL_ARB_texture_buffer_object,
-             GL_ARB_framebuffer_object,
-             GL_EXT_gpu_program_parameters,
-             GL_NV_texture_rectangle_compressed,
-             GL_EXT_semaphore,
-             GL_ARB_texture_buffer_range,
-             GL_EXT_texture_compression_rgtc,
-             GL_ARB_depth_buffer_float,
-             GL_ARB_sparse_buffer,
-             GL_ARB_shader_objects,
-             GL_NV_framebuffer_multisample_coverage,
-             GL_EXT_abgr,
-             GL_ARB_shader_atomic_counters,
-             GL_ARB_transform_feedback3,
-             GL_ARB_vertex_shader,
-             GL_ARB_base_instance,
-             GL_ARB_point_parameters,
-             GL_S3_s3tc,
-             GL_ARB_map_buffer_alignment,
-             GL_NV_vertex_program3,
-             GL_EXT_texture_filter_minmax,
-             GL_ARB_sync,
-             GL_NV_register_combiners,
-             GL_EXT_packed_float,
-             GL_ARB_texture_mirror_clamp_to_edge,
-             GL_ARB_pixel_buffer_object,
-             GL_ARB_compressed_texture_pixel_storage,
-             GL_ARB_texture_env_crossbar,
-             GL_ARB_internalformat_query2,
-             GL_NV_vertex_program2,
-             GL_KHR_robustness,
-             GL_NV_explicit_multisample,
-             GL_ARB_vertex_buffer_object,
-             GL_ARB_vertex_attrib_64bit,
-             GL_ARB_blend_func_extended,
-             GL_AMD_vertex_shader_viewport_index,
-             GL_EXT_bindable_uniform,
-             GL_ARB_polygon_offset_clamp,
-             GL_NV_internalformat_sample_query,
-             GL_KHR_robust_buffer_access_behavior,
-             GL_ARB_texture_query_levels,
-             GL_EXT_texture_storage,
-             GL_ARB_texture_compression_rgtc,
-             GL_NV_multisample_coverage,
-             GL_SGIX_depth_texture,
-             GL_EXT_blend_color,
-             GL_ARB_copy_buffer,
-             GL_NV_stereo_view_rendering,
-             GL_ARB_vertex_array_bgra,
-             GL_ARB_fragment_program_shadow,
-             GL_ARB_draw_buffers_blend,
-             GL_ARB_multi_draw_indirect,
-             GL_IBM_texture_mirrored_repeat,
-             GL_NV_viewport_swizzle,
-             GL_EXT_texture_swizzle,
-             GL_NV_sample_mask_override_coverage,
-             GL_EXT_stencil_wrap,
-             GL_ARB_internalformat_query,
-             GL_ATI_draw_buffers,
-             GL_NV_gpu_program4_1,
-             GL_NV_copy_depth_to_color,
-             GL_ARB_texture_cube_map_array,
-             GL_ARB_instanced_arrays,
-             GL_ARB_texture_swizzle,
-             GL_ARB_texture_barrier,
-             GL_ARB_map_buffer_range,
-             GL_EXT_framebuffer_multisample_blit_scaled,
-             GL_ARB_draw_buffers,
-             GL_EXT_texture_edge_clamp,
-             GL_ARB_texture_compression_bptc,
-             GL_EXT_texture_cube_map,
-             GL_EXT_draw_instanced,
-             GL_AMD_multi_draw_indirect,
-             GL_EXT_shader_image_load_store,
-             GL_NV_shader_atomic_fp16_vector,
-             GL_NV_depth_clamp,
-             GL_EXT_bgra,
-             GL_ARB_texture_non_power_of_two,
-             GL_EXT_separate_specular_color,
-             GL_EXT_texture_integer,
-             GL_NV_path_rendering_shared_edge,
-             GL_NV_packed_depth_stencil,
-             GL_ARB_explicit_uniform_location,
-             GL_EXT_framebuffer_object,
-             GL_NV_shader_storage_buffer_object,
-             GL_AMD_vertex_shader_layer,
-             GL_EXT_post_depth_coverage,
-             GL_EXT_sparse_texture2,
-             GL_ARB_color_buffer_float,
-             GL_EXT_texture_sRGB,
-             GL_ARB_uniform_buffer_object,
-             GL_ARB_sample_locations,
-             GL_NV_multisample_filter_hint,
-             GL_ARB_shader_draw_parameters,
-             GL_ARB_texture_mirrored_repeat,
-             GL_EXT_depth_bounds_test,
-             GL_EXT_fog_coord,
-             GL_NV_gpu_program4,
-             GL_NVX_multigpu_info,
-             GL_NV_parameter_buffer_object2,
-             GL_ARB_multi_bind,
-             GL_ARB_vertex_attrib_binding,
-             GL_NV_texture_shader,
-             GL_ARB_post_depth_coverage,
-             GL_ARB_gpu_shader5,
-             GL_SGIX_shadow,
-             GL_ARB_framebuffer_sRGB,
-             GL_NV_feature_query,
-             GL_NV_texgen_reflection,
-             GL_EXT_timer_query,
-             GL_EXT_gpu_shader4,
-             GL_NV_sample_locations,
-             GL_ARB_texture_gather,
-             GL_ARB_clip_control,
-             GL_EXT_blend_func_separate,
-             GL_ARB_texture_stencil8,
-             GL_ARB_transform_feedback_instanced,
-             GL_ARB_texture_buffer_object_rgb32,
-             GL_NV_gpu_program5_mem_extended,
-             GL_EXT_vertex_array_bgra,
-             GL_ARB_texture_rg,
-             GL_ARB_texture_compression,
-             GL_EXT_import_sync_object,
-             GL_NV_compute_program5,
-             GL_EXT_texture_lod,
-             GL_ARB_gpu_shader_fp64,
-             GL_NV_occlusion_query,
-             GL_NV_texture_compression_vtc,
-             GL_ARB_seamless_cubemap_per_texture,
-             GL_ARB_draw_instanced,
-             GL_NV_blend_equation_advanced_coherent,
-             GL_ARB_debug_output,
-             GL_ARB_vertex_type_2_10_10_10_rev,
-             GL_EXT_draw_range_elements,
-             GL_EXT_texture_env_dot3,
-             GL_ARB_imaging,
-             GL_NV_blend_equation_advanced,
-             GL_KHR_blend_equation_advanced,
-             GL_ARB_stencil_texturing,
-             GL_NV_point_sprite,
-             GL_EXT_compiled_vertex_array,
-             GL_EXT_texture_env_add,
-             GL_EXT_shadow_funcs,
-             GL_ARB_query_buffer_object,
-             GL_ARB_program_interface_query,
-             GL_ARB_texture_rectangle,
-             GL_EXT_texture_lod_bias,
-             GL_IBM_rasterpos_clip,
-             GL_ARB_gpu_shader_int64,
-             GL_KHR_debug,
-             GL_NV_fill_rectangle,
-             GL_NV_depth_buffer_float,
-             GL_EXT_stencil_two_side,
-             GL_EXT_blend_minmax,
-             GL_NV_fragment_program2,
-             GL_ARB_vertex_program,
-             GL_EXT_texture_mirror_clamp,
-             GL_NV_conservative_raster,
-             GL_ARB_geometry_shader4,
-             GL_ARB_texture_filter_minmax,
-             GL_ARB_shader_atomic_counter_ops,
-             GL_ARB_multisample,
-             GL_NVX_conditional_render,
-             GL_NV_texture_env_combine4,
-             GL_NV_shader_buffer_load,
-             GL_ARB_shading_language_include,
-             GL_ARB_shader_subroutine,
-             GL_ARB_occlusion_query,
-             GL_ARB_texture_rgb10_a2ui,
-             GL_ARB_ES3_compatibility,
-             GL_ARB_pipeline_statistics_query,
-             GL_ARB_arrays_of_arrays,
-             GL_NV_vertex_program2_option,
-             GL_NV_bindless_multi_draw_indirect_count,
-             GL_NV_geometry_shader_passthrough,
-             GL_ARB_explicit_attrib_location,
-             GL_EXT_texture_array,
-             GL_NV_copy_image,
-             GL_ARB_texture_env_dot3,
-             GL_NV_light_max_exponent,
-             GL_ARB_point_sprite,
-             GL_ARB_multitexture,
-             GL_KTX_buffer_region,
-             GL_ARB_shader_viewport_layer_array,
-             GL_NV_pixel_data_range,
-             GL_EXT_shader_integer_mix,
-             GL_NV_fragment_program_option,
-             GL_NV_fog_distance,
-             GL_ARB_shading_language_packing,
-             GL_ARB_texture_env_combine,
-             GL_NV_blend_minmax_factor,
-             GL_EXT_texture_shared_exponent,
-             GL_ARB_shader_image_size,
-             GL_EXT_texture_compression_s3tc,
-             GL_ARB_derivative_control,
-             GL_ARB_sparse_texture,
-             GL_EXT_Cg_shader,
-             GL_EXT_texture_filter_anisotropic,
-             GL_NVX_gpu_memory_info,
-             GL_ARB_sparse_texture2,
-             GL_ARB_tessellation_shader,
-             GL_NV_vertex_program,
-             GL_SGIS_texture_lod,
-             GL_ARB_direct_state_access,
-             GL_EXT_memory_object_win32,
-             GL_ARB_shading_language_420pack,
-             GL_NV_fence,
-             GL_ARB_ES2_compatibility,
-             GL_ARB_shader_precision,
-             GL_ARB_clear_buffer_object,
-             GL_ARB_copy_image,
-             GL_NV_primitive_restart,
-             GL_KHR_blend_equation_advanced_coherent,
-             GL_ARB_vertex_type_10f_11f_11f_rev,
-             GL_EXT_win32_keyed_mutex,
-             GL_ARB_shader_image_load_store,
-             GL_EXTX_framebuffer_mixed_formats,
-             GL_NV_gpu_program5,
-             GL_ARB_fragment_program,
-             GL_NV_gpu_program_fp64,
-             GL_EXT_texture_buffer_object,
-             GL_ARB_transform_feedback2,
-             GL_ARB_provoking_vertex,
-             GL_ARB_window_pos,
-             GL_KHR_parallel_shader_compile,
-             GL_ARB_depth_clamp,
-             GL_NV_command_list,
-             GL_EXT_packed_depth_stencil,
-             GL_SUN_slice_accum,
-             GL_ARB_shader_texture_lod,
-             GL_ARB_ES3_1_compatibility,
-             GL_ARB_compatibility,
-             GL_ARB_occlusion_query2,
-             GL_EXT_texture_compression_dxt1,
-             GL_NV_clip_space_w_scaling,
-             GL_EXT_draw_buffers2,
-             GL_ARB_clear_texture,
-             GL_ARB_compute_variable_group_size,
-             GL_EXT_blend_subtract,
-             GL_ARB_fragment_shader_interlock,
-             GL_ARB_seamless_cube_map,
-             GL_EXT_transform_feedback2,
-             GL_ARB_depth_texture,
-             GL_NV_texture_shader2,
-             GL_ARB_enhanced_layouts,
-             GL_EXT_memory_object,
-             GL_KHR_context_flush_control,
-             GL_ARB_transpose_matrix,
-             GL_EXT_framebuffer_multisample,
-             GL_EXT_multi_draw_arrays,
-             GL_SGIS_generate_mipmap,
-             GL_EXT_rescale_normal,
-             GL_NV_shader_atomic_int64,
-             GL_EXT_texture3D,
-             GL_NV_vertex_attrib_integer_64bit,
-             GL_NV_vertex_program1_1,
-             GL_NV_register_combiners2,
-             GL_ARB_sparse_texture_clamp,
-             GL_EXT_vertex_array,
-             GL_ARB_conservative_depth,
-             GL_EXT_pixel_buffer_object,
-             GL_NV_texture_barrier,
-             GL_NV_float_buffer,
-             GL_NV_conservative_raster_pre_snap_triangles,
-             GL_ARB_shader_clock,
-             GL_ARB_texture_storage,
-             GL_EXT_polygon_offset_clamp,
-             GL_NV_bindless_texture,
-             GL_NV_ES1_1_compatibility,
-             GL_AMD_seamless_cubemap_per_texture,
-             GL_ARB_fragment_coord_conventions,
-             GL_ARB_viewport_array,
-             GL_ARB_draw_elements_base_vertex,
-             GL_NV_ES3_1_compatibility,
-             GL_EXT_geometry_shader4,
-             GL_ARB_robustness,
-             GL_NVX_nvenc_interop,
-             GL_NV_blend_square,
-             GL_ARB_conditional_render_inverted,
-             GL_EXT_framebuffer_blit,
-             GL_ARB_invalidate_subdata,
-             GL_EXT_semaphore_win32,
-             GL_ATI_texture_float,
-             GL_EXT_texture_compression_latc,
-             GL_EXT_provoking_vertex,
-             GL_ARB_fragment_shader,
-             GL_EXT_blend_equation_separate,
-             GL_ARB_parallel_shader_compile,
-             GL_EXT_shader_image_load_formatted,
-             GL_EXT_vertex_attrib_64bit,
-             GL_NV_draw_vulkan_image,
-             GL_ARB_get_program_binary,
-             GL_ARB_vertex_array_object,
-             GL_ARB_texture_float,
-             GL_ARB_texture_env_add,
-             GL_ARB_sample_shading,
-             GL_ARB_shading_language_100,
-             GL_ARB_shader_ballot,
-             GL_EXT_direct_state_access,
-             GL_EXT_point_parameters,
-             GL_ARB_fragment_layer_viewport,
-             GL_ARB_timer_query,
-             GL_NV_fragment_coverage_to_color,
-             GL_NV_bindless_multi_draw_indirect,
-             GL_NV_path_rendering,
-             GL_NV_shader_thread_shuffle,
-             WGL_EXT_swap_control,
-             GL_EXT_raster_multisample,
-             GL_NV_transform_feedback,
-             GL_NV_shader_atomic_float,
-             GL_ARB_shader_storage_buffer_object,
-             GL_NV_half_float,
-             GL_ARB_framebuffer_no_attachments,
-             GL_EXT_window_rectangles,
-             GL_ARB_texture_cube_map,
-             GL_ARB_texture_filter_anisotropic,
-             GL_ARB_get_texture_sub_image,
-             GL_NV_vertex_array_range,
-             GL_ARB_indirect_parameters,
-             GL_ARB_texture_multisample,
-             GL_ARB_half_float_vertex,
-             GL_NV_gpu_shader5,
-             GL_NV_texture_rectangle,
-             GL_NV_alpha_to_coverage_dither_control,
-             GL_ARB_texture_query_lod,
-             GL_NV_geometry_shader4,
-             GL_EXT_texture_object,
-             GL_KHR_no_error,
-             GL_ARB_texture_storage_multisample,
-             GL_ARB_texture_view,
-             GL_NV_shader_atomic_float64,
-             GL_EXT_secondary_color,
-             GL_NV_draw_texture,
-             GL_ARB_robust_buffer_access_behavior,
-             GL_EXT_framebuffer_sRGB,
-             GL_ARB_separate_shader_objects,
-             GL_ARB_cull_distance,
-             GL_ARB_draw_indirect,
-             GL_ARB_shader_bit_encoding,
-             GL_ARB_sampler_objects,
-             GL_EXT_texture_env_combine,
-             GL_ARB_ES3_2_compatibility,
-             GL_ATI_texture_mirror_once,
-             GL_ARB_transform_feedback_overflow_query,
-             GL_NV_parameter_buffer_object,
-             GL_ARB_shader_group_vote,
-             GL_ARB_buffer_storage,
-             GL_WIN_swap_hint,
-             GL_EXT_texture_sRGB_decode,
-             GL_NV_framebuffer_mixed_samples,
-             GL_NV_texture_shader3,
-             GL_EXT_packed_pixels,
-             GL_NV_shader_thread_group,
-             GL_ARB_shadow,
-             GL_NV_transform_feedback2,
-             GL_NV_query_resource,
-             GL_NV_fragment_program,
-             GL_NV_texture_multisample,
-             GL_NV_fragment_shader_interlock,
-             GL_NV_viewport_array2,
-             GL_ARB_texture_border_clamp,
-             GL_NV_conservative_raster_dilate,
-             GL_NV_vertex_array_range2,
-             GL_ARB_bindless_texture,
-             GL_NV_uniform_buffer_unified_memory ]; 
-    }; 
-    
-    Network = { 
-        Adapter0 ={ 
-            hostname = "MEE2017010200;"
-            name = ";"
-            ip = "172. 30.105.142"; 
-            subnet = "  0.  0.255.255"; 
-            broadcast = "255.255.255.255"; 
-            mac = "00:00:00:00:00:00"; 
-        }; 
-    }; 
-    
-    
-    }; 
+NetworkDevice: Ignored adapter bridge0 because ip = 0
+NetworkDevice: Ignored adapter utun1 because ip = 0
+NetworkDevice: Ignored adapter en1 because ip = 0
+NetworkDevice: Ignored adapter utun2 because ip = 0
+NetworkDevice: Ignored adapter utun0 because ip = 0
+NetworkDevice: Ignored adapter awdl0 because ip = 0
+NetworkDevice: Ignored adapter en2 because ip = 0
+NetworkDevice: Ignored adapter p2p0 because ip = 0
+System = { 
+    App { 
+        Name = "/Users/cemil/dev/graphics/graphics_codex/cubes/build/cubesd"
+        cwd = "/Users/cemil/dev/graphics/graphics_codex/cubes/data-files"
+    } 
+    
+    OS { 
+        Name = "OS X 10.9.2"
+    } 
+    
+    CPU { 
+        Architecture = "Intel/AMD x64"
+        Num HW Threads = 4 
+    } 
+    
+    G3D { 
+        Link version = 100100 
+        Compile version = "G3D Innovation Engine 10.01 (Debug)"
+        G3DSpecification::deployMode = No 
+        G3D10DATA = "/Users/cemil/g3d/G3D10/data-files:/Users/cemil/g3d/data10/common:/Users/cemil/g3d/data10/game:/Users/cemil/g3d/data10/research"
+    } 
+    
+    GPU = { 
+        Chipset = "Intel(R) Iris(TM) Graphics 6100;"
+        Vendor = "Intel Inc.;"
+        Driver = "Unknown;"
+        OpenGL version = "4.1 INTEL-12.4.7;"
+        Textures = 16 ;
+        Texture coordinates = -492045728 ;
+        Texture units = -492045728 ;
+        GL_MAX_TEXTURE_SIZE = 16384 ;
+        GL_MAX_CUBE_MAP_TEXTURE_SIZE = 16384 ;
+        GL_MAX_COLOR_ATTACHMENTS = 8 ;
+    } ; 
+    
+    Window = { 
+        API = "GLFW;"
+        Version = "3.3.0 Cocoa NSGL;"
+        
+        In focus = false; 
+        Centered = true; 
+        Framed = true; 
+        Visible = true; 
+        Resizable = true; 
+        Full screen = false; 
+        Top = 0 ;
+        Left = 0 ;
+        Width = 1240 ;
+        Height = 700 ;
+        Refresh rate = -1 ;
+        
+        Alpha bits = 0 ;
+        Red bits = 8 ;
+        Green bits = 8 ;
+        Blue bits = 8 ;
+        Depth bits = 24 ;
+        Stencil bits = 8 ;
+        Asynchronous = false; 
+        Stereo = false; 
+        FSAA samples = 1 ;
+        GL extensions = [ GL_ARB_occlusion_query2,
+             GL_APPLE_rgb_422,
+             GL_EXT_framebuffer_multisample_blit_scaled,
+             GL_ARB_sample_shading,
+             GL_ARB_vertex_attrib_64bit,
+             GL_EXT_texture_filter_anisotropic,
+             GL_ARB_transform_feedback3,
+             GL_APPLE_texture_range,
+             GL_ARB_blend_func_extended,
+             GL_ARB_texture_query_lod,
+             GL_ARB_texture_rgb10_a2ui,
+             GL_EXT_debug_label,
+             GL_NV_texture_barrier,
+             GL_APPLE_row_bytes,
+             GL_EXT_debug_marker,
+             GL_ARB_viewport_array,
+             GL_ARB_timer_query,
+             GL_ARB_gpu_shader5,
+             GL_ARB_draw_indirect,
+             GL_ARB_explicit_attrib_location,
+             GL_APPLE_object_purgeable,
+             GL_EXT_texture_sRGB_decode,
+             GL_ARB_gpu_shader_fp64,
+             GL_ARB_transform_feedback2,
+             GL_EXT_texture_compression_s3tc,
+             GL_ARB_sampler_objects,
+             GL_APPLE_client_storage,
+             GL_ARB_tessellation_shader,
+             GL_ARB_ES2_compatibility,
+             GL_APPLE_flush_render,
+             GL_ARB_instanced_arrays,
+             GL_ARB_internalformat_query,
+             GL_ARB_draw_buffers_blend,
+             GL_ARB_shader_bit_encoding,
+             GL_ATI_texture_mirror_once,
+             GL_APPLE_container_object_shareable,
+             GL_ARB_shader_subroutine,
+             GL_ARB_texture_gather,
+             GL_ARB_separate_shader_objects,
+             GL_ARB_texture_swizzle,
+             GL_ARB_texture_storage,
+             GL_ARB_texture_cube_map_array,
+             GL_ARB_vertex_type_2_10_10_10_rev,
+             GL_ARB_shading_language_include,
+             GL_ARB_texture_buffer_object_rgb32 ]; 
+    }; 
+    
+    Network = { 
+        Adapter0 ={ 
+            hostname = ";"
+            name = "en0;"
+            ip = "192.168.  1. 70"; 
+            subnet = "255.255.255.  0"; 
+            broadcast = "192.168.  1.255"; 
+            mac = "c4:b3:01:d6:7c:73"; 
+        }; 
+    }; 
+    
+    
+    }; 
 
 Entering GApp::loadFont("console-small.fnt")
-Found "console-small.fnt" at "C:\g3d\G3D10\data-files/font/console-small.fnt"
+Found "console-small.fnt" at "/Users/cemil/g3d/G3D10/data-files/font/console-small.fnt"
 Done GApp::loadFont(...)
 Done GApp::GApp()
 
 Found scenes:
   "Test Scene" (./test.Scene.Any)
+  "Cornell" (./cornell.Scene.Any)
+  "testttttt Cube" (./testCube.Scene.Any)
+  "Rotated Cube" (./rotatedCube.Scene.Any)
   "White Cube" (./whiteCube.Scene.Any)
-  "G3D Debug Animation (Skeletal)" (C:\g3d\data10\common/scene/G3D_Debug_Animation_(Skeletal).Scene.Any)
-  "G3D Debug Area Light (Glossy)" (C:\g3d\data10\common/scene/G3D_Debug_Area_Light_(Glossy).Scene.Any)
-  "G3D Debug Area Light (Matte)" (C:\g3d\data10\common/scene/G3D_Debug_Area_Light_(Matte).Scene.Any)
-  "G3D Debug Cubemap" (C:\g3d\data10\common/scene/G3D_Debug_Cubemap.Scene.Any)
-  "G3D Debug Depth of Field" (C:\g3d\data10\common/scene/G3D_Debug_Depth_of_Field.Scene.Any)
-  "G3D Debug Heightfield" (C:\g3d\data10\common/scene/G3D_Debug_Heightfield.Scene.Any)
-  "G3D Debug Light Intensity" (C:\g3d\data10\common/scene/G3D_Debug_Light_Intensity.Scene.Any)
-  "G3D Debug Roughness" (C:\g3d\data10\common/scene/G3D_Debug_Roughness.Scene.Any)
-  "G3D Debug Teapot" (C:\g3d\data10\common/scene/G3D_Debug_Teapot.Scene.Any)
-  "G3D Debug Transparency" (C:\g3d\data10\common/scene/G3D_Debug_Transparency.Scene.Any)
-  "G3D Debug Triangle" (C:\g3d\data10\common/scene/G3D_Debug_Triangle.Scene.Any)
-  "G3D Simple Cornell Box (Empty CO)" (C:\g3d\data10\common/scene/G3D_Simple_Cornell_Box-empty-cyan-orange.Scene.Any)
-  "G3D Simple Cornell Box" (C:\g3d\data10\common/scene/G3D_Simple_Cornell_Box.Scene.Any)
-  "G3D Simple Cornell Box (Area Light)" (C:\g3d\data10\common/scene/G3D_Simple_Cornell_Box_(Area_Light).Scene.Any)
-  "G3D Simple Cornell Box (Glossy)" (C:\g3d\data10\common/scene/G3D_Simple_Cornell_Box_(Glossy).Scene.Any)
-  "G3D Simple Cornell Box (Mirror)" (C:\g3d\data10\common/scene/G3D_Simple_Cornell_Box_(Mirror).Scene.Any)
-  "G3D Simple Cornell Box (Spheres)" (C:\g3d\data10\common/scene/G3D_Simple_Cornell_Box_(Spheres).Scene.Any)
-  "G3D Simple Cornell Box (Water)" (C:\g3d\data10\common/scene/G3D_Simple_Cornell_Box_(Water).Scene.Any)
-  "G3D Simple Void" (C:\g3d\data10\common/scene/G3D_Simple_Void.Scene.Any)
-  "G3D Simple Whiteroom" (C:\g3d\data10\common/scene/G3D_Simple_Whiteroom.Scene.Any)
-  "G3D Sponza" (C:\g3d\data10\common/scene/G3D_Sponza.Scene.Any)
-  "G3D Sponza (Area Light)" (C:\g3d\data10\common/scene/G3D_Sponza_(Area_Light).Scene.Any)
-  "G3D Sponza (White)" (C:\g3d\data10\common/scene/G3D_Sponza_(White).Scene.Any)
-  "G3D Test Models" (C:\g3d\data10\common/scene/G3D_Test_Models.Scene.Any)
-  "G3D VR Holodeck" (C:\g3d\data10\common/scene/G3D_VR_Holodeck.Scene.Any)
-  "G3D VR Portaldeck" (C:\g3d\data10\common/scene/G3D_VR_Portaldeck.Scene.Any)
-  "G3D atcs" (C:\g3d\data10\game/scene/atcs.Scene.Any)
-  "G3D Beta Squadron" (C:\g3d\data10\game/scene/beta.Scene.Any)
-  "G3D Bistro Exterior" (C:\g3d\data10\research/scene/G3D_Bistro_Exterior.Scene.Any)
-  "G3D Bistro Interior" (C:\g3d\data10\research/scene/G3D_Bistro_Interior.Scene.Any)
-  "G3D Breakfast Room" (C:\g3d\data10\research/scene/G3D_Breakfast_Room.Scene.Any)
-  "G3D Breakfast Room (Area Lights)" (C:\g3d\data10\research/scene/G3D_Breakfast_Room_(Area_Lights).Scene.Any)
-  "G3D Breakfast Room (Area Lights) Animated" (C:\g3d\data10\research/scene/G3D_Breakfast_Room_(Area_Lights)_Animated.Scene.Any)
-  "G3D Fireplace Room" (C:\g3d\data10\research/scene/G3D_Fireplace_Room.Scene.Any)
-  "G3D Fireplace Room (Area Lights)" (C:\g3d\data10\research/scene/G3D_Fireplace_Room_(Area_Lights).Scene.Any)
-  "G3D Fireplace Room (Emissive Windows)" (C:\g3d\data10\research/scene/G3D_Fireplace_Room_(Emissive_Windows).Scene.Any)
-  "G3D Fireplace Room (No Glass)" (C:\g3d\data10\research/scene/G3D_Fireplace_Room_(No_Glass).Scene.Any)
-  "G3D Living Room" (C:\g3d\data10\research/scene/G3D_Living_Room.Scene.Any)
-  "G3D Living Room (Area Lights)" (C:\g3d\data10\research/scene/G3D_Living_Room_(Area_Lights).Scene.Any)
-  "G3D Living Room (Emissive Windows)" (C:\g3d\data10\research/scene/G3D_Living_Room_(Emissive_Windows).Scene.Any)
-  "G3D Minecraft" (C:\g3d\data10\research/scene/G3D_Minecraft.Scene.Any)
-  "G3D Salle de Bain" (C:\g3d\data10\research/scene/G3D_Salle_de_Bain.Scene.Any)
-  "G3D San Miguel" (C:\g3d\data10\research/scene/G3D_San_Miguel.Scene.Any)
-  "G3D San Miguel Low Poly" (C:\g3d\data10\research/scene/G3D_San_Miguel_Low_Poly.Scene.Any)
-  "G3D San Miguel Low Poly Area Lights" (C:\g3d\data10\research/scene/G3D_San_Miguel_Low_Poly_Area_Light.Scene.Any)
-  "G3D Sibenik" (C:\g3d\data10\research/scene/G3D_Sibenik.Scene.Any)
-  "G3D Sibenik (Statue)" (C:\g3d\data10\research/scene/G3D_Sibenik_(Statue).Scene.Any)
-  "G3D Simple Cloud" (C:\g3d\data10\research/scene/G3D_Simple_Cloud.Scene.Any)
-  "G3D Simple Motion" (C:\g3d\data10\research/scene/G3D_Simple_Motion.Scene.Any)
-  "G3D Simple Opening Door" (C:\g3d\data10\research/scene/G3D_Simple_Opening_Door.Scene.Any)
-  "G3D Simple Particles" (C:\g3d\data10\research/scene/G3D_Simple_Particles.Scene.Any)
-  "G3D Simple White Furnace (lambertian)" (C:\g3d\data10\research/scene/G3D_Simple_White_Furnace_(lambertian).Scene.Any)
-  "G3D Simple White Furnace (smoothness = 0.5)" (C:\g3d\data10\research/scene/G3D_Simple_White_Furnace_(smoothness=0.5).Scene.Any)
-  "G3D Sponza (Glossy)" (C:\g3d\data10\research/scene/G3D_Sponza_(Glossy).Scene.Any)
-  "G3D Sponza (Glossy Area Lights)" (C:\g3d\data10\research/scene/G3D_Sponza_(Glossy_Area_Lights).Scene.Any)
-  "G3D Sponza (Statue)" (C:\g3d\data10\research/scene/G3D_Sponza_(Statue).Scene.Any)
-  "G3D Sponza (Volumetric Shadows)" (C:\g3d\data10\research/scene/G3D_Sponza_(Volumetric_Shadows).Scene.Any)
-  "G3D Sports Car" (C:\g3d\data10\research/scene/G3D_Sports_Car.Scene.Any)
-  "G3D Sports Car (White)" (C:\g3d\data10\research/scene/G3D_Sports_Car_(White).Scene.Any)
-  "G3D VR Bedroom" (C:\g3d\data10\research/scene/G3D_VR_Bedroom.Scene.Any)
-  "G3D VR Gallery" (C:\g3d\data10\research/scene/G3D_VR_Gallery.Scene.Any)
+  "G3D Debug Heightfield" (/Users/cemil/g3d/data10/common/scene/G3D_Debug_Heightfield.Scene.Any)
+  "G3D Simple Cornell Box" (/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box.Scene.Any)
+  "G3D Debug Area Light (Matte)" (/Users/cemil/g3d/data10/common/scene/G3D_Debug_Area_Light_(Matte).Scene.Any)
+  "G3D Sponza" (/Users/cemil/g3d/data10/common/scene/G3D_Sponza.Scene.Any)
+  "G3D Simple Cornell Box (Area Light)" (/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box_(Area_Light).Scene.Any)
+  "G3D Debug Depth of Field" (/Users/cemil/g3d/data10/common/scene/G3D_Debug_Depth_of_Field.Scene.Any)
+  "G3D Debug Light Intensity" (/Users/cemil/g3d/data10/common/scene/G3D_Debug_Light_Intensity.Scene.Any)
+  "G3D VR Portaldeck" (/Users/cemil/g3d/data10/common/scene/G3D_VR_Portaldeck.Scene.Any)
+  "G3D Debug Roughness" (/Users/cemil/g3d/data10/common/scene/G3D_Debug_Roughness.Scene.Any)
+  "G3D Debug Cubemap" (/Users/cemil/g3d/data10/common/scene/G3D_Debug_Cubemap.Scene.Any)
+  "G3D Simple Cornell Box (Glossy)" (/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box_(Glossy).Scene.Any)
+  "G3D Simple Whiteroom" (/Users/cemil/g3d/data10/common/scene/G3D_Simple_Whiteroom.Scene.Any)
+  "G3D Debug Transparency" (/Users/cemil/g3d/data10/common/scene/G3D_Debug_Transparency.Scene.Any)
+  "G3D Sponza (Area Light)" (/Users/cemil/g3d/data10/common/scene/G3D_Sponza_(Area_Light).Scene.Any)
+  "G3D Debug Animation (Skeletal)" (/Users/cemil/g3d/data10/common/scene/G3D_Debug_Animation_(Skeletal).Scene.Any)
+  "G3D Simple Void" (/Users/cemil/g3d/data10/common/scene/G3D_Simple_Void.Scene.Any)
+  "G3D Debug Teapot" (/Users/cemil/g3d/data10/common/scene/G3D_Debug_Teapot.Scene.Any)
+  "G3D Sponza (White)" (/Users/cemil/g3d/data10/common/scene/G3D_Sponza_(White).Scene.Any)
+  "G3D Simple Cornell Box (Mirror)" (/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box_(Mirror).Scene.Any)
+  "G3D Test Models" (/Users/cemil/g3d/data10/common/scene/G3D_Test_Models.Scene.Any)
+  "G3D Simple Cornell Box (Water)" (/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box_(Water).Scene.Any)
+  "G3D Simple Cornell Box (Spheres)" (/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box_(Spheres).Scene.Any)
+  "G3D VR Holodeck" (/Users/cemil/g3d/data10/common/scene/G3D_VR_Holodeck.Scene.Any)
+  "G3D Debug Triangle" (/Users/cemil/g3d/data10/common/scene/G3D_Debug_Triangle.Scene.Any)
+  "G3D Debug Area Light (Glossy)" (/Users/cemil/g3d/data10/common/scene/G3D_Debug_Area_Light_(Glossy).Scene.Any)
+  "G3D Simple Cornell Box (Empty CO)" (/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box-empty-cyan-orange.Scene.Any)
+  "G3D atcs" (/Users/cemil/g3d/data10/game/scene/atcs.Scene.Any)
+  "G3D Beta Squadron" (/Users/cemil/g3d/data10/game/scene/beta.Scene.Any)
+  "G3D Breakfast Room (Area Lights)" (/Users/cemil/g3d/data10/research/scene/G3D_Breakfast_Room_(Area_Lights).Scene.Any)
+  "G3D Simple Opening Door" (/Users/cemil/g3d/data10/research/scene/G3D_Simple_Opening_Door.Scene.Any)
+  "G3D Bistro Interior" (/Users/cemil/g3d/data10/research/scene/G3D_Bistro_Interior.Scene.Any)
+  "G3D Breakfast Room (Area Lights) Animated" (/Users/cemil/g3d/data10/research/scene/G3D_Breakfast_Room_(Area_Lights)_Animated.Scene.Any)
+  "G3D San Miguel Low Poly Area Lights" (/Users/cemil/g3d/data10/research/scene/G3D_San_Miguel_Low_Poly_Area_Light.Scene.Any)
+  "G3D San Miguel Low Poly" (/Users/cemil/g3d/data10/research/scene/G3D_San_Miguel_Low_Poly.Scene.Any)
+  "G3D Simple White Furnace (smoothness = 0.5)" (/Users/cemil/g3d/data10/research/scene/G3D_Simple_White_Furnace_(smoothness=0.5).Scene.Any)
+  "G3D Fireplace Room" (/Users/cemil/g3d/data10/research/scene/G3D_Fireplace_Room.Scene.Any)
+  "G3D Minecraft" (/Users/cemil/g3d/data10/research/scene/G3D_Minecraft.Scene.Any)
+  "G3D Fireplace Room (No Glass)" (/Users/cemil/g3d/data10/research/scene/G3D_Fireplace_Room_(No_Glass).Scene.Any)
+  "G3D Bistro Exterior" (/Users/cemil/g3d/data10/research/scene/G3D_Bistro_Exterior.Scene.Any)
+  "G3D VR Gallery" (/Users/cemil/g3d/data10/research/scene/G3D_VR_Gallery.Scene.Any)
+  "G3D Fireplace Room (Area Lights)" (/Users/cemil/g3d/data10/research/scene/G3D_Fireplace_Room_(Area_Lights).Scene.Any)
+  "G3D Living Room" (/Users/cemil/g3d/data10/research/scene/G3D_Living_Room.Scene.Any)
+  "G3D Living Room (Area Lights)" (/Users/cemil/g3d/data10/research/scene/G3D_Living_Room_(Area_Lights).Scene.Any)
+  "G3D Sponza (Glossy Area Lights)" (/Users/cemil/g3d/data10/research/scene/G3D_Sponza_(Glossy_Area_Lights).Scene.Any)
+  "G3D Simple Cloud" (/Users/cemil/g3d/data10/research/scene/G3D_Simple_Cloud.Scene.Any)
+  "G3D Sponza (Glossy)" (/Users/cemil/g3d/data10/research/scene/G3D_Sponza_(Glossy).Scene.Any)
+  "G3D Salle de Bain" (/Users/cemil/g3d/data10/research/scene/G3D_Salle_de_Bain.Scene.Any)
+  "G3D Simple White Furnace (lambertian)" (/Users/cemil/g3d/data10/research/scene/G3D_Simple_White_Furnace_(lambertian).Scene.Any)
+  "G3D Sports Car (White)" (/Users/cemil/g3d/data10/research/scene/G3D_Sports_Car_(White).Scene.Any)
+  "G3D Sports Car" (/Users/cemil/g3d/data10/research/scene/G3D_Sports_Car.Scene.Any)
+  "G3D Sibenik" (/Users/cemil/g3d/data10/research/scene/G3D_Sibenik.Scene.Any)
+  "G3D Sponza (Volumetric Shadows)" (/Users/cemil/g3d/data10/research/scene/G3D_Sponza_(Volumetric_Shadows).Scene.Any)
+  "G3D VR Bedroom" (/Users/cemil/g3d/data10/research/scene/G3D_VR_Bedroom.Scene.Any)
+  "G3D Sibenik (Statue)" (/Users/cemil/g3d/data10/research/scene/G3D_Sibenik_(Statue).Scene.Any)
+  "G3D Breakfast Room" (/Users/cemil/g3d/data10/research/scene/G3D_Breakfast_Room.Scene.Any)
+  "G3D Living Room (Emissive Windows)" (/Users/cemil/g3d/data10/research/scene/G3D_Living_Room_(Emissive_Windows).Scene.Any)
+  "G3D Sponza (Statue)" (/Users/cemil/g3d/data10/research/scene/G3D_Sponza_(Statue).Scene.Any)
+  "G3D San Miguel" (/Users/cemil/g3d/data10/research/scene/G3D_San_Miguel.Scene.Any)
+  "G3D Fireplace Room (Emissive Windows)" (/Users/cemil/g3d/data10/research/scene/G3D_Fireplace_Room_(Emissive_Windows).Scene.Any)
+  "G3D Simple Particles" (/Users/cemil/g3d/data10/research/scene/G3D_Simple_Particles.Scene.Any)
+  "G3D Simple Motion" (/Users/cemil/g3d/data10/research/scene/G3D_Simple_Motion.Scene.Any)
+
+
+WARNING: Output of vertex shader 'csPosition' not read by fragment shader
+WARNING: Output of vertex shader 'tan_Y' not read by fragment shader
+WARNING: Output of vertex shader 'tan_X' not read by fragment shader
+
+WARNING: Output of vertex shader 'csPosition' not read by fragment shader
+WARNING: Output of vertex shader 'tan_Y' not read by fragment shader
+WARNING: Output of vertex shader 'tan_X' not read by fragment shader
+
+
+WARNING: Output of vertex shader 'tan_Z' not read by fragment shader
+WARNING: Output of vertex shader 'texCoord' not read by fragment shader
+WARNING: Output of vertex shader 'wsPosition' not read by fragment shader
+
+WARNING: Output of vertex shader 'tan_Z' not read by fragment shader
+WARNING: Output of vertex shader 'texCoord' not read by fragment shader
+WARNING: Output of vertex shader 'wsPosition' not read by fragment shader
+
+
+
+
+WARNING: Output of vertex shader 'g3d_TexCoord' not read by fragment shader
+
+WARNING: Output of vertex shader 'g3d_TexCoord' not read by fragment shader
+
+
+WARNING: Output of vertex shader 'g3d_TexCoord' not read by fragment shader
+
+WARNING: Output of vertex shader 'tan_Y' not read by fragment shader
+WARNING: Output of vertex shader 'tan_X' not read by fragment shader
+WARNING: Output of vertex shader 'texcoord1' not read by fragment shader
+
+WARNING: Output of vertex shader 'tan_Y' not read by fragment shader
+WARNING: Output of vertex shader 'tan_X' not read by fragment shader
+WARNING: Output of vertex shader 'texcoord1' not read by fragment shader
+
+WARNING: Output of vertex shader 'g3d_TexCoord' not read by fragment shader
+
+
+
+
+WARNING: Output of vertex shader 'g3d_TexCoord' not read by fragment shader
+
+WARNING: Output of vertex shader 'g3d_TexCoord' not read by fragment shader
+
+
+
+
+WARNING: Output of vertex shader 'g3d_TexCoord' not read by fragment shader
+
+
+
+
+WARNING: Output of vertex shader 'g3d_TexCoord' not read by fragment shader
+
+WARNING: Output of vertex shader 'g3d_TexCoord' not read by fragment shader
+
+
+
+
+_____________________________________________________
+
+    ###    Files Used    ###
+
+/Users
+/Users/cemil
+/Users/cemil/dev
+/Users/cemil/dev/graphics
+/Users/cemil/dev/graphics/graphics_codex
+/Users/cemil/dev/graphics/graphics_codex/cubes
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/.
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/../journal/journal.md.html
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/./cornell.Scene.Any
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/./model
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/./model/cube
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/./rotatedCube.Scene.Any
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/./test.Scene.Any
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/./testCube.Scene.Any
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/./whiteCube.Scene.Any
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/2018-12-29__000.jpg
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/2018-12-29__000_My_implementation_of_the_cornell_box.jpg
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/AmbientOcclusion
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/BumpMap
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/Camera
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/DefaultRenderer
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/Film
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/GBuffer
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/GFont
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/GaussianBlur
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/GuiTextureBox
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/GuiTheme
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/Light
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/LightingEnvironment
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/SkyboxSurface
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/SlowMesh
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/TemporalFilter
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/Texture
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/UniversalMaterial
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/UniversalSurface
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/cubemap
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/cubemap/cornellbox
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/icon
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/log.txt
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/material
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/material/blackrubber
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/material/chrome
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/material/metalcrate
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/material/oldgirder
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/material/sand
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/model
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/model/CornellBox
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/model/CornellBox/CornellBox.zip
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/model/bedroom
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/model/cube
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/model/sportsCar
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/model/teapot
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/model/truckwheel
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/model/viper
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/rustymetal
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/scene
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/shader
+/Users/cemil/dev/graphics/graphics_codex/cubes/data-files/shader/DefaultRenderer
+/Users/cemil/dev/graphics/graphics_codex/cubes/journal
+/Users/cemil/g3d
+/Users/cemil/g3d/G3D10
+/Users/cemil/g3d/G3D10/data-files
+/Users/cemil/g3d/G3D10/data-files/AmbientOcclusion
+/Users/cemil/g3d/G3D10/data-files/BumpMap
+/Users/cemil/g3d/G3D10/data-files/Camera
+/Users/cemil/g3d/G3D10/data-files/DefaultRenderer
+/Users/cemil/g3d/G3D10/data-files/Film
+/Users/cemil/g3d/G3D10/data-files/GBuffer
+/Users/cemil/g3d/G3D10/data-files/GFont
+/Users/cemil/g3d/G3D10/data-files/GaussianBlur
+/Users/cemil/g3d/G3D10/data-files/GuiTextureBox
+/Users/cemil/g3d/G3D10/data-files/GuiTheme
+/Users/cemil/g3d/G3D10/data-files/Light
+/Users/cemil/g3d/G3D10/data-files/LightingEnvironment
+/Users/cemil/g3d/G3D10/data-files/SkyboxSurface
+/Users/cemil/g3d/G3D10/data-files/SlowMesh
+/Users/cemil/g3d/G3D10/data-files/TemporalFilter
+/Users/cemil/g3d/G3D10/data-files/Texture
+/Users/cemil/g3d/G3D10/data-files/UniversalMaterial
+/Users/cemil/g3d/G3D10/data-files/UniversalSurface
+/Users/cemil/g3d/G3D10/data-files/cubemap
+/Users/cemil/g3d/G3D10/data-files/cubemap/cornellbox
+/Users/cemil/g3d/G3D10/data-files/font
+/Users/cemil/g3d/G3D10/data-files/font/AmbientOcclusion
+/Users/cemil/g3d/G3D10/data-files/font/BumpMap
+/Users/cemil/g3d/G3D10/data-files/font/Camera
+/Users/cemil/g3d/G3D10/data-files/font/DefaultRenderer
+/Users/cemil/g3d/G3D10/data-files/font/Film
+/Users/cemil/g3d/G3D10/data-files/font/GBuffer
+/Users/cemil/g3d/G3D10/data-files/font/GFont
+/Users/cemil/g3d/G3D10/data-files/font/GaussianBlur
+/Users/cemil/g3d/G3D10/data-files/font/GuiTextureBox
+/Users/cemil/g3d/G3D10/data-files/font/GuiTheme
+/Users/cemil/g3d/G3D10/data-files/font/Light
+/Users/cemil/g3d/G3D10/data-files/font/LightingEnvironment
+/Users/cemil/g3d/G3D10/data-files/font/SkyboxSurface
+/Users/cemil/g3d/G3D10/data-files/font/SlowMesh
+/Users/cemil/g3d/G3D10/data-files/font/TemporalFilter
+/Users/cemil/g3d/G3D10/data-files/font/Texture
+/Users/cemil/g3d/G3D10/data-files/font/UniversalMaterial
+/Users/cemil/g3d/G3D10/data-files/font/UniversalSurface
+/Users/cemil/g3d/G3D10/data-files/font/arial.fnt
+/Users/cemil/g3d/G3D10/data-files/font/console-small.fnt
+/Users/cemil/g3d/G3D10/data-files/font/cubemap
+/Users/cemil/g3d/G3D10/data-files/font/cubemap/cornellbox
+/Users/cemil/g3d/G3D10/data-files/font/greek.fnt
+/Users/cemil/g3d/G3D10/data-files/font/icon.fnt
+/Users/cemil/g3d/G3D10/data-files/font/material
+/Users/cemil/g3d/G3D10/data-files/font/material/blackrubber
+/Users/cemil/g3d/G3D10/data-files/font/material/chrome
+/Users/cemil/g3d/G3D10/data-files/font/material/metalcrate
+/Users/cemil/g3d/G3D10/data-files/font/material/oldgirder
+/Users/cemil/g3d/G3D10/data-files/font/material/sand
+/Users/cemil/g3d/G3D10/data-files/font/model
+/Users/cemil/g3d/G3D10/data-files/font/model/CornellBox
+/Users/cemil/g3d/G3D10/data-files/font/model/CornellBox/CornellBox.zip
+/Users/cemil/g3d/G3D10/data-files/font/model/bedroom
+/Users/cemil/g3d/G3D10/data-files/font/model/cube
+/Users/cemil/g3d/G3D10/data-files/font/model/sportsCar
+/Users/cemil/g3d/G3D10/data-files/font/model/teapot
+/Users/cemil/g3d/G3D10/data-files/font/model/truckwheel
+/Users/cemil/g3d/G3D10/data-files/font/model/viper
+/Users/cemil/g3d/G3D10/data-files/font/rustymetal
+/Users/cemil/g3d/G3D10/data-files/font/scene
+/Users/cemil/g3d/G3D10/data-files/gui
+/Users/cemil/g3d/G3D10/data-files/gui/AmbientOcclusion
+/Users/cemil/g3d/G3D10/data-files/gui/BumpMap
+/Users/cemil/g3d/G3D10/data-files/gui/Camera
+/Users/cemil/g3d/G3D10/data-files/gui/DefaultRenderer
+/Users/cemil/g3d/G3D10/data-files/gui/Film
+/Users/cemil/g3d/G3D10/data-files/gui/GBuffer
+/Users/cemil/g3d/G3D10/data-files/gui/GFont
+/Users/cemil/g3d/G3D10/data-files/gui/GaussianBlur
+/Users/cemil/g3d/G3D10/data-files/gui/GuiTextureBox
+/Users/cemil/g3d/G3D10/data-files/gui/GuiTheme
+/Users/cemil/g3d/G3D10/data-files/gui/Light
+/Users/cemil/g3d/G3D10/data-files/gui/LightingEnvironment
+/Users/cemil/g3d/G3D10/data-files/gui/SkyboxSurface
+/Users/cemil/g3d/G3D10/data-files/gui/SlowMesh
+/Users/cemil/g3d/G3D10/data-files/gui/TemporalFilter
+/Users/cemil/g3d/G3D10/data-files/gui/Texture
+/Users/cemil/g3d/G3D10/data-files/gui/UniversalMaterial
+/Users/cemil/g3d/G3D10/data-files/gui/UniversalSurface
+/Users/cemil/g3d/G3D10/data-files/gui/cubemap
+/Users/cemil/g3d/G3D10/data-files/gui/cubemap/cornellbox
+/Users/cemil/g3d/G3D10/data-files/gui/material
+/Users/cemil/g3d/G3D10/data-files/gui/material/blackrubber
+/Users/cemil/g3d/G3D10/data-files/gui/material/chrome
+/Users/cemil/g3d/G3D10/data-files/gui/material/metalcrate
+/Users/cemil/g3d/G3D10/data-files/gui/material/oldgirder
+/Users/cemil/g3d/G3D10/data-files/gui/material/sand
+/Users/cemil/g3d/G3D10/data-files/gui/model
+/Users/cemil/g3d/G3D10/data-files/gui/model/CornellBox
+/Users/cemil/g3d/G3D10/data-files/gui/model/CornellBox/CornellBox.zip
+/Users/cemil/g3d/G3D10/data-files/gui/model/bedroom
+/Users/cemil/g3d/G3D10/data-files/gui/model/cube
+/Users/cemil/g3d/G3D10/data-files/gui/model/sportsCar
+/Users/cemil/g3d/G3D10/data-files/gui/model/teapot
+/Users/cemil/g3d/G3D10/data-files/gui/model/truckwheel
+/Users/cemil/g3d/G3D10/data-files/gui/model/viper
+/Users/cemil/g3d/G3D10/data-files/gui/osx-10.7.gtm
+/Users/cemil/g3d/G3D10/data-files/gui/rustymetal
+/Users/cemil/g3d/G3D10/data-files/gui/scene
+/Users/cemil/g3d/G3D10/data-files/icon
+/Users/cemil/g3d/G3D10/data-files/icon/cubemap
+/Users/cemil/g3d/G3D10/data-files/icon/cubemap/cornellbox
+/Users/cemil/g3d/G3D10/data-files/icon/material
+/Users/cemil/g3d/G3D10/data-files/icon/material/blackrubber
+/Users/cemil/g3d/G3D10/data-files/icon/material/chrome
+/Users/cemil/g3d/G3D10/data-files/icon/material/metalcrate
+/Users/cemil/g3d/G3D10/data-files/icon/material/oldgirder
+/Users/cemil/g3d/G3D10/data-files/icon/material/sand
+/Users/cemil/g3d/G3D10/data-files/icon/model
+/Users/cemil/g3d/G3D10/data-files/icon/model/CornellBox
+/Users/cemil/g3d/G3D10/data-files/icon/model/CornellBox/CornellBox.zip
+/Users/cemil/g3d/G3D10/data-files/icon/model/bedroom
+/Users/cemil/g3d/G3D10/data-files/icon/model/cube
+/Users/cemil/g3d/G3D10/data-files/icon/model/sportsCar
+/Users/cemil/g3d/G3D10/data-files/icon/model/teapot
+/Users/cemil/g3d/G3D10/data-files/icon/model/truckwheel
+/Users/cemil/g3d/G3D10/data-files/icon/model/viper
+/Users/cemil/g3d/G3D10/data-files/icon/rustymetal
+/Users/cemil/g3d/G3D10/data-files/icon/scene
+/Users/cemil/g3d/G3D10/data-files/icon/tango.icn
+/Users/cemil/g3d/G3D10/data-files/material
+/Users/cemil/g3d/G3D10/data-files/material/blackrubber
+/Users/cemil/g3d/G3D10/data-files/material/chrome
+/Users/cemil/g3d/G3D10/data-files/material/metalcrate
+/Users/cemil/g3d/G3D10/data-files/material/oldgirder
+/Users/cemil/g3d/G3D10/data-files/material/sand
+/Users/cemil/g3d/G3D10/data-files/model
+/Users/cemil/g3d/G3D10/data-files/model/CornellBox
+/Users/cemil/g3d/G3D10/data-files/model/CornellBox/CornellBox.zip
+/Users/cemil/g3d/G3D10/data-files/model/bedroom
+/Users/cemil/g3d/G3D10/data-files/model/cube
+/Users/cemil/g3d/G3D10/data-files/model/cubemap
+/Users/cemil/g3d/G3D10/data-files/model/cubemap/cornellbox
+/Users/cemil/g3d/G3D10/data-files/model/material
+/Users/cemil/g3d/G3D10/data-files/model/material/blackrubber
+/Users/cemil/g3d/G3D10/data-files/model/material/chrome
+/Users/cemil/g3d/G3D10/data-files/model/material/metalcrate
+/Users/cemil/g3d/G3D10/data-files/model/material/oldgirder
+/Users/cemil/g3d/G3D10/data-files/model/material/sand
+/Users/cemil/g3d/G3D10/data-files/model/model
+/Users/cemil/g3d/G3D10/data-files/model/model/CornellBox
+/Users/cemil/g3d/G3D10/data-files/model/model/CornellBox/CornellBox.zip
+/Users/cemil/g3d/G3D10/data-files/model/model/bedroom
+/Users/cemil/g3d/G3D10/data-files/model/model/cube
+/Users/cemil/g3d/G3D10/data-files/model/model/sportsCar
+/Users/cemil/g3d/G3D10/data-files/model/model/teapot
+/Users/cemil/g3d/G3D10/data-files/model/model/truckwheel
+/Users/cemil/g3d/G3D10/data-files/model/model/viper
+/Users/cemil/g3d/G3D10/data-files/model/rustymetal
+/Users/cemil/g3d/G3D10/data-files/model/scene
+/Users/cemil/g3d/G3D10/data-files/model/sportsCar
+/Users/cemil/g3d/G3D10/data-files/model/teapot
+/Users/cemil/g3d/G3D10/data-files/model/truckwheel
+/Users/cemil/g3d/G3D10/data-files/model/viper
+/Users/cemil/g3d/G3D10/data-files/rustymetal
+/Users/cemil/g3d/G3D10/data-files/scene
+/Users/cemil/g3d/G3D10/data-files/shader
+/Users/cemil/g3d/G3D10/data-files/shader/AlphaFilter.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion/AmbientOcclusion_AO.pix
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion/AmbientOcclusion_AO.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion/AmbientOcclusion_blur.pix
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion/AmbientOcclusion_blur.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion/AmbientOcclusion_constants.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion/AmbientOcclusion_minify.pix
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion/AmbientOcclusion_minify.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion/AmbientOcclusion_packBilateralKey.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion/AmbientOcclusion_reconstructCSZ.pix
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion/AmbientOcclusion_reconstructCSZ.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/AmbientOcclusion/AmbientOcclusion_sample.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/BumpMap
+/Users/cemil/g3d/G3D10/data-files/shader/BumpMap/BumpMap.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/Camera
+/Users/cemil/g3d/G3D10/data-files/shader/Camera/Camera.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/DefaultRenderer
+/Users/cemil/g3d/G3D10/data-files/shader/DefaultRenderer/DefaultRenderer_OIT_writePixel.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/DefaultRenderer/DefaultRenderer_compositeWeightedBlendedOIT.pix
+/Users/cemil/g3d/G3D10/data-files/shader/DefaultRenderer/DefaultRenderer_deferredShade.pix
+/Users/cemil/g3d/G3D10/data-files/shader/Film
+/Users/cemil/g3d/G3D10/data-files/shader/Film/Film_FXAA_13_quality.pix
+/Users/cemil/g3d/G3D10/data-files/shader/Film/Film_bloomExpose.pix
+/Users/cemil/g3d/G3D10/data-files/shader/Film/Film_composite.pix
+/Users/cemil/g3d/G3D10/data-files/shader/Film/Film_effectsDisabledBlit.pix
+/Users/cemil/g3d/G3D10/data-files/shader/Film/Film_temporalAA.pix
+/Users/cemil/g3d/G3D10/data-files/shader/Film/Film_toneMap.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/GBuffer
+/Users/cemil/g3d/G3D10/data-files/shader/GBuffer/GBuffer.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/GFont
+/Users/cemil/g3d/G3D10/data-files/shader/GFont/GFont_render.pix
+/Users/cemil/g3d/G3D10/data-files/shader/GFont/GFont_render.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/GaussianBlur
+/Users/cemil/g3d/G3D10/data-files/shader/GaussianBlur/GaussianBlur_apply.pix
+/Users/cemil/g3d/G3D10/data-files/shader/GuiTextureBox
+/Users/cemil/g3d/G3D10/data-files/shader/GuiTextureBox/GuiTextureBox_2D.pix
+/Users/cemil/g3d/G3D10/data-files/shader/GuiTheme
+/Users/cemil/g3d/G3D10/data-files/shader/GuiTheme/GuiTheme_render.pix
+/Users/cemil/g3d/G3D10/data-files/shader/GuiTheme/GuiTheme_render.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/Light
+/Users/cemil/g3d/G3D10/data-files/shader/Light/Light.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/LightingEnvironment
+/Users/cemil/g3d/G3D10/data-files/shader/LightingEnvironment/LightingEnvironment_LightUniforms.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/LightingEnvironment/LightingEnvironment_environmentMapUniforms.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/LightingEnvironment/LightingEnvironment_uniforms.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/SkyboxSurface
+/Users/cemil/g3d/G3D10/data-files/shader/SkyboxSurface/SkyboxSurface_gbuffer.pix
+/Users/cemil/g3d/G3D10/data-files/shader/SkyboxSurface/SkyboxSurface_gbuffer.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/SlowMesh
+/Users/cemil/g3d/G3D10/data-files/shader/SlowMesh/SlowMesh_render.pix
+/Users/cemil/g3d/G3D10/data-files/shader/SlowMesh/SlowMesh_render.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/TemporalFilter
+/Users/cemil/g3d/G3D10/data-files/shader/TemporalFilter/TemporalFilter_apply.pix
+/Users/cemil/g3d/G3D10/data-files/shader/Texture
+/Users/cemil/g3d/G3D10/data-files/shader/Texture/Texture.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/Texture/Texture_copy.pix
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalMaterial
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalMaterial/UniversalMaterial.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalMaterial/UniversalMaterial_sample.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalMaterial/UniversalMaterial_shade.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalMaterial/UniversalMaterial_writeToGBuffer.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalSurface
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalSurface/UniversalSurface_depthOnly.pix
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalSurface/UniversalSurface_depthOnly.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalSurface/UniversalSurface_depthOnlyNonOpaque.pix
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalSurface/UniversalSurface_depthPeel.pix
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalSurface/UniversalSurface_gbuffer.pix
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalSurface/UniversalSurface_gbuffer.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalSurface/UniversalSurface_render.pix
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalSurface/UniversalSurface_render.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalSurface/UniversalSurface_vertex.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/UniversalSurface/UniversalSurface_vertexHelpers.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/compatibility.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/cubemap
+/Users/cemil/g3d/G3D10/data-files/shader/cubemap/cornellbox
+/Users/cemil/g3d/G3D10/data-files/shader/default.vrt
+/Users/cemil/g3d/G3D10/data-files/shader/deferredHelpers.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/depthPeel.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/g3dmath.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/lightMap.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/material
+/Users/cemil/g3d/G3D10/data-files/shader/material/blackrubber
+/Users/cemil/g3d/G3D10/data-files/shader/material/chrome
+/Users/cemil/g3d/G3D10/data-files/shader/material/metalcrate
+/Users/cemil/g3d/G3D10/data-files/shader/material/oldgirder
+/Users/cemil/g3d/G3D10/data-files/shader/material/sand
+/Users/cemil/g3d/G3D10/data-files/shader/model
+/Users/cemil/g3d/G3D10/data-files/shader/model/CornellBox
+/Users/cemil/g3d/G3D10/data-files/shader/model/CornellBox/CornellBox.zip
+/Users/cemil/g3d/G3D10/data-files/shader/model/bedroom
+/Users/cemil/g3d/G3D10/data-files/shader/model/cube
+/Users/cemil/g3d/G3D10/data-files/shader/model/sportsCar
+/Users/cemil/g3d/G3D10/data-files/shader/model/teapot
+/Users/cemil/g3d/G3D10/data-files/shader/model/truckwheel
+/Users/cemil/g3d/G3D10/data-files/shader/model/viper
+/Users/cemil/g3d/G3D10/data-files/shader/octahedral.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/reconstructFromDepth.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/reverseReprojection.glsl
+/Users/cemil/g3d/G3D10/data-files/shader/rustymetal
+/Users/cemil/g3d/G3D10/data-files/shader/scene
+/Users/cemil/g3d/G3D10/data-files/shader/unlit.pix
+/Users/cemil/g3d/G3D10/data-files/shader/unlit.vrt
+/Users/cemil/g3d/data10
+/Users/cemil/g3d/data10/common
+/Users/cemil/g3d/data10/common/cubemap
+/Users/cemil/g3d/data10/common/cubemap/cornellbox
+/Users/cemil/g3d/data10/common/cubemap/cornellbox/empty-RG-NX.png
+/Users/cemil/g3d/data10/common/cubemap/cornellbox/empty-RG-NY.png
+/Users/cemil/g3d/data10/common/cubemap/cornellbox/empty-RG-NZ.png
+/Users/cemil/g3d/data10/common/cubemap/cornellbox/empty-RG-PX.png
+/Users/cemil/g3d/data10/common/cubemap/cornellbox/empty-RG-PY.png
+/Users/cemil/g3d/data10/common/cubemap/cornellbox/empty-RG-PZ.png
+/Users/cemil/g3d/data10/common/cubemap/model
+/Users/cemil/g3d/data10/common/cubemap/model/bedroom
+/Users/cemil/g3d/data10/common/cubemap/model/sportsCar
+/Users/cemil/g3d/data10/common/cubemap/model/viper
+/Users/cemil/g3d/data10/common/cubemap/rustymetal
+/Users/cemil/g3d/data10/common/cubemap/scene
+/Users/cemil/g3d/data10/common/font
+/Users/cemil/g3d/data10/common/font/model
+/Users/cemil/g3d/data10/common/font/model/bedroom
+/Users/cemil/g3d/data10/common/font/model/sportsCar
+/Users/cemil/g3d/data10/common/font/model/viper
+/Users/cemil/g3d/data10/common/font/rustymetal
+/Users/cemil/g3d/data10/common/font/scene
+/Users/cemil/g3d/data10/common/icon
+/Users/cemil/g3d/data10/common/icon/model
+/Users/cemil/g3d/data10/common/icon/model/bedroom
+/Users/cemil/g3d/data10/common/icon/model/sportsCar
+/Users/cemil/g3d/data10/common/icon/model/viper
+/Users/cemil/g3d/data10/common/icon/rustymetal
+/Users/cemil/g3d/data10/common/icon/scene
+/Users/cemil/g3d/data10/common/ifs
+/Users/cemil/g3d/data10/common/ifs/model
+/Users/cemil/g3d/data10/common/ifs/model/bedroom
+/Users/cemil/g3d/data10/common/ifs/model/sportsCar
+/Users/cemil/g3d/data10/common/ifs/model/viper
+/Users/cemil/g3d/data10/common/ifs/scene
+/Users/cemil/g3d/data10/common/image
+/Users/cemil/g3d/data10/common/image/model
+/Users/cemil/g3d/data10/common/image/model/bedroom
+/Users/cemil/g3d/data10/common/image/model/sportsCar
+/Users/cemil/g3d/data10/common/image/model/viper
+/Users/cemil/g3d/data10/common/image/scene
+/Users/cemil/g3d/data10/common/material
+/Users/cemil/g3d/data10/common/material/blackrubber
+/Users/cemil/g3d/data10/common/material/blackrubber/blackrubber.UniversalMaterial.Any
+/Users/cemil/g3d/data10/common/material/chrome
+/Users/cemil/g3d/data10/common/material/chrome/chrome.UniversalMaterial.Any
+/Users/cemil/g3d/data10/common/material/metalcrate
+/Users/cemil/g3d/data10/common/material/metalcrate/metalcrate.UniversalMaterial.Any
+/Users/cemil/g3d/data10/common/material/model
+/Users/cemil/g3d/data10/common/material/model/bedroom
+/Users/cemil/g3d/data10/common/material/model/sportsCar
+/Users/cemil/g3d/data10/common/material/model/viper
+/Users/cemil/g3d/data10/common/material/oldgirder
+/Users/cemil/g3d/data10/common/material/oldgirder/oldgirder.UniversalMaterial.Any
+/Users/cemil/g3d/data10/common/material/rustymetal
+/Users/cemil/g3d/data10/common/material/rustymetal/rustymetal.UniversalMaterial.Any
+/Users/cemil/g3d/data10/common/material/sand
+/Users/cemil/g3d/data10/common/material/sand/sand.UniversalMaterial.Any
+/Users/cemil/g3d/data10/common/material/scene
+/Users/cemil/g3d/data10/common/model
+/Users/cemil/g3d/data10/common/model/CornellBox
+/Users/cemil/g3d/data10/common/model/CornellBox/CornellBox.zip
+/Users/cemil/g3d/data10/common/model/CornellBox/CornellBox.zip/CornellBox-Original.mtl
+/Users/cemil/g3d/data10/common/model/CornellBox/CornellBox.zip/CornellBox-Original.obj
+/Users/cemil/g3d/data10/common/model/bedroom
+/Users/cemil/g3d/data10/common/model/cube
+/Users/cemil/g3d/data10/common/model/cube/cube.obj
+/Users/cemil/g3d/data10/common/model/cube/default.mtl
+/Users/cemil/g3d/data10/common/model/cube/default.png
+/Users/cemil/g3d/data10/common/model/model
+/Users/cemil/g3d/data10/common/model/model/bedroom
+/Users/cemil/g3d/data10/common/model/model/sportsCar
+/Users/cemil/g3d/data10/common/model/model/viper
+/Users/cemil/g3d/data10/common/model/rustymetal
+/Users/cemil/g3d/data10/common/model/scene
+/Users/cemil/g3d/data10/common/model/sportsCar
+/Users/cemil/g3d/data10/common/model/teapot
+/Users/cemil/g3d/data10/common/model/teapot/teapot.ArticulatedModel.Any
+/Users/cemil/g3d/data10/common/model/truckwheel
+/Users/cemil/g3d/data10/common/model/truckwheel/material
+/Users/cemil/g3d/data10/common/model/truckwheel/material/blackrubber
+/Users/cemil/g3d/data10/common/model/truckwheel/material/chrome
+/Users/cemil/g3d/data10/common/model/truckwheel/truckwheel.ArticulatedModel.Any
+/Users/cemil/g3d/data10/common/model/viper
+/Users/cemil/g3d/data10/common/rustymetal
+/Users/cemil/g3d/data10/common/scene
+/Users/cemil/g3d/data10/common/scene/G3D_Debug_Animation_(Skeletal).Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Debug_Area_Light_(Glossy).Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Debug_Area_Light_(Matte).Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Debug_Cubemap.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Debug_Depth_of_Field.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Debug_Heightfield.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Debug_Light_Intensity.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Debug_Roughness.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Debug_Teapot.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Debug_Transparency.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Debug_Triangle.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box-empty-cyan-orange.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box_(Area_Light).Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box_(Glossy).Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box_(Mirror).Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box_(Spheres).Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Simple_Cornell_Box_(Water).Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Simple_Void.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Simple_Whiteroom.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Sponza.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Sponza_(Area_Light).Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Sponza_(White).Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_Test_Models.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_VR_Holodeck.Scene.Any
+/Users/cemil/g3d/data10/common/scene/G3D_VR_Portaldeck.Scene.Any
+/Users/cemil/g3d/data10/common/scene/cubemap
+/Users/cemil/g3d/data10/common/scene/cubemap/cornellbox
+/Users/cemil/g3d/data10/common/scene/material
+/Users/cemil/g3d/data10/common/scene/material/metalcrate
+/Users/cemil/g3d/data10/common/scene/material/oldgirder
+/Users/cemil/g3d/data10/common/scene/material/sand
+/Users/cemil/g3d/data10/common/scene/model
+/Users/cemil/g3d/data10/common/scene/model/CornellBox
+/Users/cemil/g3d/data10/common/scene/model/CornellBox/CornellBox.zip
+/Users/cemil/g3d/data10/common/scene/model/bedroom
+/Users/cemil/g3d/data10/common/scene/model/sportsCar
+/Users/cemil/g3d/data10/common/scene/model/teapot
+/Users/cemil/g3d/data10/common/scene/model/viper
+/Users/cemil/g3d/data10/common/scene/scene
+/Users/cemil/g3d/data10/common/voxel
+/Users/cemil/g3d/data10/common/voxel/model
+/Users/cemil/g3d/data10/common/voxel/model/bedroom
+/Users/cemil/g3d/data10/common/voxel/model/sportsCar
+/Users/cemil/g3d/data10/common/voxel/model/viper
+/Users/cemil/g3d/data10/common/voxel/scene
+/Users/cemil/g3d/data10/game
+/Users/cemil/g3d/data10/game/cubemap
+/Users/cemil/g3d/data10/game/cubemap/model
+/Users/cemil/g3d/data10/game/cubemap/model/bedroom
+/Users/cemil/g3d/data10/game/cubemap/model/sportsCar
+/Users/cemil/g3d/data10/game/cubemap/scene
+/Users/cemil/g3d/data10/game/md2
+/Users/cemil/g3d/data10/game/md2/model
+/Users/cemil/g3d/data10/game/md2/model/bedroom
+/Users/cemil/g3d/data10/game/md2/model/sportsCar
+/Users/cemil/g3d/data10/game/md2/scene
+/Users/cemil/g3d/data10/game/md3
+/Users/cemil/g3d/data10/game/md3/model
+/Users/cemil/g3d/data10/game/md3/model/bedroom
+/Users/cemil/g3d/data10/game/md3/model/sportsCar
+/Users/cemil/g3d/data10/game/md3/scene
+/Users/cemil/g3d/data10/game/model
+/Users/cemil/g3d/data10/game/model/bedroom
+/Users/cemil/g3d/data10/game/model/model
+/Users/cemil/g3d/data10/game/model/model/bedroom
+/Users/cemil/g3d/data10/game/model/model/sportsCar
+/Users/cemil/g3d/data10/game/model/scene
+/Users/cemil/g3d/data10/game/model/sportsCar
+/Users/cemil/g3d/data10/game/model/viper
+/Users/cemil/g3d/data10/game/model/viper/viper.ArticulatedModel.Any
+/Users/cemil/g3d/data10/game/music
+/Users/cemil/g3d/data10/game/music/model
+/Users/cemil/g3d/data10/game/music/model/bedroom
+/Users/cemil/g3d/data10/game/music/model/sportsCar
+/Users/cemil/g3d/data10/game/music/scene
+/Users/cemil/g3d/data10/game/scene
+/Users/cemil/g3d/data10/game/scene/atcs.Scene.Any
+/Users/cemil/g3d/data10/game/scene/beta.Scene.Any
+/Users/cemil/g3d/data10/game/scene/model
+/Users/cemil/g3d/data10/game/scene/model/bedroom
+/Users/cemil/g3d/data10/game/scene/model/sportsCar
+/Users/cemil/g3d/data10/game/scene/model/viper
+/Users/cemil/g3d/data10/game/scene/scene
+/Users/cemil/g3d/data10/game/sound
+/Users/cemil/g3d/data10/game/sound/model
+/Users/cemil/g3d/data10/game/sound/model/bedroom
+/Users/cemil/g3d/data10/game/sound/model/sportsCar
+/Users/cemil/g3d/data10/game/sound/scene
+/Users/cemil/g3d/data10/game/voxel
+/Users/cemil/g3d/data10/game/voxel/model
+/Users/cemil/g3d/data10/game/voxel/model/bedroom
+/Users/cemil/g3d/data10/game/voxel/model/sportsCar
+/Users/cemil/g3d/data10/game/voxel/scene
+/Users/cemil/g3d/data10/research
+/Users/cemil/g3d/data10/research/cubemap
+/Users/cemil/g3d/data10/research/cubemap/scene
+/Users/cemil/g3d/data10/research/image
+/Users/cemil/g3d/data10/research/image/scene
+/Users/cemil/g3d/data10/research/material
+/Users/cemil/g3d/data10/research/material/scene
+/Users/cemil/g3d/data10/research/model
+/Users/cemil/g3d/data10/research/model/bedroom
+/Users/cemil/g3d/data10/research/model/bedroom/bedroom.ArticulatedModel.Any
+/Users/cemil/g3d/data10/research/model/scene
+/Users/cemil/g3d/data10/research/model/sportsCar
+/Users/cemil/g3d/data10/research/model/sportsCar/sportsCar.ArticulatedModel.Any
+/Users/cemil/g3d/data10/research/scene
+/Users/cemil/g3d/data10/research/scene/G3D_Bistro_Exterior.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Bistro_Interior.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Breakfast_Room.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Breakfast_Room_(Area_Lights).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Breakfast_Room_(Area_Lights)_Animated.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Fireplace_Room.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Fireplace_Room_(Area_Lights).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Fireplace_Room_(Emissive_Windows).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Fireplace_Room_(No_Glass).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Living_Room.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Living_Room_(Area_Lights).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Living_Room_(Emissive_Windows).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Minecraft.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Salle_de_Bain.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_San_Miguel.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_San_Miguel_Low_Poly.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_San_Miguel_Low_Poly_Area_Light.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Sibenik.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Sibenik_(Statue).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Simple_Cloud.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Simple_Motion.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Simple_Opening_Door.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Simple_Particles.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Simple_White_Furnace_(lambertian).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Simple_White_Furnace_(smoothness=0.5).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Sponza_(Glossy).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Sponza_(Glossy_Area_Lights).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Sponza_(Statue).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Sponza_(Volumetric_Shadows).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Sports_Car.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_Sports_Car_(White).Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_VR_Bedroom.Scene.Any
+/Users/cemil/g3d/data10/research/scene/G3D_VR_Gallery.Scene.Any
+/Users/cemil/g3d/data10/research/scene/model
+/Users/cemil/g3d/data10/research/scene/model/bedroom
+/Users/cemil/g3d/data10/research/scene/model/sportsCar
+/Users/cemil/g3d/data10/research/scene/model/truckwheel
+/Users/cemil/g3d/data10/research/scene/rustymetal
+/Users/cemil/g3d/data10/research/scene/scene
+/Users/cemil/g3d/data10/research/voxel
+/Users/cemil/g3d/data10/research/voxel/scene
+

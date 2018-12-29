@@ -1,0 +1,120 @@
+{
+    name = "Cornell";
+
+    models = {
+        tallBox = ArticulatedModel::Specification {
+            filename = "model/cube/cube.obj";
+            preprocess = {
+                setMaterial(all(), Color3(0.5, 0.5, 0.5));
+                transformGeometry(all(), Matrix4::scale(0.3, 0.6, 0.3));
+            };
+        };
+
+        cube = ArticulatedModel::Specification {
+            filename = "model/cube/cube.obj";
+            preprocess = {
+                setMaterial(all(), Color3(0.5, 0.5, 0.5));
+                transformGeometry(all(), Matrix4::scale(0.3, 0.3, 0.3));
+            };
+        };
+        
+        defaultBox = ArticulatedModel::Specification {
+            filename = "model/cube/cube.obj";
+            preprocess = {
+                setMaterial(all(), Color3(0.5, 0.5, 0.5));
+            };
+        };
+
+        grayWall = ArticulatedModel::Specification {
+            filename = "model/cube/cube.obj";
+            preprocess = {
+                setMaterial(all(), Color3(0.5, 0.5, 0.5));
+                transformGeometry(all(), Matrix4::scale(1.0, 1.0, 0.02));
+            };
+        };
+
+        redWall = ArticulatedModel::Specification {
+            filename = "model/cube/cube.obj";
+            preprocess = {
+                setMaterial(all(), Color3(1.0, 0, 0));
+                transformGeometry(all(), Matrix4::scale(0.02, 1.0, 1.0));
+            };
+        };
+
+        greenWall = ArticulatedModel::Specification {
+            filename = "model/cube/cube.obj";
+            preprocess = {
+                setMaterial(all(), Color3(0, 1.0, 0));
+                transformGeometry(all(), Matrix4::scale(0.02, 1.0, 1.0));
+            };
+        };
+    };
+
+    entities = {
+        skybox = Skybox {
+            texture = 0.05;
+        };
+
+        areaLight = Light {
+            attenuation = ( 0.0001, 0, 1 ); 
+            bulbPower = Power3(10); 
+            canChange = false; 
+            castsShadows = true; 
+            enabled = true; 
+            extent = Vector2(0.25, 0.25); 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.475, 0, 0, -90, 0 ); 
+            nearPlaneZLimit = -0.5; 
+            producesDirectIllumination = true; 
+            producesIndirectIllumination = true; 
+            rectangular = true; 
+            shadowMapBias = 0.01; 
+            shadowMapSize = Vector2int16(2048, 2048); 
+            shadowsEnabled = true; 
+            spotHalfAngleDegrees = 80; 
+            spotHardness = 0;
+            areaLightPullback = 0.1;
+            type = "AREA"; 
+        };
+
+        wallLeft = VisibleEntity {
+            model = "redWall";
+            frame = CFrame::fromXYZYPRDegrees(-0.5, 0, 0, 0, 0, 0);
+        };
+
+        wallRight = VisibleEntity {
+            model = "greenWall";
+            frame = CFrame::fromXYZYPRDegrees(0.5, 0, 0, 0, 0, 0);
+        };
+
+        grayWall01 = VisibleEntity {
+            model = "grayWall";
+            frame = CFrame::fromXYZYPRDegrees(0, 0, -0.5, 0, 0, 0);
+        };
+
+        grayWall02 = VisibleEntity {
+            model = "grayWall";
+            frame = CFrame::fromXYZYPRDegrees(0, -0.5, 0, 0, 90, 0);
+        };
+
+        grayWall03 = VisibleEntity {
+            model = "grayWall";
+            frame = CFrame::fromXYZYPRDegrees(0, 0.5, 0, 0, 90, 0);
+        };
+
+        boxTall = VisibleEntity {
+            model = "tallBox";
+            frame = CFrame::fromXYZYPRDegrees(-0.2, -0.298, -0.2, 20, 0, 0);
+        };
+
+        cube = VisibleEntity {
+            model = "cube";
+            frame = CFrame::fromXYZYPRDegrees(0.15, -0.348, 0.1, 70, 0, 0);
+        };
+
+        camera = Camera {
+            frame = CFrame::fromXYZYPRDegrees(0, 0, 1.55);
+        };
+
+    };
+
+};
