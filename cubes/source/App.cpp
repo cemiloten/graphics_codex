@@ -4,6 +4,33 @@
 // Tells C++ to invoke command-line main() function even on OS X and Win32.
 G3D_START_AT_MAIN();
 
+void writeStaircaseScene() {
+    // Any staircase_scene(Any::TABLE);
+    Any s(Any::TABLE);
+    s["name"] = "Staircase Scene";
+
+    Any models(Any::TABLE);
+    ArticulatedModel::Specification cube;
+    cube.filename = "model/crate/crate.obj";
+    std::shared_ptr<ArticulatedModel> p = std::make_shared<ArticulatedModel>();
+    p.reset(&cube);
+    cube.preprocess = (
+        transformGeometry(p, Matrix4::scale(1, 0.1, 1));
+    );
+
+    models["cube"] = cube;
+        //     cube = ArticulatedModel::Specification {
+        //     filename = "model/cube/cube.obj";
+        //     preprocess = {
+        //         setMaterial(all(), Color3(0.5, 0.5, 0.5));
+        //         transformGeometry(all(), Matrix4::scale(0.3, 0.3, 0.3));
+        //     };
+        // };
+    s["models"] = models;
+    
+    s.save("staircase.Scene.Any");
+}
+
 int main(int argc, const char* argv[]) {
     initGLG3D(G3DSpecification());
 
@@ -45,9 +72,12 @@ int main(int argc, const char* argv[]) {
     settings.renderer.deferredShading = true;
     settings.renderer.orderIndependentTransparency = true;
 
+    writeStaircaseScene();
+    std::cout << "written" << std::endl;
+    return 0;
+
     return App(settings).run();
 }
-
 
 App::App(const GApp::Settings& settings) : GApp(settings) {
 }
@@ -63,7 +93,7 @@ void App::onInit() {
     
     //const shared_ptr<Entity>& sphere = scene()->entity("Sphere");
     //sphere->setFrame(Point3(0.0f, 1.5f, 0.0f));
-
+    
     setFrameDuration(1.0f / 60.0f);
 
     // Call setScene(shared_ptr<Scene>()) or setScene(MyScene::create()) to replace
