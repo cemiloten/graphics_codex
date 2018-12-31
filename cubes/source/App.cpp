@@ -5,30 +5,54 @@
 G3D_START_AT_MAIN();
 
 void writeStaircaseScene() {
-    // Any staircase_scene(Any::TABLE);
-    Any s(Any::TABLE);
-    s["name"] = "Staircase Scene";
+    TextOutput to("staircase.Scene.Any");
+    to.writeSymbol('{');
+    to.writeNewline();
+    to.pushIndent();
 
-    Any models(Any::TABLE);
-    ArticulatedModel::Specification cube;
-    cube.filename = "model/crate/crate.obj";
-    std::shared_ptr<ArticulatedModel> p = std::make_shared<ArticulatedModel>();
-    p.reset(&cube);
-    cube.preprocess = (
-        transformGeometry(p, Matrix4::scale(1, 0.1, 1));
+    to.writeSymbols("name = \"Staircase\";\n\n");
+    
+    to.writeSymbols(
+        "models = {\n"
+        "   crateModel = ArticulatedModel::Specification {\n"
+        "      filename", "=", "\"model/crate/crate.obj\";\n"
+        "       preprocess = {\n"
+        "           setMaterial(all(), \"material/roughcedar/roughcedar-lambertian.png\");\n"
+        "           transformGeometry(all(), Matrix4::scale(0.05, 0.05, 1));\n"
+        "       };\n"
+        "   };\n"
+        "};\n\n"
+
+        "entities = {\n"
+        "    camera = Camera {\n"
+        "        frame = CFrame::fromXYZYPRDegrees(0.7, 2.8, 3.6, 9.7, -19.4, 0);\n"
+        "    };\n\n"
+
+        "    skybox = Skybox {\n"
+        "        texture = 0.5;\n"
+        "    };\n\n"
+
+        "    sun = Light {\n"
+        "        shadowsEnabled = true;\n"
+        "        frame = CFrame::fromXYZYPRDegrees(0, 0, 0, 0, 0, 0);\n"
+        "        shadowMapSize = Vector2int16(2048, 2048);\n"
+        "        type = \"DIRECTIONAL\";\n"
+        "    };\n\n"
     );
 
-    models["cube"] = cube;
-        //     cube = ArticulatedModel::Specification {
-        //     filename = "model/cube/cube.obj";
-        //     preprocess = {
-        //         setMaterial(all(), Color3(0.5, 0.5, 0.5));
-        //         transformGeometry(all(), Matrix4::scale(0.3, 0.3, 0.3));
-        //     };
-        // };
-    s["models"] = models;
-    
-    s.save("staircase.Scene.Any");
+    for (int i = 0; i < 50; ++i) {
+        to.writeSymbols(format("    crate%02d = VisibleEntity {\n", i));
+        to.writeSymbols("   model = \"crateModel\";\n");
+        to.writeSymbols(
+            format(
+                "   frame = CFrame::fromXYZYPRDegrees(0, %f, 0, %d, 0, 0);\n",
+                i / double(20),
+                i * 8));
+        to.writeSymbols("};\n\n");
+    }
+
+    to.writeSymbol("    };\n};");
+    to.commit();
 }
 
 int main(int argc, const char* argv[]) {
@@ -46,7 +70,7 @@ int main(int argc, const char* argv[]) {
     // Some common resolutions:
     // settings.window.width            =  854; settings.window.height       = 480;
     // settings.window.width            = 1024; settings.window.height       = 768;
-    //settings.window.width               = 1900; settings.window.height       = 900;
+    //settings.window.width             = 1900; settings.window.height       = 900;
     //settings.window.width             = 1920; settings.window.height       = 1080;
     settings.window.width  = OSWindow::primaryDisplayWindowSize().x - 40;
     settings.window.height = OSWindow::primaryDisplayWindowSize().y - 100;
@@ -72,9 +96,8 @@ int main(int argc, const char* argv[]) {
     settings.renderer.deferredShading = true;
     settings.renderer.orderIndependentTransparency = true;
 
-    writeStaircaseScene();
-    std::cout << "written" << std::endl;
-    return 0;
+    //writeStaircaseScene();
+    //return 0;
 
     return App(settings).run();
 }
