@@ -1,0 +1,281 @@
+{ 
+    name = "Staircase"; 
+    
+    models = { 
+        crateModel = ArticulatedModel::Specification { 
+            filename = "model/crate/crate.obj"; 
+            preprocess = { 
+                setMaterial(all(), "material/roughcedar/roughcedar-lambertian.png"); 
+                transformGeometry(all(), Matrix4::scale(0.05, 0.05, 1)); 
+            }; 
+        }; 
+    }; 
+    
+    entities = { 
+        camera = Camera { 
+            frame = CFrame::fromXYZYPRDegrees(0.7, 2.8, 3.6, 9.7, -19.4, 0); 
+        }; 
+        
+        skybox = Skybox {
+            texture = 0.5;
+        };
+
+        sun = Light { 
+            shadowsEnabled = true;
+            frame = CFrame::fromXYZYPRDegrees(0, 0, 0, 0, 0, 0); 
+            shadowMapSize = Vector2int16(2048, 2048); 
+            type = "DIRECTIONAL"; 
+        }; 
+        
+        crate00 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.000000, 0, 0, 0, 0); 
+        }; 
+        
+        crate01 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.050000, 0, 8, 0, 0); 
+        }; 
+        
+        crate02 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.100000, 0, 16, 0, 0); 
+        }; 
+        
+        crate03 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.150000, 0, 24, 0, 0); 
+        }; 
+        
+        crate04 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.200000, 0, 32, 0, 0); 
+        }; 
+        
+        crate05 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.250000, 0, 40, 0, 0); 
+        }; 
+        
+        crate06 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.300000, 0, 48, 0, 0); 
+        }; 
+        
+        crate07 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.350000, 0, 56, 0, 0); 
+        }; 
+        
+        crate08 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.400000, 0, 64, 0, 0); 
+        }; 
+        
+        crate09 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.450000, 0, 72, 0, 0); 
+        }; 
+        
+        crate10 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.500000, 0, 80, 0, 0); 
+        }; 
+        
+        crate11 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.550000, 0, 88, 0, 0); 
+        }; 
+        
+        crate12 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.600000, 0, 96, 0, 0); 
+        }; 
+        
+        crate13 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.650000, 0, 104, 0, 0); 
+        }; 
+        
+        crate14 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.700000, 0, 112, 0, 0); 
+        }; 
+        
+        crate15 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.750000, 0, 120, 0, 0); 
+        }; 
+        
+        crate16 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.800000, 0, 128, 0, 0); 
+        }; 
+        
+        crate17 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.850000, 0, 136, 0, 0); 
+        }; 
+        
+        crate18 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.900000, 0, 144, 0, 0); 
+        }; 
+        
+        crate19 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0.950000, 0, 152, 0, 0); 
+        }; 
+        
+        crate20 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.000000, 0, 160, 0, 0); 
+        }; 
+        
+        crate21 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.050000, 0, 168, 0, 0); 
+        }; 
+        
+        crate22 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.100000, 0, 176, 0, 0); 
+        }; 
+        
+        crate23 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.150000, 0, 184, 0, 0); 
+        }; 
+        
+        crate24 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.200000, 0, 192, 0, 0); 
+        }; 
+        
+        crate25 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.250000, 0, 200, 0, 0); 
+        }; 
+        
+        crate26 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.300000, 0, 208, 0, 0); 
+        }; 
+        
+        crate27 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.350000, 0, 216, 0, 0); 
+        }; 
+        
+        crate28 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.400000, 0, 224, 0, 0); 
+        }; 
+        
+        crate29 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.450000, 0, 232, 0, 0); 
+        }; 
+        
+        crate30 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.500000, 0, 240, 0, 0); 
+        }; 
+        
+        crate31 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.550000, 0, 248, 0, 0); 
+        }; 
+        
+        crate32 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.600000, 0, 256, 0, 0); 
+        }; 
+        
+        crate33 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.650000, 0, 264, 0, 0); 
+        }; 
+        
+        crate34 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.700000, 0, 272, 0, 0); 
+        }; 
+        
+        crate35 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.750000, 0, 280, 0, 0); 
+        }; 
+        
+        crate36 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.800000, 0, 288, 0, 0); 
+        }; 
+        
+        crate37 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.850000, 0, 296, 0, 0); 
+        }; 
+        
+        crate38 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.900000, 0, 304, 0, 0); 
+        }; 
+        
+        crate39 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 1.950000, 0, 312, 0, 0); 
+        }; 
+        
+        crate40 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 2.000000, 0, 320, 0, 0); 
+        }; 
+        
+        crate41 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 2.050000, 0, 328, 0, 0); 
+        }; 
+        
+        crate42 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 2.100000, 0, 336, 0, 0); 
+        }; 
+        
+        crate43 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 2.150000, 0, 344, 0, 0); 
+        }; 
+        
+        crate44 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 2.200000, 0, 352, 0, 0); 
+        }; 
+        
+        crate45 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 2.250000, 0, 360, 0, 0); 
+        }; 
+        
+        crate46 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 2.300000, 0, 368, 0, 0); 
+        }; 
+        
+        crate47 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 2.350000, 0, 376, 0, 0); 
+        }; 
+        
+        crate48 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 2.400000, 0, 384, 0, 0); 
+        }; 
+        
+        crate49 = VisibleEntity { 
+            model = "crateModel"; 
+            frame = CFrame::fromXYZYPRDegrees(0, 2.450000, 0, 392, 0, 0); 
+        }; 
+        
+    }; 
+}; 

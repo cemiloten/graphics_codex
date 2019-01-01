@@ -6,6 +6,6 @@ Release
 .vs
 *.db
 *.opendb
-data-files\log.txt
-data-files\g3d-license.txt
+log.txt
+g3d-license.txt
 
