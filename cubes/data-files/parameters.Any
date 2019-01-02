@@ -1,0 +1,9 @@
+{ 
+    dimensions = Vector2(5, 10 ); 
+    name = "Staircase Scene"; 
+    params = { 
+        h = 3; 
+        k = Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1 ); 
+    }; 
+    
+} 

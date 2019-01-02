@@ -15,7 +15,7 @@ protected:
     void makeGUI();
 
 public:
-    
+
     App(const GApp::Settings& settings = GApp::Settings());
 
     virtual void onInit() override;

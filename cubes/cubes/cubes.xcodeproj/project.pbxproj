@@ -1,0 +1,688 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06199EC721DD4F9B0078368B /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 06199EBA21DD4AED0078368B /* App.cpp */; };
+		06199F3821DD52A40078368B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199F3321DD52A40078368B /* IOKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		06199F3921DD52A40078368B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199F3421DD52A40078368B /* OpenGL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		06199F3A21DD52A40078368B /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199F3521DD52A40078368B /* AGL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		06199F3B21DD52A40078368B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199F3621DD52A40078368B /* Cocoa.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		06199F3C21DD52A40078368B /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199F3721DD52A40078368B /* CoreVideo.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		06199F7121DD5DC10078368B /* libassimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EF921DD51F10078368B /* libassimp.a */; };
+		06199F7221DD5DC10078368B /* libassimpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EF021DD51F10078368B /* libassimpd.a */; };
+		06199F7321DD5DC10078368B /* libavcodec.57.107.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EE121DD51F10078368B /* libavcodec.57.107.100.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199F7421DD5DC10078368B /* libavcodec.57.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EFD21DD51F10078368B /* libavcodec.57.dylib */; };
+		06199F7521DD5DC10078368B /* libavcodec.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EED21DD51F10078368B /* libavcodec.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199F7621DD5DC10078368B /* libavdevice.57.10.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EDC21DD51F10078368B /* libavdevice.57.10.100.dylib */; };
+		06199F7721DD5DC10078368B /* libavdevice.57.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EE621DD51F10078368B /* libavdevice.57.dylib */; };
+		06199F7821DD5DC10078368B /* libavdevice.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EDD21DD51F10078368B /* libavdevice.dylib */; };
+		06199F7921DD5DC10078368B /* libavfilter.6.107.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ED621DD51F10078368B /* libavfilter.6.107.100.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199F7A21DD5DC10078368B /* libavfilter.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ECA21DD51F00078368B /* libavfilter.6.dylib */; };
+		06199F7B21DD5DC10078368B /* libavfilter.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EC921DD51F00078368B /* libavfilter.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199F7C21DD5DC10078368B /* libavformat.57.83.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EFC21DD51F10078368B /* libavformat.57.83.100.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199F7D21DD5DC10078368B /* libavformat.57.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EEC21DD51F10078368B /* libavformat.57.dylib */; };
+		06199F7E21DD5DC10078368B /* libavformat.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EF521DD51F10078368B /* libavformat.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199F7F21DD5DC10078368B /* libavutil.55.78.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ECF21DD51F00078368B /* libavutil.55.78.100.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199F8021DD5DC10078368B /* libavutil.55.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EF121DD51F10078368B /* libavutil.55.dylib */; };
+		06199F8121DD5DC10078368B /* libavutil.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ED321DD51F10078368B /* libavutil.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199F8221DD5DC10078368B /* libcivetweb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EF221DD51F10078368B /* libcivetweb.a */; };
+		06199F8321DD5DC10078368B /* libcivetwebd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ED821DD51F10078368B /* libcivetwebd.a */; };
+		06199F8421DD5DC10078368B /* libembree.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EF421DD51F10078368B /* libembree.2.dylib */; };
+		06199F8521DD5DC10078368B /* libembree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ED221DD51F10078368B /* libembree.dylib */; };
+		06199F8621DD5DC10078368B /* libenet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ECE21DD51F00078368B /* libenet.a */; };
+		06199F8721DD5DC10078368B /* libenetd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EE421DD51F10078368B /* libenetd.a */; };
+		06199F8821DD5DC10078368B /* libfmod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EE521DD51F10078368B /* libfmod.dylib */; };
+		06199F8921DD5DC10078368B /* libfreeimage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EDA21DD51F10078368B /* libfreeimage.a */; };
+		06199F8A21DD5DC10078368B /* libfreeimaged.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EDF21DD51F10078368B /* libfreeimaged.a */; };
+		06199F8B21DD5DC10078368B /* libG3D-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EEB21DD51F10078368B /* libG3D-app.a */; };
+		06199F8C21DD5DC10078368B /* libG3D-appd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EDB21DD51F10078368B /* libG3D-appd.a */; };
+		06199F8D21DD5DC10078368B /* libG3D-base.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EF821DD51F10078368B /* libG3D-base.a */; };
+		06199F8E21DD5DC10078368B /* libG3D-based.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EE721DD51F10078368B /* libG3D-based.a */; };
+		06199F8F21DD5DC10078368B /* libG3D-gfx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EF621DD51F10078368B /* libG3D-gfx.a */; };
+		06199F9021DD5DC10078368B /* libG3D-gfxd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EE021DD51F10078368B /* libG3D-gfxd.a */; };
+		06199F9121DD5DC10078368B /* libglew.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ED121DD51F10078368B /* libglew.a */; };
+		06199F9221DD5DC10078368B /* libglewd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EF721DD51F10078368B /* libglewd.a */; };
+		06199F9321DD5DC10078368B /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ED921DD51F10078368B /* libglfw.a */; };
+		06199F9421DD5DC10078368B /* libglfwd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EE921DD51F10078368B /* libglfwd.a */; };
+		06199F9521DD5DC10078368B /* libnfd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EF321DD51F10078368B /* libnfd.a */; };
+		06199F9621DD5DC10078368B /* libnfdd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ECB21DD51F00078368B /* libnfdd.a */; };
+		06199F9721DD5DC10078368B /* libpython36.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ED721DD51F10078368B /* libpython36.so */; };
+		06199F9821DD5DC10078368B /* libqrencode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EFA21DD51F10078368B /* libqrencode.a */; };
+		06199F9921DD5DC10078368B /* libqrencoded.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EE221DD51F10078368B /* libqrencoded.a */; };
+		06199F9A21DD5DC10078368B /* libswresample.2.9.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EE321DD51F10078368B /* libswresample.2.9.100.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199F9B21DD5DC10078368B /* libswresample.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ED021DD51F00078368B /* libswresample.2.dylib */; };
+		06199F9C21DD5DC10078368B /* libswresample.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ED521DD51F10078368B /* libswresample.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199F9D21DD5DC10078368B /* libswscale.4.8.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EDE21DD51F10078368B /* libswscale.4.8.100.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199F9E21DD5DC10078368B /* libswscale.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EFB21DD51F10078368B /* libswscale.4.dylib */; };
+		06199F9F21DD5DC10078368B /* libswscale.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ECC21DD51F00078368B /* libswscale.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06199FA021DD5DC10078368B /* libtbb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EEE21DD51F10078368B /* libtbb.dylib */; };
+		06199FA121DD5DC10078368B /* libtbbmalloc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EEA21DD51F10078368B /* libtbbmalloc.dylib */; };
+		06199FA221DD5DC10078368B /* libzip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EE821DD51F10078368B /* libzip.a */; };
+		06199FA321DD5DC10078368B /* libzipd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ECD21DD51F00078368B /* libzipd.a */; };
+		06199FA421DD5DC10078368B /* libzlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199ED421DD51F10078368B /* libzlib.a */; };
+		06199FA521DD5DC10078368B /* libzlibd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06199EEF21DD51F10078368B /* libzlibd.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		06199EBD21DD4B870078368B /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		06199EB921DD4AED0078368B /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = App.h; path = /Users/cemil/dev/graphics/graphics_codex/cubes/source/App.h; sourceTree = "<absolute>"; };
+		06199EBA21DD4AED0078368B /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = App.cpp; path = /Users/cemil/dev/graphics/graphics_codex/cubes/source/App.cpp; sourceTree = "<absolute>"; };
+		06199EBF21DD4B870078368B /* run */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = run; sourceTree = BUILT_PRODUCTS_DIR; };
+		06199EC921DD51F00078368B /* libavfilter.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavfilter.dylib; path = ../../../../../g3d/G3D10/build/lib/libavfilter.dylib; sourceTree = "<group>"; };
+		06199ECA21DD51F00078368B /* libavfilter.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavfilter.6.dylib; path = ../../../../../g3d/G3D10/build/lib/libavfilter.6.dylib; sourceTree = "<group>"; };
+		06199ECB21DD51F00078368B /* libnfdd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnfdd.a; path = ../../../../../g3d/G3D10/build/lib/libnfdd.a; sourceTree = "<group>"; };
+		06199ECC21DD51F00078368B /* libswscale.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libswscale.dylib; path = ../../../../../g3d/G3D10/build/lib/libswscale.dylib; sourceTree = "<group>"; };
+		06199ECD21DD51F00078368B /* libzipd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzipd.a; path = ../../../../../g3d/G3D10/build/lib/libzipd.a; sourceTree = "<group>"; };
+		06199ECE21DD51F00078368B /* libenet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libenet.a; path = ../../../../../g3d/G3D10/build/lib/libenet.a; sourceTree = "<group>"; };
+		06199ECF21DD51F00078368B /* libavutil.55.78.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavutil.55.78.100.dylib; path = ../../../../../g3d/G3D10/build/lib/libavutil.55.78.100.dylib; sourceTree = "<group>"; };
+		06199ED021DD51F00078368B /* libswresample.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libswresample.2.dylib; path = ../../../../../g3d/G3D10/build/lib/libswresample.2.dylib; sourceTree = "<group>"; };
+		06199ED121DD51F10078368B /* libglew.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglew.a; path = ../../../../../g3d/G3D10/build/lib/libglew.a; sourceTree = "<group>"; };
+		06199ED221DD51F10078368B /* libembree.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libembree.dylib; path = ../../../../../g3d/G3D10/build/lib/libembree.dylib; sourceTree = "<group>"; };
+		06199ED321DD51F10078368B /* libavutil.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavutil.dylib; path = ../../../../../g3d/G3D10/build/lib/libavutil.dylib; sourceTree = "<group>"; };
+		06199ED421DD51F10078368B /* libzlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzlib.a; path = ../../../../../g3d/G3D10/build/lib/libzlib.a; sourceTree = "<group>"; };
+		06199ED521DD51F10078368B /* libswresample.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libswresample.dylib; path = ../../../../../g3d/G3D10/build/lib/libswresample.dylib; sourceTree = "<group>"; };
+		06199ED621DD51F10078368B /* libavfilter.6.107.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavfilter.6.107.100.dylib; path = ../../../../../g3d/G3D10/build/lib/libavfilter.6.107.100.dylib; sourceTree = "<group>"; };
+		06199ED721DD51F10078368B /* libpython36.so */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpython36.so; path = ../../../../../g3d/G3D10/build/lib/libpython36.so; sourceTree = "<group>"; };
+		06199ED821DD51F10078368B /* libcivetwebd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcivetwebd.a; path = ../../../../../g3d/G3D10/build/lib/libcivetwebd.a; sourceTree = "<group>"; };
+		06199ED921DD51F10078368B /* libglfw.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw.a; path = ../../../../../g3d/G3D10/build/lib/libglfw.a; sourceTree = "<group>"; };
+		06199EDA21DD51F10078368B /* libfreeimage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreeimage.a; path = ../../../../../g3d/G3D10/build/lib/libfreeimage.a; sourceTree = "<group>"; };
+		06199EDB21DD51F10078368B /* libG3D-appd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libG3D-appd.a"; path = "../../../../../g3d/G3D10/build/lib/libG3D-appd.a"; sourceTree = "<group>"; };
+		06199EDC21DD51F10078368B /* libavdevice.57.10.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavdevice.57.10.100.dylib; path = ../../../../../g3d/G3D10/build/lib/libavdevice.57.10.100.dylib; sourceTree = "<group>"; };
+		06199EDD21DD51F10078368B /* libavdevice.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavdevice.dylib; path = ../../../../../g3d/G3D10/build/lib/libavdevice.dylib; sourceTree = "<group>"; };
+		06199EDE21DD51F10078368B /* libswscale.4.8.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libswscale.4.8.100.dylib; path = ../../../../../g3d/G3D10/build/lib/libswscale.4.8.100.dylib; sourceTree = "<group>"; };
+		06199EDF21DD51F10078368B /* libfreeimaged.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreeimaged.a; path = ../../../../../g3d/G3D10/build/lib/libfreeimaged.a; sourceTree = "<group>"; };
+		06199EE021DD51F10078368B /* libG3D-gfxd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libG3D-gfxd.a"; path = "../../../../../g3d/G3D10/build/lib/libG3D-gfxd.a"; sourceTree = "<group>"; };
+		06199EE121DD51F10078368B /* libavcodec.57.107.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavcodec.57.107.100.dylib; path = ../../../../../g3d/G3D10/build/lib/libavcodec.57.107.100.dylib; sourceTree = "<group>"; };
+		06199EE221DD51F10078368B /* libqrencoded.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libqrencoded.a; path = ../../../../../g3d/G3D10/build/lib/libqrencoded.a; sourceTree = "<group>"; };
+		06199EE321DD51F10078368B /* libswresample.2.9.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libswresample.2.9.100.dylib; path = ../../../../../g3d/G3D10/build/lib/libswresample.2.9.100.dylib; sourceTree = "<group>"; };
+		06199EE421DD51F10078368B /* libenetd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libenetd.a; path = ../../../../../g3d/G3D10/build/lib/libenetd.a; sourceTree = "<group>"; };
+		06199EE521DD51F10078368B /* libfmod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmod.dylib; path = ../../../../../g3d/G3D10/build/lib/libfmod.dylib; sourceTree = "<group>"; };
+		06199EE621DD51F10078368B /* libavdevice.57.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavdevice.57.dylib; path = ../../../../../g3d/G3D10/build/lib/libavdevice.57.dylib; sourceTree = "<group>"; };
+		06199EE721DD51F10078368B /* libG3D-based.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libG3D-based.a"; path = "../../../../../g3d/G3D10/build/lib/libG3D-based.a"; sourceTree = "<group>"; };
+		06199EE821DD51F10078368B /* libzip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzip.a; path = ../../../../../g3d/G3D10/build/lib/libzip.a; sourceTree = "<group>"; };
+		06199EE921DD51F10078368B /* libglfwd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfwd.a; path = ../../../../../g3d/G3D10/build/lib/libglfwd.a; sourceTree = "<group>"; };
+		06199EEA21DD51F10078368B /* libtbbmalloc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtbbmalloc.dylib; path = ../../../../../g3d/G3D10/build/lib/libtbbmalloc.dylib; sourceTree = "<group>"; };
+		06199EEB21DD51F10078368B /* libG3D-app.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libG3D-app.a"; path = "../../../../../g3d/G3D10/build/lib/libG3D-app.a"; sourceTree = "<group>"; };
+		06199EEC21DD51F10078368B /* libavformat.57.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavformat.57.dylib; path = ../../../../../g3d/G3D10/build/lib/libavformat.57.dylib; sourceTree = "<group>"; };
+		06199EED21DD51F10078368B /* libavcodec.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavcodec.dylib; path = ../../../../../g3d/G3D10/build/lib/libavcodec.dylib; sourceTree = "<group>"; };
+		06199EEE21DD51F10078368B /* libtbb.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtbb.dylib; path = ../../../../../g3d/G3D10/build/lib/libtbb.dylib; sourceTree = "<group>"; };
+		06199EEF21DD51F10078368B /* libzlibd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzlibd.a; path = ../../../../../g3d/G3D10/build/lib/libzlibd.a; sourceTree = "<group>"; };
+		06199EF021DD51F10078368B /* libassimpd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libassimpd.a; path = ../../../../../g3d/G3D10/build/lib/libassimpd.a; sourceTree = "<group>"; };
+		06199EF121DD51F10078368B /* libavutil.55.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavutil.55.dylib; path = ../../../../../g3d/G3D10/build/lib/libavutil.55.dylib; sourceTree = "<group>"; };
+		06199EF221DD51F10078368B /* libcivetweb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcivetweb.a; path = ../../../../../g3d/G3D10/build/lib/libcivetweb.a; sourceTree = "<group>"; };
+		06199EF321DD51F10078368B /* libnfd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnfd.a; path = ../../../../../g3d/G3D10/build/lib/libnfd.a; sourceTree = "<group>"; };
+		06199EF421DD51F10078368B /* libembree.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libembree.2.dylib; path = ../../../../../g3d/G3D10/build/lib/libembree.2.dylib; sourceTree = "<group>"; };
+		06199EF521DD51F10078368B /* libavformat.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavformat.dylib; path = ../../../../../g3d/G3D10/build/lib/libavformat.dylib; sourceTree = "<group>"; };
+		06199EF621DD51F10078368B /* libG3D-gfx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libG3D-gfx.a"; path = "../../../../../g3d/G3D10/build/lib/libG3D-gfx.a"; sourceTree = "<group>"; };
+		06199EF721DD51F10078368B /* libglewd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglewd.a; path = ../../../../../g3d/G3D10/build/lib/libglewd.a; sourceTree = "<group>"; };
+		06199EF821DD51F10078368B /* libG3D-base.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libG3D-base.a"; path = "../../../../../g3d/G3D10/build/lib/libG3D-base.a"; sourceTree = "<group>"; };
+		06199EF921DD51F10078368B /* libassimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libassimp.a; path = ../../../../../g3d/G3D10/build/lib/libassimp.a; sourceTree = "<group>"; };
+		06199EFA21DD51F10078368B /* libqrencode.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libqrencode.a; path = ../../../../../g3d/G3D10/build/lib/libqrencode.a; sourceTree = "<group>"; };
+		06199EFB21DD51F10078368B /* libswscale.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libswscale.4.dylib; path = ../../../../../g3d/G3D10/build/lib/libswscale.4.dylib; sourceTree = "<group>"; };
+		06199EFC21DD51F10078368B /* libavformat.57.83.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavformat.57.83.100.dylib; path = ../../../../../g3d/G3D10/build/lib/libavformat.57.83.100.dylib; sourceTree = "<group>"; };
+		06199EFD21DD51F10078368B /* libavcodec.57.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavcodec.57.dylib; path = ../../../../../g3d/G3D10/build/lib/libavcodec.57.dylib; sourceTree = "<group>"; };
+		06199F3321DD52A40078368B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		06199F3421DD52A40078368B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		06199F3521DD52A40078368B /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = System/Library/Frameworks/AGL.framework; sourceTree = SDKROOT; };
+		06199F3621DD52A40078368B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		06199F3721DD52A40078368B /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06199EBC21DD4B870078368B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06199F7121DD5DC10078368B /* libassimp.a in Frameworks */,
+				06199F7221DD5DC10078368B /* libassimpd.a in Frameworks */,
+				06199F7321DD5DC10078368B /* libavcodec.57.107.100.dylib in Frameworks */,
+				06199F7421DD5DC10078368B /* libavcodec.57.dylib in Frameworks */,
+				06199F7521DD5DC10078368B /* libavcodec.dylib in Frameworks */,
+				06199F7621DD5DC10078368B /* libavdevice.57.10.100.dylib in Frameworks */,
+				06199F7721DD5DC10078368B /* libavdevice.57.dylib in Frameworks */,
+				06199F7821DD5DC10078368B /* libavdevice.dylib in Frameworks */,
+				06199F7921DD5DC10078368B /* libavfilter.6.107.100.dylib in Frameworks */,
+				06199F7A21DD5DC10078368B /* libavfilter.6.dylib in Frameworks */,
+				06199F7B21DD5DC10078368B /* libavfilter.dylib in Frameworks */,
+				06199F7C21DD5DC10078368B /* libavformat.57.83.100.dylib in Frameworks */,
+				06199F7D21DD5DC10078368B /* libavformat.57.dylib in Frameworks */,
+				06199F7E21DD5DC10078368B /* libavformat.dylib in Frameworks */,
+				06199F7F21DD5DC10078368B /* libavutil.55.78.100.dylib in Frameworks */,
+				06199F8021DD5DC10078368B /* libavutil.55.dylib in Frameworks */,
+				06199F8121DD5DC10078368B /* libavutil.dylib in Frameworks */,
+				06199F8221DD5DC10078368B /* libcivetweb.a in Frameworks */,
+				06199F8321DD5DC10078368B /* libcivetwebd.a in Frameworks */,
+				06199F8421DD5DC10078368B /* libembree.2.dylib in Frameworks */,
+				06199F8521DD5DC10078368B /* libembree.dylib in Frameworks */,
+				06199F8621DD5DC10078368B /* libenet.a in Frameworks */,
+				06199F8721DD5DC10078368B /* libenetd.a in Frameworks */,
+				06199F8821DD5DC10078368B /* libfmod.dylib in Frameworks */,
+				06199F8921DD5DC10078368B /* libfreeimage.a in Frameworks */,
+				06199F8A21DD5DC10078368B /* libfreeimaged.a in Frameworks */,
+				06199F8B21DD5DC10078368B /* libG3D-app.a in Frameworks */,
+				06199F8C21DD5DC10078368B /* libG3D-appd.a in Frameworks */,
+				06199F8D21DD5DC10078368B /* libG3D-base.a in Frameworks */,
+				06199F8E21DD5DC10078368B /* libG3D-based.a in Frameworks */,
+				06199F8F21DD5DC10078368B /* libG3D-gfx.a in Frameworks */,
+				06199F9021DD5DC10078368B /* libG3D-gfxd.a in Frameworks */,
+				06199F9121DD5DC10078368B /* libglew.a in Frameworks */,
+				06199F9221DD5DC10078368B /* libglewd.a in Frameworks */,
+				06199F9321DD5DC10078368B /* libglfw.a in Frameworks */,
+				06199F9421DD5DC10078368B /* libglfwd.a in Frameworks */,
+				06199F9521DD5DC10078368B /* libnfd.a in Frameworks */,
+				06199F9621DD5DC10078368B /* libnfdd.a in Frameworks */,
+				06199F9721DD5DC10078368B /* libpython36.so in Frameworks */,
+				06199F9821DD5DC10078368B /* libqrencode.a in Frameworks */,
+				06199F9921DD5DC10078368B /* libqrencoded.a in Frameworks */,
+				06199F9A21DD5DC10078368B /* libswresample.2.9.100.dylib in Frameworks */,
+				06199F9B21DD5DC10078368B /* libswresample.2.dylib in Frameworks */,
+				06199F9C21DD5DC10078368B /* libswresample.dylib in Frameworks */,
+				06199F9D21DD5DC10078368B /* libswscale.4.8.100.dylib in Frameworks */,
+				06199F9E21DD5DC10078368B /* libswscale.4.dylib in Frameworks */,
+				06199F9F21DD5DC10078368B /* libswscale.dylib in Frameworks */,
+				06199FA021DD5DC10078368B /* libtbb.dylib in Frameworks */,
+				06199FA121DD5DC10078368B /* libtbbmalloc.dylib in Frameworks */,
+				06199FA221DD5DC10078368B /* libzip.a in Frameworks */,
+				06199FA321DD5DC10078368B /* libzipd.a in Frameworks */,
+				06199FA421DD5DC10078368B /* libzlib.a in Frameworks */,
+				06199FA521DD5DC10078368B /* libzlibd.a in Frameworks */,
+				06199F3821DD52A40078368B /* IOKit.framework in Frameworks */,
+				06199F3921DD52A40078368B /* OpenGL.framework in Frameworks */,
+				06199F3A21DD52A40078368B /* AGL.framework in Frameworks */,
+				06199F3B21DD52A40078368B /* Cocoa.framework in Frameworks */,
+				06199F3C21DD52A40078368B /* CoreVideo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06199EAD21DD49D70078368B = {
+			isa = PBXGroup;
+			children = (
+				06199EB821DD4AED0078368B /* source */,
+				06199EC021DD4B870078368B /* Products */,
+				06199EC821DD51F00078368B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		06199EB821DD4AED0078368B /* source */ = {
+			isa = PBXGroup;
+			children = (
+				06199EB921DD4AED0078368B /* App.h */,
+				06199EBA21DD4AED0078368B /* App.cpp */,
+			);
+			name = source;
+			path = ../source;
+			sourceTree = "<group>";
+		};
+		06199EC021DD4B870078368B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06199EBF21DD4B870078368B /* run */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06199EC821DD51F00078368B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06199F3521DD52A40078368B /* AGL.framework */,
+				06199F3621DD52A40078368B /* Cocoa.framework */,
+				06199F3721DD52A40078368B /* CoreVideo.framework */,
+				06199F3321DD52A40078368B /* IOKit.framework */,
+				06199F3421DD52A40078368B /* OpenGL.framework */,
+				06199EF921DD51F10078368B /* libassimp.a */,
+				06199EF021DD51F10078368B /* libassimpd.a */,
+				06199EE121DD51F10078368B /* libavcodec.57.107.100.dylib */,
+				06199EFD21DD51F10078368B /* libavcodec.57.dylib */,
+				06199EED21DD51F10078368B /* libavcodec.dylib */,
+				06199EDC21DD51F10078368B /* libavdevice.57.10.100.dylib */,
+				06199EE621DD51F10078368B /* libavdevice.57.dylib */,
+				06199EDD21DD51F10078368B /* libavdevice.dylib */,
+				06199ED621DD51F10078368B /* libavfilter.6.107.100.dylib */,
+				06199ECA21DD51F00078368B /* libavfilter.6.dylib */,
+				06199EC921DD51F00078368B /* libavfilter.dylib */,
+				06199EFC21DD51F10078368B /* libavformat.57.83.100.dylib */,
+				06199EEC21DD51F10078368B /* libavformat.57.dylib */,
+				06199EF521DD51F10078368B /* libavformat.dylib */,
+				06199ECF21DD51F00078368B /* libavutil.55.78.100.dylib */,
+				06199EF121DD51F10078368B /* libavutil.55.dylib */,
+				06199ED321DD51F10078368B /* libavutil.dylib */,
+				06199EF221DD51F10078368B /* libcivetweb.a */,
+				06199ED821DD51F10078368B /* libcivetwebd.a */,
+				06199EF421DD51F10078368B /* libembree.2.dylib */,
+				06199ED221DD51F10078368B /* libembree.dylib */,
+				06199ECE21DD51F00078368B /* libenet.a */,
+				06199EE421DD51F10078368B /* libenetd.a */,
+				06199EE521DD51F10078368B /* libfmod.dylib */,
+				06199EDA21DD51F10078368B /* libfreeimage.a */,
+				06199EDF21DD51F10078368B /* libfreeimaged.a */,
+				06199EEB21DD51F10078368B /* libG3D-app.a */,
+				06199EDB21DD51F10078368B /* libG3D-appd.a */,
+				06199EF821DD51F10078368B /* libG3D-base.a */,
+				06199EE721DD51F10078368B /* libG3D-based.a */,
+				06199EF621DD51F10078368B /* libG3D-gfx.a */,
+				06199EE021DD51F10078368B /* libG3D-gfxd.a */,
+				06199ED121DD51F10078368B /* libglew.a */,
+				06199EF721DD51F10078368B /* libglewd.a */,
+				06199ED921DD51F10078368B /* libglfw.a */,
+				06199EE921DD51F10078368B /* libglfwd.a */,
+				06199EF321DD51F10078368B /* libnfd.a */,
+				06199ECB21DD51F00078368B /* libnfdd.a */,
+				06199ED721DD51F10078368B /* libpython36.so */,
+				06199EFA21DD51F10078368B /* libqrencode.a */,
+				06199EE221DD51F10078368B /* libqrencoded.a */,
+				06199EE321DD51F10078368B /* libswresample.2.9.100.dylib */,
+				06199ED021DD51F00078368B /* libswresample.2.dylib */,
+				06199ED521DD51F10078368B /* libswresample.dylib */,
+				06199EDE21DD51F10078368B /* libswscale.4.8.100.dylib */,
+				06199EFB21DD51F10078368B /* libswscale.4.dylib */,
+				06199ECC21DD51F00078368B /* libswscale.dylib */,
+				06199EEE21DD51F10078368B /* libtbb.dylib */,
+				06199EEA21DD51F10078368B /* libtbbmalloc.dylib */,
+				06199EE821DD51F10078368B /* libzip.a */,
+				06199ECD21DD51F00078368B /* libzipd.a */,
+				06199ED421DD51F10078368B /* libzlib.a */,
+				06199EEF21DD51F10078368B /* libzlibd.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		06199EB221DD49D70078368B /* cubes */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "";
+			buildConfigurationList = 06199EB521DD49D70078368B /* Build configuration list for PBXLegacyTarget "cubes" */;
+			buildPhases = (
+			);
+			buildToolPath = "/usr/bin/clang++";
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = cubes;
+			passBuildSettingsInEnvironment = 1;
+			productName = cubes;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		06199EBE21DD4B870078368B /* run */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06199EC421DD4B870078368B /* Build configuration list for PBXNativeTarget "run" */;
+			buildPhases = (
+				06199EBB21DD4B870078368B /* Sources */,
+				06199EBC21DD4B870078368B /* Frameworks */,
+				06199EBD21DD4B870078368B /* Copy Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = run;
+			productName = run;
+			productReference = 06199EBF21DD4B870078368B /* run */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06199EAE21DD49D70078368B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Cemil;
+				TargetAttributes = {
+					06199EB221DD49D70078368B = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					06199EBE21DD4B870078368B = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 06199EB121DD49D70078368B /* Build configuration list for PBXProject "cubes" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 06199EAD21DD49D70078368B;
+			productRefGroup = 06199EC021DD4B870078368B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06199EB221DD49D70078368B /* cubes */,
+				06199EBE21DD4B870078368B /* run */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06199EBB21DD4B870078368B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06199EC721DD4F9B0078368B /* App.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		06199EB321DD49D70078368B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = /Users/cemil/g3d/G3D10/build/lib;
+				LIBRARY_SEARCH_PATHS = /Users/cemil/g3d/G3D10/build/lib;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-std=c++1y",
+					"-stdlib=libc++",
+					"-framework",
+					AGL,
+					"-framework",
+					CoreVideo,
+					"-lswscale.4",
+					"-lfmod",
+					"-framework",
+					IOKit,
+					"-lnfd",
+					"-lG3D-app",
+					"-lG3D-gfx",
+					"-lG3D-base",
+					"-lassimp",
+					"-lglfw",
+					"-lglew",
+					"-lenet",
+					"-lfreeimage",
+					"-framework",
+					Cocoa,
+					"-lzip",
+					"-framework",
+					OpenGL,
+					"-lpthread",
+					"-lavformat.57",
+					"-lz",
+					"-lavcodec.57",
+					"-lavutil.55",
+				);
+			};
+			name = Debug;
+		};
+		06199EB421DD49D70078368B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = /Users/cemil/g3d/G3D10/build/lib;
+				LIBRARY_SEARCH_PATHS = /Users/cemil/g3d/G3D10/build/lib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-std=c++1y",
+					"-stdlib=libc++",
+					"-framework",
+					AGL,
+					"-framework",
+					CoreVideo,
+					"-lswscale.4",
+					"-lfmod",
+					"-framework",
+					IOKit,
+					"-lnfd",
+					"-lG3D-app",
+					"-lG3D-gfx",
+					"-lG3D-base",
+					"-lassimp",
+					"-lglfw",
+					"-lglew",
+					"-lenet",
+					"-lfreeimage",
+					"-framework",
+					Cocoa,
+					"-lzip",
+					"-framework",
+					OpenGL,
+					"-lpthread",
+					"-lavformat.57",
+					"-lz",
+					"-lavcodec.57",
+					"-lavutil.55",
+				);
+			};
+			name = Release;
+		};
+		06199EB621DD49D70078368B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		06199EB721DD49D70078368B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		06199EC521DD4B870078368B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					/Users/cemil/g3d/G3D10/external/glew.lib/include,
+					/Users/cemil/g3d/G3D10/external/assimp.lib/include,
+					/Users/cemil/g3d/G3D10/external/enet.lib/include,
+					/Users/cemil/g3d/G3D10/external/glfw.lib/include,
+					/Users/cemil/g3d/G3D10/external/nfd.lib/include,
+					/Users/cemil/g3d/G3D10/external/zip.lib/include,
+					/Users/cemil/g3d/G3D10/external/zlib.lib/include,
+					/Users/cemil/g3d/G3D10/external/civetweb.lib/include,
+					/Users/cemil/g3d/G3D10/external/tbb/include,
+					/Users/cemil/g3d/G3D10/external/fmod/include,
+					/Users/cemil/g3d/G3D10/external/ffmpeg/include,
+					/Users/cemil/g3d/G3D10/external/embree/include,
+					/Users/cemil/g3d/G3D10/external/openvr/include,
+					"/Users/cemil/g3d/G3D10/G3D-base.lib/include",
+					"/Users/cemil/g3d/G3D10/G3D-gfx.lib/include",
+					"/Users/cemil/g3d/G3D10/G3D-app.lib/include",
+				);
+				LIBRARY_SEARCH_PATHS = /Users/cemil/g3d/G3D10/build/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		06199EC621DD4B870078368B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					/Users/cemil/g3d/G3D10/external/glew.lib/include,
+					/Users/cemil/g3d/G3D10/external/assimp.lib/include,
+					/Users/cemil/g3d/G3D10/external/enet.lib/include,
+					/Users/cemil/g3d/G3D10/external/glfw.lib/include,
+					/Users/cemil/g3d/G3D10/external/nfd.lib/include,
+					/Users/cemil/g3d/G3D10/external/zip.lib/include,
+					/Users/cemil/g3d/G3D10/external/zlib.lib/include,
+					/Users/cemil/g3d/G3D10/external/civetweb.lib/include,
+					/Users/cemil/g3d/G3D10/external/tbb/include,
+					/Users/cemil/g3d/G3D10/external/fmod/include,
+					/Users/cemil/g3d/G3D10/external/ffmpeg/include,
+					/Users/cemil/g3d/G3D10/external/embree/include,
+					/Users/cemil/g3d/G3D10/external/openvr/include,
+					"/Users/cemil/g3d/G3D10/G3D-base.lib/include",
+					"/Users/cemil/g3d/G3D10/G3D-gfx.lib/include",
+					"/Users/cemil/g3d/G3D10/G3D-app.lib/include",
+				);
+				LIBRARY_SEARCH_PATHS = /Users/cemil/g3d/G3D10/build/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06199EB121DD49D70078368B /* Build configuration list for PBXProject "cubes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06199EB321DD49D70078368B /* Debug */,
+				06199EB421DD49D70078368B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06199EB521DD49D70078368B /* Build configuration list for PBXLegacyTarget "cubes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06199EB621DD49D70078368B /* Debug */,
+				06199EB721DD49D70078368B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06199EC421DD4B870078368B /* Build configuration list for PBXNativeTarget "run" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06199EC521DD4B870078368B /* Debug */,
+				06199EC621DD4B870078368B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 06199EAE21DD49D70078368B /* Project object */;
+}
