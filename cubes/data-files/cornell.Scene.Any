@@ -64,7 +64,7 @@
             extent = Vector2(0.25, 0.25); 
             frame = CFrame::fromXYZYPRDegrees(0, 0.475, 0, 0, -90, 0 ); 
             nearPlaneZLimit = -0.5; 
-            producesDi  rectIllumination = true; 
+            producesDirectIllumination = true; 
             producesIndirectIllumination = true; 
             rectangular = true; 
             shadowMapBias = 0.01; 
