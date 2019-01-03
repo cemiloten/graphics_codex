@@ -519,8 +519,12 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = /Users/cemil/g3d/G3D10/build/lib;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Users/cemil/g3d/G3D10/build/lib,
+					/Users/cemil/g3d/G3D10/build/bin,
+				);
 				LIBRARY_SEARCH_PATHS = /Users/cemil/g3d/G3D10/build/lib;
+				MACH_O_TYPE = mh_execute;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -568,8 +572,12 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = /Users/cemil/g3d/G3D10/build/lib;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/Users/cemil/g3d/G3D10/build/lib,
+					/Users/cemil/g3d/G3D10/build/bin,
+				);
 				LIBRARY_SEARCH_PATHS = /Users/cemil/g3d/G3D10/build/lib;
+				MACH_O_TYPE = mh_execute;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_LDFLAGS = (
 					"-framework",
