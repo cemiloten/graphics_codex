@@ -2,16 +2,6 @@
     entities = {
         camera = Camera { 
             frame = CFrame::fromXYZYPRDegrees(3, 0, 3, 45, 0, 0 ); 
-        };
-               
-        cube = VisibleEntity { 
-            frame = CFrame::fromXYZYPRDegrees(3.60893, 0.443731, 0); 
-            model = "cubeModel";
-        }; 
-        
-        floor = VisibleEntity { 
-            frame = CFrame::fromXYZYPRDegrees(-0.966653, 0.130493, 0); 
-            model = "head"; 
         }; 
         
         skybox = Skybox { 
@@ -20,13 +10,6 @@
     }; 
     
     models = { 
-        head = ArticulatedModel::Specification {
-            filename = "model/cube/cube.obj";
-            preprocess = {
-                transformGeometry(all(), Matrix4::scale(0.1, 1, 0.1));
-            };
-        };
-
         cubeModel = ArticulatedModel::Specification {
             filename = "model/cube/cube.obj"; 
             preprocess = { 

@@ -55,6 +55,29 @@ void writeStaircaseScene() {
     to.commit();
 }
 
+void updateFinalScene() {
+//    shared_ptr<Scene> scn = Scene::
+    Any a;
+    a.load("final.Scene.Any");
+    AnyTableReader r(a);
+    
+    Any entities;
+    Any models;
+    r.getIfPresent("models", models);
+    r.getIfPresent("entities", entities);
+    
+    ArticulatedModel::Specification spec;
+    AnyTableReader r2(models);
+    r2.getIfPresent("cubeModel", spec);
+    
+    shared_ptr<ArticulatedModel> am(ArticulatedModel::create(spec));
+
+    shared_ptr<VisibleEntity> ve(VisibleEntity::create("Cube00", nullptr, am));
+    Any test(Any::TABLE);
+    ve.
+    test = ve->toAny();
+}
+
 int main(int argc, const char* argv[]) {
     initGLG3D(G3DSpecification());
 
@@ -115,6 +138,7 @@ void App::onInit() {
     //sphere->setFrame(Point3(0.0f, 1.5f, 0.0f));
     
     setFrameDuration(1.0f / 60.0f);
+    updateFinalScene();
 
     // Call setScene(shared_ptr<Scene>()) or setScene(MyScene::create()) to replace
     // the default scene here.
@@ -125,31 +149,6 @@ void App::onInit() {
     // For higher-quality screenshots:
     // developerWindow->videoRecordDialog->setScreenShotFormat("PNG");
     // developerWindow->videoRecordDialog->setCaptureGui(false);
-
-    // shared_ptr<AmbientOcclusion> ao(AmbientOcclusion::create("ao"));
-    // shared_ptr<Scene> s(Scene::create(ao));
-
-    // String cube_path = "C:/g3d/data10/common/model/cube/cube.obj";
-    // shared_ptr<ArticulatedModel> mdl(ArticulatedModel::fromFile(cube_path));
-
-    // s->insert(mdl);
-
-    // Any any(Any::TABLE);
-    // any["name"] = "testName";
-    // any["description"] = "";
-
-    // Any entities(Any::TABLE);
-    // any["entities"] = entities;
-    
-    // Any mdls(Any::TABLE);
-    // any["models"] = mdls;
-
-    // Any lightenv(Any::ARRAY);
-    // any["lightingEnvironment"] = lightenv;
-
-    // any = s->toAny();
-    
-    // any.save("test.Scene.Any");
 
     loadScene(
 #       ifndef G3D_DEBUG
