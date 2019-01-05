@@ -10,19 +10,20 @@
 /** \brief Application framework. adding something for test. */
 class App : public GApp {
 protected:
-
     /** Called from onInit */
     void makeGUI();
-
+    void updateFinalScene();
+    
 public:
-
     App(const GApp::Settings& settings = GApp::Settings());
 
     virtual void onInit() override;
     virtual void onAI() override;
     virtual void onNetwork() override;
     virtual void onSimulation(RealTime rdt, SimTime sdt, SimTime idt) override;
-    virtual void onPose(Array<shared_ptr<Surface> >& posed3D, Array<shared_ptr<Surface2D> >& posed2D) override;
+    virtual void onPose(
+        Array<shared_ptr<Surface>>& posed3D,
+        Array<shared_ptr<Surface2D> >& posed2D) override;
 
     // You can override onGraphics if you want more control over the rendering loop.
     // virtual void onGraphics(RenderDevice* rd, Array<shared_ptr<Surface> >& surface, Array<shared_ptr<Surface2D> >& surface2D) override;

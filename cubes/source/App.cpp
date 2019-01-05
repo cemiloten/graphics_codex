@@ -55,27 +55,91 @@ void writeStaircaseScene() {
     to.commit();
 }
 
-void updateFinalScene() {
-//    shared_ptr<Scene> scn = Scene::
-    Any a;
-    a.load("final.Scene.Any");
-    AnyTableReader r(a);
+void App::updateFinalScene() {
+    for (int i = 0; i < 10; ++i) {
+        shared_ptr<VisibleEntity> v(
+            VisibleEntity::create(
+                format("cube%02d", i),
+                scene().get(),
+                scene()->modelTable()["cubeModel"].resolve(),
+                CoordinateFrame(Point3(0, i + 0.1, 0)))
+        );
     
-    Any entities;
-    Any models;
-    r.getIfPresent("models", models);
-    r.getIfPresent("entities", entities);
-    
-    ArticulatedModel::Specification spec;
-    AnyTableReader r2(models);
-    r2.getIfPresent("cubeModel", spec);
-    
-    shared_ptr<ArticulatedModel> am(ArticulatedModel::create(spec));
+//        const Any& a = Any::parse(
+//            format(STR(
+//                transform(
+//                    timeShift(
+//                        PhysicsFrameSpline {
+//                            control = [
+//                                CFrame::fromXYZYPRDegrees(0, %d + 0.1, 0, 0, 0, 0),
+//                                CFrame::fromXYZYPRDegrees(3, %d + 0.1, 0, 0, 0, 0)
+//                            ];
+//
+//                            time = [0, 3];
+//
+//                            extrapolationMode = CYCLIC;
+//                            interpolationMode = LINEAR;
+//                            finalInterval = -1;
+//                        },
+//                        0
+//                    ),
+//                    orbit(0, 5)
+//                )
+//            ),
+//            i, i));
+//        const shared_ptr<Entity::Track>& track(
+//            Entity::Track::create(v.get(), scene().get(), a));
+//        v->setTrack(track);
+        {
+            // Construct the Entity::Track for motion
+            const Any& a = Any::parse(format(STR(
+                transform(
+                    timeShift(
+                        PhysicsFrameSpline{
+                            control = [
+                                CFrame::fromXYZYPRRadians(%f, %f, -300, 0, %f, %f),
+                                CFrame::fromXYZYPRRadians(%f, %f, 10, 0, %f, %f)
+                            ];
 
-    shared_ptr<VisibleEntity> ve(VisibleEntity::create("Cube00", nullptr, am));
-    Any test(Any::TABLE);
-    ve.
-    test = ve->toAny();
+                            time = [
+                                0,
+                                15
+                            ];
+
+                            extrapolationMode = CYCLIC;
+                            interpolationMode = LINEAR;
+                            finalInterval = 0;
+                        },
+                        %f
+                    ),
+                    orbit(0, %f)
+                )
+            ),
+
+                // CFrame 1
+                0.3,
+                1.1,
+                1.0,
+                2.0,
+
+                // CFrame 2
+                0.2,
+                1.5,
+                1.0f,
+                2.0f,
+
+                // Time shift
+                3.3,
+
+                // Tumble rate
+                30.1));
+
+            const shared_ptr<Entity::Track>& track = Entity::Track::create(v.get(), scene().get(), a);
+            v->setTrack(track);
+        }
+        v->setShouldBeSaved(false);
+        scene()->insert(v);
+    }
 }
 
 int main(int argc, const char* argv[]) {
@@ -83,47 +147,27 @@ int main(int argc, const char* argv[]) {
 
     GApp::Settings settings(argc, argv);
 
-    // Change the window and other startup parameters by modifying the
-    // settings class.  For example:
-    settings.window.caption             = argv[0];
-
-    // Set enable to catch more OpenGL errors
-    // settings.window.debugContext     = true;
-
     // Some common resolutions:
-    // settings.window.width            =  854; settings.window.height       = 480;
-    // settings.window.width            = 1024; settings.window.height       = 768;
-    //settings.window.width             = 1900; settings.window.height       = 900;
-    //settings.window.width             = 1920; settings.window.height       = 1080;
-    settings.window.width  = OSWindow::primaryDisplayWindowSize().x - 40;
-    settings.window.height = OSWindow::primaryDisplayWindowSize().y - 100;
-    settings.window.height -= (settings.window.height & 1);
+     settings.window.width            =  854; settings.window.height       = 480;
+//    settings.window.width            = 1024; settings.window.height       = 768;
+//    settings.window.width  = OSWindow::primaryDisplayWindowSize().x - 40;
+//    settings.window.height = OSWindow::primaryDisplayWindowSize().y - 100;
+//    settings.window.height -= (settings.window.height & 1);
 
     settings.window.fullScreen          = false;
     settings.window.resizable           = ! settings.window.fullScreen;
     settings.window.framed              = ! settings.window.fullScreen;
-    settings.window.defaultIconFilename = "icon.png";
-
-    // Set to true for a significant performance boost if your app can't render at 60fps, or if
-    // you *want* to render faster than the display.
-    settings.window.asynchronous        = false;
-
-    settings.hdrFramebuffer.depthGuardBandThickness = Vector2int16(64, 64);
-    settings.hdrFramebuffer.colorGuardBandThickness = Vector2int16(0, 0);
-    settings.dataDir                    = FileSystem::currentDirectory();
-    settings.screenCapture.outputDirectory = FileSystem::currentDirectory();
-    settings.screenCapture.includeAppRevision = false;
-    settings.screenCapture.includeG3DRevision = false;
-    settings.screenCapture.filenamePrefix = "_";
-
-    settings.renderer.deferredShading = true;
-    settings.renderer.orderIndependentTransparency = true;
+    try {
+        settings.window.defaultIconFilename = "icon.png";
+    }
+    catch (...) {
+        debugPrintf("Could not find icon\n");
+    }
 
     return App(settings).run();
 }
 
-App::App(const GApp::Settings& settings) : GApp(settings) {
-}
+App::App(const GApp::Settings& settings) : GApp(settings) {}
 
 
 // Called before the application loop begins.  Load data here and
@@ -138,7 +182,6 @@ void App::onInit() {
     //sphere->setFrame(Point3(0.0f, 1.5f, 0.0f));
     
     setFrameDuration(1.0f / 60.0f);
-    updateFinalScene();
 
     // Call setScene(shared_ptr<Scene>()) or setScene(MyScene::create()) to replace
     // the default scene here.
@@ -146,18 +189,17 @@ void App::onInit() {
     showRenderingStats      = true;
 
     makeGUI();
-    // For higher-quality screenshots:
-    // developerWindow->videoRecordDialog->setScreenShotFormat("PNG");
-    // developerWindow->videoRecordDialog->setCaptureGui(false);
-
-    loadScene(
-#       ifndef G3D_DEBUG
-            "G3D Sponza"
-#       else
-            "G3D Simple Cornell Box (Area Light)" // Load something simple
-#       endif
-        //developerWindow->sceneEditorWindow->selectedSceneName()  // Load the first scene encountered 
-        );
+    loadScene(System::findDataFile("final.Scene.Any"));
+//    updateFinalScene();
+    
+//    loadScene(
+//#       ifndef G3D_DEBUG
+//            "G3D Sponza"
+//#       else
+//            "G3D Simple Cornell Box (Area Light)" // Load something simple
+//#       endif
+//        //developerWindow->sceneEditorWindow->selectedSceneName()  // Load the first scene encountered
+//        );
 }
 
 

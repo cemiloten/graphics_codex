@@ -1,7 +1,7 @@
 { 
-    entities = {
+    entities = { 
         camera = Camera { 
-            frame = CFrame::fromXYZYPRDegrees(3, 0, 3, 45, 0, 0 ); 
+            frame = CFrame::fromXYZYPRDegrees(0, 0, 5, 0, 0, 0 ); 
         }; 
         
         skybox = Skybox { 
@@ -10,14 +10,14 @@
     }; 
     
     models = { 
-        cubeModel = ArticulatedModel::Specification {
+        cubeModel = ArticulatedModel::Specification { 
             filename = "model/cube/cube.obj"; 
             preprocess = { 
-                setMaterial(all(), Color3(1, 0.5, 0));
-            }; 
+                setMaterial(all(), Color3(1, 0.5, 0 ) ) }; 
             
         }; 
+        
     }; 
     
     name = "Final Scene"; 
-};
+} 
