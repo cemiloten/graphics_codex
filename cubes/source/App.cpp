@@ -56,87 +56,59 @@ void writeStaircaseScene() {
 }
 
 void App::updateFinalScene() {
-    for (int i = 0; i < 10; ++i) {
+    int boxCount(40);
+    double period;
+    for (int i = 0; i < boxCount; ++i) {
+        if (i < 10) {
+            period = double(i) / 8.0;
+        }
+        else {
+            period = double(i + pi()) / 8.0;
+        }
+        
         shared_ptr<VisibleEntity> v(
             VisibleEntity::create(
                 format("cube%02d", i),
                 scene().get(),
                 scene()->modelTable()["cubeModel"].resolve(),
-                CoordinateFrame(Point3(0, i + 0.1, 0)))
+                CoordinateFrame(Point3(0, i, 0)))
         );
     
 //        const Any& a = Any::parse(
 //            format(STR(
-//                transform(
-//                    timeShift(
-//                        PhysicsFrameSpline {
-//                            control = [
-//                                CFrame::fromXYZYPRDegrees(0, %d + 0.1, 0, 0, 0, 0),
-//                                CFrame::fromXYZYPRDegrees(3, %d + 0.1, 0, 0, 0, 0)
-//                            ];
+//                timeShift(
+//                    PhysicsFrameSpline {
+//                        control = [
+//                            CFrame::fromXYZYPRDegrees(0, %i, 0, 0, 0, 0),
+//                            CFrame::fromXYZYPRDegrees(3, %i, 0, 0, 0, 0)
+//                        ];
 //
-//                            time = [0, 3];
+//                        time = [0, 2];
 //
-//                            extrapolationMode = CYCLIC;
-//                            interpolationMode = LINEAR;
-//                            finalInterval = -1;
-//                        },
-//                        0
-//                    ),
-//                    orbit(0, 5)
+//                        extrapolationMode = CYCLIC;
+//                        interpolationMode = CUBIC;
+////                        finalInterval = AUTOMATIC;
+//                    },
+//                    %f
 //                )
 //            ),
-//            i, i));
-//        const shared_ptr<Entity::Track>& track(
-//            Entity::Track::create(v.get(), scene().get(), a));
-//        v->setTrack(track);
-        {
-            // Construct the Entity::Track for motion
-            const Any& a = Any::parse(format(STR(
+//            i, i, double(i) / 4.0));
+
+        const Any& a = Any::parse(
+            format(STR(
                 transform(
-                    timeShift(
-                        PhysicsFrameSpline{
-                            control = [
-                                CFrame::fromXYZYPRRadians(%f, %f, -300, 0, %f, %f),
-                                CFrame::fromXYZYPRRadians(%f, %f, 10, 0, %f, %f)
-                            ];
-
-                            time = [
-                                0,
-                                15
-                            ];
-
-                            extrapolationMode = CYCLIC;
-                            interpolationMode = LINEAR;
-                            finalInterval = 0;
-                        },
-                        %f
-                    ),
-                    orbit(0, %f)
+                    CFrame::fromXYZYPRDegrees(0, %d, 0, 0, 0, 0),
+                    timeShift(orbit(3.0, 3.0), %f)
                 )
             ),
-
-                // CFrame 1
-                0.3,
-                1.1,
-                1.0,
-                2.0,
-
-                // CFrame 2
-                0.2,
-                1.5,
-                1.0f,
-                2.0f,
-
-                // Time shift
-                3.3,
-
-                // Tumble rate
-                30.1));
-
-            const shared_ptr<Entity::Track>& track = Entity::Track::create(v.get(), scene().get(), a);
-            v->setTrack(track);
-        }
+            i % (boxCount / 2),
+            period)
+        );
+        
+        const shared_ptr<Entity::Track>& track(
+            Entity::Track::create(v.get(), scene().get(), a));
+        v->setTrack(track);
+        
         v->setShouldBeSaved(false);
         scene()->insert(v);
     }
@@ -148,11 +120,10 @@ int main(int argc, const char* argv[]) {
     GApp::Settings settings(argc, argv);
 
     // Some common resolutions:
-     settings.window.width            =  854; settings.window.height       = 480;
-//    settings.window.width            = 1024; settings.window.height       = 768;
-//    settings.window.width  = OSWindow::primaryDisplayWindowSize().x - 40;
-//    settings.window.height = OSWindow::primaryDisplayWindowSize().y - 100;
-//    settings.window.height -= (settings.window.height & 1);
+//    settings.window.width  = 854;
+//    settings.window.height = 480;
+    settings.window.width  = 1024;
+    settings.window.height = 768;
 
     settings.window.fullScreen          = false;
     settings.window.resizable           = ! settings.window.fullScreen;
@@ -190,7 +161,7 @@ void App::onInit() {
 
     makeGUI();
     loadScene(System::findDataFile("final.Scene.Any"));
-//    updateFinalScene();
+    updateFinalScene();
     
 //    loadScene(
 //#       ifndef G3D_DEBUG
