@@ -55,62 +55,45 @@ void writeStaircaseScene() {
     to.commit();
 }
 
-void App::updateFinalScene() {
-    int boxCount(40);
-    double period;
-    for (int i = 0; i < boxCount; ++i) {
-        if (i < 10) {
-            period = double(i) / 8.0;
-        }
-        else {
-            period = double(i + pi()) / 8.0;
-        }
-        
-        shared_ptr<VisibleEntity> v(
-            VisibleEntity::create(
-                format("cube%02d", i),
-                scene().get(),
-                scene()->modelTable()["cubeModel"].resolve(),
-                CoordinateFrame(Point3(0, i, 0)))
-        );
+void App::updateFinalScene(const Any& sceneAny) {
     
-//        const Any& a = Any::parse(
-//            format(STR(
-//                timeShift(
-//                    PhysicsFrameSpline {
-//                        control = [
-//                            CFrame::fromXYZYPRDegrees(0, %i, 0, 0, 0, 0),
-//                            CFrame::fromXYZYPRDegrees(3, %i, 0, 0, 0, 0)
-//                        ];
-//
-//                        time = [0, 2];
-//
-//                        extrapolationMode = CYCLIC;
-//                        interpolationMode = CUBIC;
-////                        finalInterval = AUTOMATIC;
-//                    },
-//                    %f
-//                )
-//            ),
-//            i, i, double(i) / 4.0));
+    int pileCount (sceneAny["settings"]["pileCount"]);
+    int height    (sceneAny["settings"]["height"]);
+    float period  (sceneAny["settings"]["period"]);
+    float radius  (sceneAny["settings"]["radius"]);
 
-        const Any& a = Any::parse(
-            format(STR(
-                transform(
-                    CFrame::fromXYZYPRDegrees(0, %d, 0, 0, 0, 0),
-                    timeShift(orbit(3.0, 3.0), %f)
-                )
-            ),
-            i % (boxCount / 2),
-            period)
-        );
+    float shift = period / float(pileCount);
+
+    for (int i = 0; i < pileCount; ++i) {
+        for (int j = 0; j < height; ++j) {
+            shared_ptr<VisibleEntity> v(
+                VisibleEntity::create(
+                    format("cube%02d%02d", i, j),
+                    scene().get(),
+                    scene()->modelTable()[format("cubeModel%02d", i % 4)].resolve(),
+                    CoordinateFrame(Point3(0, j, 0)))
+            );
+
+            const Any& a = Any::parse(
+                format(STR(
+                    transform(
+                        CFrame::fromXYZYPRDegrees(0, %d, 0, 0, 0, 0),
+                        timeShift(orbit(%f, %f), %f)
+                    )
+                ),
+                j,
+                radius,
+                period,
+                i * shift + j / period)
+            );
         
-        const shared_ptr<Entity::Track>& track(
-            Entity::Track::create(v.get(), scene().get(), a));
-        v->setTrack(track);
+            const shared_ptr<Entity::Track>& track(
+                Entity::Track::create(v.get(), scene().get(), a));
+            v->setTrack(track);
         
-        v->setShouldBeSaved(false);
-        scene()->insert(v);
+            v->setShouldBeSaved(true);
+            scene()->insert(v);
+        }
     }
 }
 
@@ -161,7 +144,7 @@ void App::onInit() {
 
     makeGUI();
     loadScene(System::findDataFile("final.Scene.Any"));
-    updateFinalScene();
+    updateFinalScene(Any::fromFile("final.Scene.Any"));
     
 //    loadScene(
 //#       ifndef G3D_DEBUG

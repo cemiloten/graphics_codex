@@ -12,7 +12,7 @@ class App : public GApp {
 protected:
     /** Called from onInit */
     void makeGUI();
-    void updateFinalScene();
+    void updateFinalScene(const Any& sceneAny);
     
 public:
     App(const GApp::Settings& settings = GApp::Settings());
