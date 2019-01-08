@@ -4,7 +4,7 @@
 // Tells C++ to invoke command-line main() function even on OS X and Win32.
 G3D_START_AT_MAIN();
 
-void writeStaircaseScene() {
+void App::writeStaircaseScene() {
     TextOutput to("staircase.Scene.Any");
     to.writeSymbol('{');
     to.writeNewline();
@@ -103,14 +103,12 @@ int main(int argc, const char* argv[]) {
     GApp::Settings settings(argc, argv);
 
     // Some common resolutions:
-//    settings.window.width  = 854;
-//    settings.window.height = 480;
     settings.window.width  = 1024;
     settings.window.height = 768;
 
-    settings.window.fullScreen          = false;
-    settings.window.resizable           = ! settings.window.fullScreen;
-    settings.window.framed              = ! settings.window.fullScreen;
+    settings.window.fullScreen = false;
+    settings.window.resizable  = ! settings.window.fullScreen;
+    settings.window.framed     = ! settings.window.fullScreen;
     try {
         settings.window.defaultIconFilename = "icon.png";
     }
@@ -145,15 +143,6 @@ void App::onInit() {
     makeGUI();
     loadScene(System::findDataFile("final.Scene.Any"));
     updateFinalScene(Any::fromFile("final.Scene.Any"));
-    
-//    loadScene(
-//#       ifndef G3D_DEBUG
-//            "G3D Sponza"
-//#       else
-//            "G3D Simple Cornell Box (Area Light)" // Load something simple
-//#       endif
-//        //developerWindow->sceneEditorWindow->selectedSceneName()  // Load the first scene encountered
-//        );
 }
 
 
@@ -168,14 +157,6 @@ void App::makeGUI() {
     infoPane->addLabel("in App::onInit().");
     infoPane->addButton("Exit", [this]() { m_endProgram = true; });
     infoPane->pack();
-
-    // More examples of debugging GUI controls:
-    // debugPane->addCheckBox("Use explicit checking", &explicitCheck);
-    // debugPane->addTextBox("Name", &myName);
-    // debugPane->addNumberBox("height", &height, "m", GuiTheme::LINEAR_SLIDER, 1.0f, 2.5f);
-    // button = debugPane->addButton("Run Simulator");
-    // debugPane->addButton("Generate Heightfield", [this](){ generateHeightfield(); });
-    // debugPane->addButton("Generate Heightfield", [this](){ makeHeightfield(imageName, scale, "model/heightfield.off"); });
 
     debugWindow->pack();
     debugWindow->setRect(Rect2D::xywh(0, 0, (float)window()->width(), debugWindow->rect().height()));

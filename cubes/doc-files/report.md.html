@@ -1,0 +1,66 @@
+<meta charset="utf-8">
+                 **Cubes - Report**
+
+<!--
+    Timing project:
+        Duration of installation process : 2/3 hours
+        Duration of first assignments: a few minutes
+        Duration of staircase scene: 2 hours
+        Duration of final scene: 6/7 hours
+-->
+
+System Overview
+-------------------------------------------------
+This project is my own implementation of the [Cubes](http://graphicscodex.com/projects/cubes/index.html) project from Graphics Codex's projects, in G3D. The project is implemented on top of G3D's _starter_ project, which can open and edit 3D scenes. It contains a few additional scenes as required from the project's specification. Some of these scenes were directly created in a text editor describing their properties, and two of them were made by adding methods to the default _App_ class in the starter project.
+
+The default behaviour of the project is to open my _final_ scene, the user can edit the **settings** in the scene's Any file to modify the behaviour of the animations. The user must reopen the application to see the changes made to the file.
+
+The other scenes can be directly opened without closing the application.
+
+Coordinate System
+-------------------------------------------------
+G3D uses a right handed coordinate system.
+*********************
+*                   *
+*                   *
+*      +y           *
+*       ^           *
+*       |           *
+*       | ◄╮        *
+*     ⤹ +-----> +x  *
+*      / ⤴yaw       *
+*     v             *
+*   +z              *
+*                   *
+*********************
+
+Rotation:
+1. Yaw is around the Y axis with positive direction as counter-clockwise.
+2. Pitch is around the X axis with positive direction as clockwise.
+3. Roll is around the Z axis with positive direction as counter-clockwise.
+
+
+Results
+-------------------------------------------------
+I would have been nice to have "native" support for Xcode as it is with Visual Studio.
+
+
+
+<!-- Markdeep: -->
+<style>
+  h1::before, h2::before {
+    content: "";
+    margin: 0
+  }
+
+  .tocNumber {
+    display: none
+  }
+</style>
+<style class="fallback">
+  body {
+    visibility: hidden;
+  }
+</style>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js?"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>

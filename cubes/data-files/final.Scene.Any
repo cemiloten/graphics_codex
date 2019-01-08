@@ -42,9 +42,9 @@
     name = "Final Scene";
 
     settings = {
-        pileCount = 8;
-        height = 12;
-        period = 8.0;
+        pileCount = 5;
+        height = 6;
+        period = 10.0;
         radius = 5.0;
     }
 }

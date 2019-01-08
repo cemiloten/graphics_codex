@@ -12,6 +12,7 @@ class App : public GApp {
 protected:
     /** Called from onInit */
     void makeGUI();
+    void writeStaircaseScene();
     void updateFinalScene(const Any& sceneAny);
     
 public:
