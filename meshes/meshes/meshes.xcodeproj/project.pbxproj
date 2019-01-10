@@ -84,6 +84,7 @@
 		06B9015421DE49C20095659F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		06B9015521DE49C20095659F /* libpthread.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libpthread.tbd; path = usr/lib/libpthread.tbd; sourceTree = SDKROOT; };
 		06B9015921DE4A7B0095659F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		06E8066921E7F2D8006B3666 /* IndexedTriangleList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexedTriangleList.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +147,7 @@
 		06B9011C21DE43CA0095659F /* source */ = {
 			isa = PBXGroup;
 			children = (
+				06E8066921E7F2D8006B3666 /* IndexedTriangleList.h */,
 				06B9011D21DE43CA0095659F /* App.h */,
 				06B9011E21DE43CA0095659F /* App.cpp */,
 			);

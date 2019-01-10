@@ -1,10 +1,14 @@
 /** \file App.cpp */
 #include "App.h"
+#include "IndexedTriangleList.h"
 
 // Tells C++ to invoke command-line main() function even on OS X and Win32.
 G3D_START_AT_MAIN();
 
+void makeCylinder(int resolution);
+
 int main(int argc, const char* argv[]) {
+    makeCylinder(3);
     initGLG3D(G3DSpecification());
 
     GApp::Settings settings(argc, argv);
@@ -24,6 +28,32 @@ int main(int argc, const char* argv[]) {
     }
 
     return App(settings).run();
+}
+
+void makeCylinder(int resolution) {
+    IndexedTriangleList mesh;
+    Array<Point3>& vertices(mesh.vertexArray);
+    Array<int>& indices(mesh.indexArray);
+    
+    double thetha(2.0 * pi() / resolution);
+    // Fill vertices
+    for (int i = 0; i < resolution; ++i) {
+        // TODO: be careful with angle value, must not change at every i
+        double angle(i % 2 * thetha);
+        Vector3 vert(cos(angle), float(i % 2), -sin(angle));
+        vertices.append(vert);
+    }
+    
+    // Fill triangles
+    for (int i = 0; i < resolution; ++i) {
+        int current_bot(i);
+        int current_top((i + 1) % vertices.size());
+        int next_bot((i + 2) % vertices.size());
+        int next_top((i + 3) % vertices.size());
+        
+        indices.append(current_bot, next_bot, next_top);
+        indices.append(next_top, current_top, current_bot);
+    }
 }
 
 App::App(const GApp::Settings& settings) : GApp(settings) {}
