@@ -94,6 +94,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="source\App.h" />
+    <ClInclude Include="source\IndexedTriangleList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\App.cpp" />
@@ -102,8 +103,7 @@
     <ResourceCompile Include="resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data-files\test.Scene.Any" />
-    <None Include="data-files\whiteCube.Scene.Any" />
+    <None Include="data-files\cylinder.Scene.Any" />
     <None Include="Doxyfile" />
     <None Include="journal\journal.md.html" />
     <None Include="mainpage.dox" />

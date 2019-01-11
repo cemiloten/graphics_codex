@@ -5,10 +5,11 @@
 // Tells C++ to invoke command-line main() function even on OS X and Win32.
 G3D_START_AT_MAIN();
 
-void makeCylinder(int resolution);
+void makeCylinder(int resolution, float radius, float height);
 
 int main(int argc, const char* argv[]) {
-    makeCylinder(3);
+    makeCylinder(32, 2.0f, 3.5f);
+    return 0;
     initGLG3D(G3DSpecification());
 
     GApp::Settings settings(argc, argv);
@@ -30,30 +31,39 @@ int main(int argc, const char* argv[]) {
     return App(settings).run();
 }
 
-void makeCylinder(int resolution) {
+void makeCylinder(int resolution, float radius, float height) {
     IndexedTriangleList mesh;
     Array<Point3>& vertices(mesh.vertexArray);
     Array<int>& indices(mesh.indexArray);
     
     double thetha(2.0 * pi() / resolution);
     // Fill vertices
-    for (int i = 0; i < resolution; ++i) {
-        // TODO: be careful with angle value, must not change at every i
-        double angle(i % 2 * thetha);
-        Vector3 vert(cos(angle), float(i % 2), -sin(angle));
+    for (int i = 0; i < 2 * resolution; ++i) {
+        double angle((i - i % 2) / 2 * thetha);
+        Vector3 vert(
+            radius * sin(angle),
+            height * (i % 2),
+            radius * cos(angle));
         vertices.append(vert);
     }
-    
+
     // Fill triangles
-    for (int i = 0; i < resolution; ++i) {
+    for (int i = 0; i < 2 * resolution; i += 2) {
         int current_bot(i);
-        int current_top((i + 1) % vertices.size());
         int next_bot((i + 2) % vertices.size());
+        int current_top((i + 1) % vertices.size());
         int next_top((i + 3) % vertices.size());
         
         indices.append(current_bot, next_bot, next_top);
         indices.append(next_top, current_top, current_bot);
+
+        if (i >= 2 && i < 2 * resolution - 1) {
+            indices.append(next_bot, current_bot, 0);
+            indices.append(1, current_top, next_top);
+        }
     }
+
+    mesh.saveAsOff("data-files/model/cylinder.off");
 }
 
 App::App(const GApp::Settings& settings) : GApp(settings) {}

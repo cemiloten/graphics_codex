@@ -1,0 +1,13 @@
+{
+    name = "Make cylinder";
+
+    entities = {
+        camera = Camera {
+            frame = CFrame::fromXYZYPRDegrees(0, 0, 3, 0, 0, 0);
+        };
+
+        skybox = Skybox {
+            texture = 0.5;
+        };
+    };
+};
