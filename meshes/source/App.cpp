@@ -5,11 +5,7 @@
 // Tells C++ to invoke command-line main() function even on OS X and Win32.
 G3D_START_AT_MAIN();
 
-void makeCylinder(int resolution, float radius, float height);
-
 int main(int argc, const char* argv[]) {
-    makeCylinder(32, 2.0f, 3.5f);
-    return 0;
     initGLG3D(G3DSpecification());
 
     GApp::Settings settings(argc, argv);
@@ -31,7 +27,7 @@ int main(int argc, const char* argv[]) {
     return App(settings).run();
 }
 
-void makeCylinder(int resolution, float radius, float height) {
+void App::makeCylinder(int resolution, float radius, float height) const {
     IndexedTriangleList mesh;
     Array<Point3>& vertices(mesh.vertexArray);
     Array<int>& indices(mesh.indexArray);
@@ -93,16 +89,22 @@ void App::onInit() {
 
 
 void App::makeGUI() {
-    debugWindow->setVisible(false);
+    debugWindow->setVisible(true);
     developerWindow->videoRecordDialog->setEnabled(true);
-
-    GuiPane* infoPane = debugPane->addPane("Info", GuiTheme::ORNATE_PANE_STYLE);
     
-    // Example of how to add debugging controls
-    infoPane->addLabel("You can add GUI controls");
-    infoPane->addLabel("in App::onInit().");
-    infoPane->addButton("Exit", [this]() { m_endProgram = true; });
-    infoPane->pack();
+    int res = 3;
+    float radius = 1.0f;
+    float height = 1.0f;
+
+    GuiPane* cylinderPane = debugPane->addPane("Make cylinder settings");
+    cylinderPane->setNewChildSize(240);
+    cylinderPane->addNumberBox("Resolution", &res);
+    cylinderPane->addNumberBox("Radius", &radius);
+    cylinderPane->addNumberBox("Height", &height);
+    
+    cylinderPane->addButton("Generate", [&]() {
+        App::makeCylinder(res, radius, height);
+    });
 
     debugWindow->pack();
     debugWindow->setRect(Rect2D::xywh(0, 0, (float)window()->width(), debugWindow->rect().height()));
@@ -114,7 +116,9 @@ void App::makeGUI() {
 // delete this override entirely.
 void App::onGraphics3D(RenderDevice* rd, Array<shared_ptr<Surface> >& allSurfaces) {
     if (! scene()) {
-        if ((submitToDisplayMode() == SubmitToDisplayMode::MAXIMIZE_THROUGHPUT) && (!rd->swapBuffersAutomatically())) {
+        if ((submitToDisplayMode() == SubmitToDisplayMode::MAXIMIZE_THROUGHPUT)
+            && (!rd->swapBuffersAutomatically()))
+        {
             swapBuffers();
         }
         rd->clear();

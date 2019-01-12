@@ -10,6 +10,11 @@
 /** \brief Application framework. adding something for test. */
 class App : public GApp {
 protected:
+    int cylinderResolution;
+    float cylinderRadius;
+    float cylinderHeight;
+    
+    void makeCylinder(int resolution, float radius, float height) const;
     /** Called from onInit */
     void makeGUI();
     
