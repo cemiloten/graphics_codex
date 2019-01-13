@@ -81,10 +81,10 @@ void App::onInit() {
     // Call setScene(shared_ptr<Scene>()) or setScene(MyScene::create()) to replace
     // the default scene here.
     
-    showRenderingStats      = true;
+    showRenderingStats = true;
 
     makeGUI();
-    loadScene(System::findDataFile("final.Scene.Any"));
+    loadScene(System::findDataFile("cylinder.Scene.Any"));
 }
 
 
@@ -92,18 +92,36 @@ void App::makeGUI() {
     debugWindow->setVisible(true);
     developerWindow->videoRecordDialog->setEnabled(true);
     
-    int res = 3;
-    float radius = 1.0f;
-    float height = 1.0f;
+    int res(3);
+    float radius(1.0f);
+    float height(1.0f);
 
     GuiPane* cylinderPane = debugPane->addPane("Make cylinder settings");
     cylinderPane->setNewChildSize(240);
-    cylinderPane->addNumberBox("Resolution", &res);
-    cylinderPane->addNumberBox("Radius", &radius);
-    cylinderPane->addNumberBox("Height", &height);
+    cylinderPane->addNumberBox("Resolution", &res, "", GuiTheme::LOG_SLIDER, 3, 32);
+    cylinderPane->addNumberBox("Radius", &radius, "", GuiTheme::LOG_SLIDER, 0.1f, 5.0f);
+    cylinderPane->addNumberBox("Height", &height, "", GuiTheme::LOG_SLIDER, 0.1f, 5.0f);
     
     cylinderPane->addButton("Generate", [&]() {
         App::makeCylinder(res, radius, height);
+        const shared_ptr<Model>& cylinderModel = scene()->modelTable()["cylinderModel"].resolve();
+        shared_ptr<Entity> cylinder = scene()->entity("cylinder");
+        
+        // remove cylinder entity which has the wrong type
+        if (notNull(cylinder) && isNull(dynamic_pointer_cast<VisibleEntity>(cylinder))) {
+            scene()->remove(cylinder);
+            cylinder.reset();
+        }
+        
+        // entity does not exist
+        if (isNull(cylinder)) {
+            cylinder = scene()->createEntity(
+                "cylinder",
+                PARSE_ANY(VisibleEntity { model = "cylinderModel"; };));
+        }
+        else {
+            dynamic_pointer_cast<VisibleEntity>(cylinder)->setModel(cylinderModel);
+        }
     });
 
     debugWindow->pack();
