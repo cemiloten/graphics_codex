@@ -11,40 +11,39 @@ int main(int argc, const char* argv[]) {
     GApp::Settings settings(argc, argv);
 
     // Some common resolutions:
-    settings.window.width  = 1024;
-    settings.window.height = 768;
-
-    settings.window.fullScreen = false;
-    settings.window.resizable  = ! settings.window.fullScreen;
-    settings.window.framed     = ! settings.window.fullScreen;
-    try {
-        settings.window.defaultIconFilename = "icon.png";
-    }
-    catch (...) {
-        debugPrintf("Could not find icon\n");
-    }
+    settings.window.caption    = "Cylinder demo";
+    settings.window.width      = 1024;
+    settings.window.height     = 768;
+    settings.window.resizable  = true;
+    settings.dataDir           = FileSystem::currentDirectory();
 
     return App(settings).run();
 }
 
-void App::makeCylinder(int resolution, float radius, float height) const {
+void App::makeCylinder() const {
+    debugPrintf(format("%d\n", m_resolution).c_str());
+    debugPrintf(format("%f\n", m_radius).c_str());
+    debugPrintf(format("%f\n", m_height).c_str());
+    
+
     IndexedTriangleList mesh;
     Array<Point3>& vertices(mesh.vertexArray);
     Array<int>& indices(mesh.indexArray);
     
-    double thetha(2.0 * pi() / resolution);
+    double thetha(2.0 * pi() / m_resolution);
+
     // Fill vertices
-    for (int i = 0; i < 2 * resolution; ++i) {
+    for (int i = 0; i < 2 * m_resolution; ++i) {
         double angle((i - i % 2) / 2 * thetha);
         Vector3 vert(
-            radius * sin(angle),
-            height * (i % 2),
-            radius * cos(angle));
+            m_radius * sin(angle),
+            m_height * (i % 2),
+            m_radius * cos(angle));
         vertices.append(vert);
     }
 
     // Fill triangles
-    for (int i = 0; i < 2 * resolution; i += 2) {
+    for (int i = 0; i < 2 * m_resolution; i += 2) {
         int current_bot(i);
         int next_bot((i + 2) % vertices.size());
         int current_top((i + 1) % vertices.size());
@@ -53,16 +52,20 @@ void App::makeCylinder(int resolution, float radius, float height) const {
         indices.append(current_bot, next_bot, next_top);
         indices.append(next_top, current_top, current_bot);
 
-        if (i >= 2 && i < 2 * resolution - 1) {
+        if (i >= 2 && i < 2 * m_resolution - 1) {
             indices.append(next_bot, current_bot, 0);
             indices.append(1, current_top, next_top);
         }
     }
 
-    mesh.saveAsOff("data-files/model/cylinder.off");
+    mesh.saveAsOff("model/cylinder.off");
 }
 
-App::App(const GApp::Settings& settings) : GApp(settings) {}
+App::App(const GApp::Settings& settings) : GApp(settings) {
+    m_resolution = 5;
+    m_radius = 2.0f;
+    m_height = 3.0f;
+}
 
 
 // Called before the application loop begins.  Load data here and
@@ -72,10 +75,6 @@ void App::onInit() {
     GApp::onInit();
 
     debugPrintf("Target frame rate = %f Hz\n", 1.0f / realTimeTargetDuration());
-    
-    //const shared_ptr<Entity>& sphere = scene()->entity("Sphere");
-    //sphere->setFrame(Point3(0.0f, 1.5f, 0.0f));
-    
     setFrameDuration(1.0f / 60.0f);
 
     // Call setScene(shared_ptr<Scene>()) or setScene(MyScene::create()) to replace
@@ -92,19 +91,21 @@ void App::makeGUI() {
     debugWindow->setVisible(true);
     developerWindow->videoRecordDialog->setEnabled(true);
     
-    int res(3);
-    float radius(1.0f);
-    float height(1.0f);
-
     GuiPane* cylinderPane = debugPane->addPane("Make cylinder settings");
     cylinderPane->setNewChildSize(240);
-    cylinderPane->addNumberBox("Resolution", &res, "", GuiTheme::LOG_SLIDER, 3, 32);
-    cylinderPane->addNumberBox("Radius", &radius, "", GuiTheme::LOG_SLIDER, 0.1f, 5.0f);
-    cylinderPane->addNumberBox("Height", &height, "", GuiTheme::LOG_SLIDER, 0.1f, 5.0f);
+    cylinderPane->addNumberBox("Resolution", &m_resolution);
+    cylinderPane->addNumberBox("Radius", &m_radius);
+    cylinderPane->addNumberBox("Height", &m_height);
     
-    cylinderPane->addButton("Generate", [&]() {
-        App::makeCylinder(res, radius, height);
+    cylinderPane->addButton("Generate", [this]() {
         const shared_ptr<Model>& cylinderModel = scene()->modelTable()["cylinderModel"].resolve();
+        scene()->removeModel(cylinderModel->name());
+        
+        App::makeCylinder();
+        // TODO: add model from file to scene
+        // cylinderModel = ArticulatedModel::fromFile("model/cylinder.off");
+        scene()->insert(cylinderModel);
+
         shared_ptr<Entity> cylinder = scene()->entity("cylinder");
         
         // remove cylinder entity which has the wrong type
@@ -126,79 +127,6 @@ void App::makeGUI() {
 
     debugWindow->pack();
     debugWindow->setRect(Rect2D::xywh(0, 0, (float)window()->width(), debugWindow->rect().height()));
-}
-
-
-// This default implementation is a direct copy of GApp::onGraphics3D to make it easy
-// for you to modify. If you aren't changing the hardware rendering strategy, you can
-// delete this override entirely.
-void App::onGraphics3D(RenderDevice* rd, Array<shared_ptr<Surface> >& allSurfaces) {
-    if (! scene()) {
-        if ((submitToDisplayMode() == SubmitToDisplayMode::MAXIMIZE_THROUGHPUT)
-            && (!rd->swapBuffersAutomatically()))
-        {
-            swapBuffers();
-        }
-        rd->clear();
-        rd->pushState(); {
-            rd->setProjectionAndCameraMatrix(activeCamera()->projection(), activeCamera()->frame());
-            drawDebugShapes();
-        } rd->popState();
-        return;
-    }
-
-
-    GBuffer::Specification gbufferSpec = m_gbufferSpecification;
-    extendGBufferSpecification(gbufferSpec);
-    m_gbuffer->setSpecification(gbufferSpec);
-    m_gbuffer->resize(m_framebuffer->width(), m_framebuffer->height());
-    m_gbuffer->prepare(rd, activeCamera(), 0, -(float)previousSimTimeStep(), m_settings.hdrFramebuffer.depthGuardBandThickness, m_settings.hdrFramebuffer.colorGuardBandThickness);
-
-    m_renderer->render(rd,
-        activeCamera(),
-        m_framebuffer,
-        scene()->lightingEnvironment().ambientOcclusionSettings.enabled ? m_depthPeelFramebuffer : nullptr,
-        scene()->lightingEnvironment(), m_gbuffer,
-        allSurfaces);
-   
-    // Debug visualizations and post-process effects
-    rd->pushState(m_framebuffer); {
-        // Call to make the App show the output of debugDraw(...)
-        rd->setProjectionAndCameraMatrix(activeCamera()->projection(), activeCamera()->frame());
-        drawDebugShapes();
-        const shared_ptr<Entity>& selectedEntity = (notNull(developerWindow) && notNull(developerWindow->sceneEditorWindow)) ? developerWindow->sceneEditorWindow->selectedEntity() : nullptr;
-        scene()->visualize(rd, selectedEntity, allSurfaces, sceneVisualizationSettings(), activeCamera());
-
-        onPostProcessHDR3DEffects(rd);
-    } rd->popState();
-
-    // We're about to render to the actual back buffer, so swap the buffers now.
-    // This call also allows the screenshot and video recording to capture the
-    // previous frame just before it is displayed.
-    if (submitToDisplayMode() == SubmitToDisplayMode::MAXIMIZE_THROUGHPUT) {
-        swapBuffers();
-    }
-
-    // Clear the entire screen (needed even though we'll render over it, since
-    // AFR uses clear() to detect that the buffer is not re-used.)
-    rd->clear();
-
-    // Perform gamma correction, bloom, and AA, and write to the native window frame buffer
-    m_film->exposeAndRender(rd, activeCamera()->filmSettings(), m_framebuffer->texture(0), settings().hdrFramebuffer.colorGuardBandThickness.x + settings().hdrFramebuffer.depthGuardBandThickness.x, settings().hdrFramebuffer.depthGuardBandThickness.x, 
-        Texture::opaqueBlackIfNull(notNull(m_gbuffer) ? m_gbuffer->texture(GBuffer::Field::SS_POSITION_CHANGE) : nullptr),
-        activeCamera()->jitterMotion());
-}
-
-
-void App::onAI() {
-    GApp::onAI();
-    // Add non-simulation game logic and AI code here
-}
-
-
-void App::onNetwork() {
-    GApp::onNetwork();
-    // Poll net messages here
 }
 
 
@@ -252,10 +180,4 @@ void App::onPose(Array<shared_ptr<Surface> >& surface, Array<shared_ptr<Surface2
 void App::onGraphics2D(RenderDevice* rd, Array<shared_ptr<Surface2D> >& posed2D) {
     // Render 2D objects like Widgets.  These do not receive tone mapping or gamma correction.
     Surface2D::sortAndRender(rd, posed2D);
-}
-
-
-void App::onCleanup() {
-    // Called after the application loop ends.  Place a majority of cleanup code
-    // here instead of in the constructor so that exceptions can be caught.
 }
