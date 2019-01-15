@@ -3,20 +3,11 @@
 
     entities = {
         camera = Camera {
-            frame = CFrame::fromXYZYPRDegrees(0, 0, 3, 0, 0, 0);
+            frame = CFrame::fromXYZYPRDegrees(0, 5, 7, 0, -25, 0);
         };
 
         skybox = Skybox {
             texture = 0.5;
-        };
-    };
-
-    models = {
-        cylinderModel = ArticulatedModel::Specification {
-            filename = "model/cylinder.off";
-            preprocess  = {
-                setMaterial(all(), Color3(0.5, 0.5, 0.5));
-            };
         };
     };
 };

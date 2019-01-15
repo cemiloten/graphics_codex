@@ -15,51 +15,97 @@ int main(int argc, const char* argv[]) {
     settings.window.width      = 1024;
     settings.window.height     = 768;
     settings.window.resizable  = true;
-    settings.dataDir           = FileSystem::currentDirectory();
 
     return App(settings).run();
 }
 
-void App::makeCylinder() const {
-    debugPrintf(format("%d\n", m_resolution).c_str());
-    debugPrintf(format("%f\n", m_radius).c_str());
-    debugPrintf(format("%f\n", m_height).c_str());
-    
+shared_ptr<Model> App::makeCylinder() const {
 
-    IndexedTriangleList mesh;
-    Array<Point3>& vertices(mesh.vertexArray);
-    Array<int>& indices(mesh.indexArray);
+    const shared_ptr<ArticulatedModel>& model = ArticulatedModel::createEmpty("cylinderModel");
+
+    ArticulatedModel::Part*     part = model->addPart("root");
+    ArticulatedModel::Geometry* geometry = model->addGeometry("geom");
+    ArticulatedModel::Mesh*     mesh = model->addMesh("mesh", part, geometry);
+
     
-    double thetha(2.0 * pi() / m_resolution);
+    // Assign a material
+    //mesh->material = UniversalMaterial::create(); 
+    //mesh->material = UniversalMaterial::create(
+    //    PARSE_ANY(
+    //        UniversalMaterial::Specification {
+    //            lambertian = Texture::Specification {
+    //                filename = "image/checker-32x32-1024x1024.png";
+    //                // Orange
+    //                encoding = Color3(1.0, 0.7, 0.15);
+    //            };
+
+    //            glossy = Color4(Color3(0.01), 0.2);
+    //        }));
+    Array<CPUVertexArray::Vertex>& vertexArray = geometry->cpuVertexArray.vertex;
+    Array<int>& indexArray = mesh->cpuIndexArray;
+
+    const double thetha(2.0 * pi() / m_resolution);
 
     // Fill vertices
     for (int i = 0; i < 2 * m_resolution; ++i) {
-        double angle((i - i % 2) / 2 * thetha);
-        Vector3 vert(
+        const double angle((i - i % 2) / 2 * thetha);
+        CPUVertexArray::Vertex& v = vertexArray.next();
+        v.position = Vector3(
             m_radius * sin(angle),
             m_height * (i % 2),
             m_radius * cos(angle));
-        vertices.append(vert);
     }
 
     // Fill triangles
     for (int i = 0; i < 2 * m_resolution; i += 2) {
         int current_bot(i);
-        int next_bot((i + 2) % vertices.size());
-        int current_top((i + 1) % vertices.size());
-        int next_top((i + 3) % vertices.size());
-        
-        indices.append(current_bot, next_bot, next_top);
-        indices.append(next_top, current_top, current_bot);
+        int next_bot((i + 2) % vertexArray.size());
+        int current_top((i + 1) % vertexArray.size());
+        int next_top((i + 3) % vertexArray.size());
+
+        indexArray.append(current_bot, next_bot, next_top);
+        indexArray.append(next_top, current_top, current_bot);
 
         if (i >= 2 && i < 2 * m_resolution - 1) {
-            indices.append(next_bot, current_bot, 0);
-            indices.append(1, current_top, next_top);
+            indexArray.append(next_bot, current_bot, 0);
+            indexArray.append(1, current_top, next_top);
         }
     }
 
-    mesh.saveAsOff("model/cylinder.off");
+    ArticulatedModel::CleanGeometrySettings geometrySettings;
+    geometrySettings.allowVertexMerging = false;
+    model->cleanGeometry(geometrySettings);
+
+    return model;
 }
+
+
+void App::addCylinderToScene() const {
+    const shared_ptr<Model>& cylinderModel = makeCylinder();
+
+    if (scene()->modelTable().containsKey(cylinderModel->name())) {
+        scene()->removeModel(cylinderModel->name());
+    }
+    scene()->insert(cylinderModel);
+
+    shared_ptr<Entity> cylinder = scene()->entity("cylinder");
+    // remove cylinder entity which has the wrong type
+    if (notNull(cylinder) && isNull(dynamic_pointer_cast<VisibleEntity>(cylinder))) {
+        scene()->remove(cylinder);
+        cylinder.reset();
+    }
+
+    // entity does not exist
+    if (isNull(cylinder)) {
+        cylinder = scene()->createEntity(
+            "cylinder",
+            PARSE_ANY(VisibleEntity{ model = "cylinderModel"; };));
+    }
+    else {
+        dynamic_pointer_cast<VisibleEntity>(cylinder)->setModel(cylinderModel);
+    }
+}
+
 
 App::App(const GApp::Settings& settings) : GApp(settings) {
     m_resolution = 5;
@@ -83,7 +129,11 @@ void App::onInit() {
     showRenderingStats = true;
 
     makeGUI();
-    loadScene(System::findDataFile("cylinder.Scene.Any"));
+    debugPrintf(FileSystem::currentDirectory().c_str());
+    debugPrintf("\n");
+
+    //loadScene("G3D Simple Cornell Box");
+    loadScene("Make cylinder");
 }
 
 
@@ -98,31 +148,7 @@ void App::makeGUI() {
     cylinderPane->addNumberBox("Height", &m_height);
     
     cylinderPane->addButton("Generate", [this]() {
-        const shared_ptr<Model>& cylinderModel = scene()->modelTable()["cylinderModel"].resolve();
-        scene()->removeModel(cylinderModel->name());
-        
-        App::makeCylinder();
-        // TODO: add model from file to scene
-        // cylinderModel = ArticulatedModel::fromFile("model/cylinder.off");
-        scene()->insert(cylinderModel);
-
-        shared_ptr<Entity> cylinder = scene()->entity("cylinder");
-        
-        // remove cylinder entity which has the wrong type
-        if (notNull(cylinder) && isNull(dynamic_pointer_cast<VisibleEntity>(cylinder))) {
-            scene()->remove(cylinder);
-            cylinder.reset();
-        }
-        
-        // entity does not exist
-        if (isNull(cylinder)) {
-            cylinder = scene()->createEntity(
-                "cylinder",
-                PARSE_ANY(VisibleEntity { model = "cylinderModel"; };));
-        }
-        else {
-            dynamic_pointer_cast<VisibleEntity>(cylinder)->setModel(cylinderModel);
-        }
+        addCylinderToScene();
     });
 
     debugWindow->pack();
@@ -161,6 +187,16 @@ bool App::onEvent(const GEvent& event) {
     return false;
 }
 
+void App::onAI() {
+    GApp::onAI();
+    // Add non-simulation game logic and AI code here
+}
+
+
+void App::onNetwork() {
+    GApp::onNetwork();
+    // Poll net messages here
+}
 
 void App::onUserInput(UserInput* ui) {
     GApp::onUserInput(ui);
@@ -180,4 +216,69 @@ void App::onPose(Array<shared_ptr<Surface> >& surface, Array<shared_ptr<Surface2
 void App::onGraphics2D(RenderDevice* rd, Array<shared_ptr<Surface2D> >& posed2D) {
     // Render 2D objects like Widgets.  These do not receive tone mapping or gamma correction.
     Surface2D::sortAndRender(rd, posed2D);
+}
+
+
+// This default implementation is a direct copy of GApp::onGraphics3D to make it easy
+// for you to modify. If you aren't changing the hardware rendering strategy, you can
+// delete this override entirely.
+void App::onGraphics3D(RenderDevice* rd, Array<shared_ptr<Surface> >& allSurfaces) {
+    if (!scene()) {
+        if ((submitToDisplayMode() == SubmitToDisplayMode::MAXIMIZE_THROUGHPUT) && (!rd->swapBuffersAutomatically())) {
+            swapBuffers();
+        }
+        rd->clear();
+        rd->pushState(); {
+            rd->setProjectionAndCameraMatrix(activeCamera()->projection(), activeCamera()->frame());
+            drawDebugShapes();
+        } rd->popState();
+        return;
+    }
+
+
+    GBuffer::Specification gbufferSpec = m_gbufferSpecification;
+    extendGBufferSpecification(gbufferSpec);
+    m_gbuffer->setSpecification(gbufferSpec);
+    m_gbuffer->resize(m_framebuffer->width(), m_framebuffer->height());
+    m_gbuffer->prepare(rd, activeCamera(), 0, -(float)previousSimTimeStep(), m_settings.hdrFramebuffer.depthGuardBandThickness, m_settings.hdrFramebuffer.colorGuardBandThickness);
+
+    m_renderer->render(rd,
+        activeCamera(),
+        m_framebuffer,
+        scene()->lightingEnvironment().ambientOcclusionSettings.enabled ? m_depthPeelFramebuffer : nullptr,
+        scene()->lightingEnvironment(), m_gbuffer,
+        allSurfaces);
+
+    // Debug visualizations and post-process effects
+    rd->pushState(m_framebuffer); {
+        // Call to make the App show the output of debugDraw(...)
+        rd->setProjectionAndCameraMatrix(activeCamera()->projection(), activeCamera()->frame());
+        drawDebugShapes();
+        const shared_ptr<Entity>& selectedEntity = (notNull(developerWindow) && notNull(developerWindow->sceneEditorWindow)) ? developerWindow->sceneEditorWindow->selectedEntity() : nullptr;
+        scene()->visualize(rd, selectedEntity, allSurfaces, sceneVisualizationSettings(), activeCamera());
+
+        onPostProcessHDR3DEffects(rd);
+    } rd->popState();
+
+    // We're about to render to the actual back buffer, so swap the buffers now.
+    // This call also allows the screenshot and video recording to capture the
+    // previous frame just before it is displayed.
+    if (submitToDisplayMode() == SubmitToDisplayMode::MAXIMIZE_THROUGHPUT) {
+        swapBuffers();
+    }
+
+    // Clear the entire screen (needed even though we'll render over it, since
+    // AFR uses clear() to detect that the buffer is not re-used.)
+    rd->clear();
+
+    // Perform gamma correction, bloom, and AA, and write to the native window frame buffer
+    m_film->exposeAndRender(rd, activeCamera()->filmSettings(), m_framebuffer->texture(0), settings().hdrFramebuffer.colorGuardBandThickness.x + settings().hdrFramebuffer.depthGuardBandThickness.x, settings().hdrFramebuffer.depthGuardBandThickness.x,
+        Texture::opaqueBlackIfNull(notNull(m_gbuffer) ? m_gbuffer->texture(GBuffer::Field::SS_POSITION_CHANGE) : nullptr),
+        activeCamera()->jitterMotion());
+}
+
+
+void App::onCleanup() {
+    // Called after the application loop ends.  Place a majority of cleanup code
+    // here instead of in the constructor so that exceptions can be caught.
 }

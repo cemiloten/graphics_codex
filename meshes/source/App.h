@@ -14,7 +14,9 @@ protected:
     float m_radius;
     float m_height;
     
-    void makeCylinder() const;
+    shared_ptr<Model> makeCylinder() const;
+    void addCylinderToScene() const;
+    
     /** Called from onInit */
     void makeGUI();
     
