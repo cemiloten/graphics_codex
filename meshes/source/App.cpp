@@ -19,7 +19,8 @@ int main(int argc, const char* argv[]) {
     return App(settings).run();
 }
 
-shared_ptr<Model> App::makeCylinder() const {
+shared_ptr<Model> App::makeCylinder() {
+    drawMessage("Making cylinder...");
 
     const shared_ptr<ArticulatedModel>& model = ArticulatedModel::createEmpty("cylinderModel");
 
@@ -29,18 +30,8 @@ shared_ptr<Model> App::makeCylinder() const {
 
     
     // Assign a material
-    //mesh->material = UniversalMaterial::create(); 
-    //mesh->material = UniversalMaterial::create(
-    //    PARSE_ANY(
-    //        UniversalMaterial::Specification {
-    //            lambertian = Texture::Specification {
-    //                filename = "image/checker-32x32-1024x1024.png";
-    //                // Orange
-    //                encoding = Color3(1.0, 0.7, 0.15);
-    //            };
+    mesh->material = UniversalMaterial::create();
 
-    //            glossy = Color4(Color3(0.01), 0.2);
-    //        }));
     Array<CPUVertexArray::Vertex>& vertexArray = geometry->cpuVertexArray.vertex;
     Array<int>& indexArray = mesh->cpuIndexArray;
 
@@ -80,7 +71,7 @@ shared_ptr<Model> App::makeCylinder() const {
 }
 
 
-void App::addCylinderToScene() const {
+void App::addCylinderToScene() {
     const shared_ptr<Model>& cylinderModel = makeCylinder();
 
     if (scene()->modelTable().containsKey(cylinderModel->name())) {
@@ -89,7 +80,7 @@ void App::addCylinderToScene() const {
     scene()->insert(cylinderModel);
 
     shared_ptr<Entity> cylinder = scene()->entity("cylinder");
-    // remove cylinder entity which has the wrong type
+    // remove cylinder entity with the wrong type if it exists
     if (notNull(cylinder) && isNull(dynamic_pointer_cast<VisibleEntity>(cylinder))) {
         scene()->remove(cylinder);
         cylinder.reset();
@@ -111,6 +102,10 @@ App::App(const GApp::Settings& settings) : GApp(settings) {
     m_resolution = 5;
     m_radius = 2.0f;
     m_height = 3.0f;
+
+    m_heightfieldYScale = 1.0f;
+    m_heightfieldXZScale = 2.0f;
+    m_heightfieldSource = FileSystem::currentDirectory();
 }
 
 
@@ -122,12 +117,7 @@ void App::onInit() {
 
     debugPrintf("Target frame rate = %f Hz\n", 1.0f / realTimeTargetDuration());
     setFrameDuration(1.0f / 60.0f);
-
-    // Call setScene(shared_ptr<Scene>()) or setScene(MyScene::create()) to replace
-    // the default scene here.
     
-    showRenderingStats = true;
-
     makeGUI();
     debugPrintf(FileSystem::currentDirectory().c_str());
     debugPrintf("\n");
@@ -139,20 +129,43 @@ void App::onInit() {
 
 void App::makeGUI() {
     debugWindow->setVisible(true);
-    developerWindow->videoRecordDialog->setEnabled(true);
     
+    developerWindow->cameraControlWindow->setVisible(false);
+    developerWindow->sceneEditorWindow->setVisible(false);
+
     GuiPane* cylinderPane = debugPane->addPane("Make cylinder settings");
     cylinderPane->setNewChildSize(240);
-    cylinderPane->addNumberBox("Resolution", &m_resolution);
-    cylinderPane->addNumberBox("Radius", &m_radius);
-    cylinderPane->addNumberBox("Height", &m_height);
+    cylinderPane->addNumberBox("Resolution", &m_resolution, "", GuiTheme::LINEAR_SLIDER, 3, 32)->setUnitsSize(30);
+    cylinderPane->addNumberBox("Radius", &m_radius, "m", GuiTheme::LOG_SLIDER, 0.1f, 10.0f)->setUnitsSize(30);
+    cylinderPane->addNumberBox("Height", &m_height, "m", GuiTheme::LOG_SLIDER, 0.1f, 10.0f)->setUnitsSize(30);
     
     cylinderPane->addButton("Generate", [this]() {
         addCylinderToScene();
     });
 
+    GuiPane* heightfieldPane = debugPane->addPane("Heightfield");
+    heightfieldPane->setNewChildSize(240);
+    heightfieldPane->addNumberBox("Max Y", &m_heightfieldYScale, "m", GuiTheme::LOG_SLIDER, 0.0f, 100.0f)->setUnitsSize(30);
+    heightfieldPane->addNumberBox("XZ Scale", &m_heightfieldXZScale, "m/px", GuiTheme::LOG_SLIDER, 0.001f, 10.0f)->setUnitsSize(30);
+    heightfieldPane->beginRow();
+        heightfieldPane->addTextBox("Input image", &m_heightfieldSource)->setWidth(210);
+        heightfieldPane->addButton("...", [this]() {
+            FileDialog::getFilename(m_heightfieldSource, "png", false);
+        })->setWidth(30);
+    heightfieldPane->endRow();
+    heightfieldPane->addButton("Generate", [this]() {
+        shared_ptr<Image> image;
+        try {
+            image = Image::fromFile(m_heightfieldSource);
+            // heightfield generation here
+        }
+        catch (...) {
+            msgBox("Unable to load the image.", m_heightfieldSource);
+        }
+    });
+    
     debugWindow->pack();
-    debugWindow->setRect(Rect2D::xywh(0, 0, (float)window()->width(), debugWindow->rect().height()));
+    debugWindow->setRect(Rect2D::xywh(0, 0, debugWindow->rect().width(), debugWindow->rect().height()));
 }
 
 

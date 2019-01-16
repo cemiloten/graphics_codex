@@ -13,9 +13,13 @@ protected:
     int m_resolution;
     float m_radius;
     float m_height;
+
+    float m_heightfieldYScale;
+    float m_heightfieldXZScale;
+    String m_heightfieldSource;
     
-    shared_ptr<Model> makeCylinder() const;
-    void addCylinderToScene() const;
+    shared_ptr<Model> makeCylinder() ;
+    void addCylinderToScene() ;
     
     /** Called from onInit */
     void makeGUI();
