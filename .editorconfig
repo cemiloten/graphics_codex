@@ -1,5 +1,5 @@
-[*.cs, *.cpp, *.h]
-indent_size = 4
-tab_width = 4
+[*.{cpp, *.h}]
+indent_size = 8
+tab_width = 8
 trim_trailing_whitespace = true
 insert_final_newline = true
