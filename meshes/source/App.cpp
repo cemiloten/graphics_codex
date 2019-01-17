@@ -148,16 +148,29 @@ void App::makeGUI() {
     heightfieldPane->addNumberBox("Max Y", &m_heightfieldYScale, "m", GuiTheme::LOG_SLIDER, 0.0f, 100.0f)->setUnitsSize(30);
     heightfieldPane->addNumberBox("XZ Scale", &m_heightfieldXZScale, "m/px", GuiTheme::LOG_SLIDER, 0.001f, 10.0f)->setUnitsSize(30);
     heightfieldPane->beginRow();
+    {
         heightfieldPane->addTextBox("Input image", &m_heightfieldSource)->setWidth(210);
         heightfieldPane->addButton("...", [this]() {
             FileDialog::getFilename(m_heightfieldSource, "png", false);
         })->setWidth(30);
+    }
     heightfieldPane->endRow();
     heightfieldPane->addButton("Generate", [this]() {
         shared_ptr<Image> image;
         try {
             image = Image::fromFile(m_heightfieldSource);
             // heightfield generation here
+            int w = image->width();
+            int h = image->height();
+            float xUnit(m_heightfieldXZScale / w);
+            float zUnit(m_heightfieldXZScale / h);
+            for (int z = 0; z < w; ++z) {
+                for (int x = 0; x < w; ++x) {
+                    // start generating vertices here
+                    // x vert = x * xUnit
+                    // z vert = - z * zUnit
+                }
+            }
         }
         catch (...) {
             msgBox("Unable to load the image.", m_heightfieldSource);
