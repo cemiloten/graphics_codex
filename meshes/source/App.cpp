@@ -19,6 +19,20 @@ int main(int argc, const char* argv[]) {
     return App(settings).run();
 }
 
+shared_ptr<Model> App::makeHeightfield() {
+    drawMessage("Making heightfield...");
+    const shared_ptr<ArticulatedModel>& model = ArticulatedModel::createEmpty("heightfieldModel");
+    ArticulatedModel::Part*     part = model->addPart("root");
+    ArticulatedModel::Geometry* geometry = model->addGeometry("geom");
+    ArticulatedModel::Mesh*     mesh = model->addMesh("mesh", part, geometry);
+    
+    mesh->material = UniversalMaterial::create();
+
+    Array<CPUVertexArray::Vertex>& vertexArray = geometry->cpuVertexArray.vertex;
+    Array<int>& indexArray = mesh->cpuIndexArray;
+    
+}
+
 shared_ptr<Model> App::makeCylinder() {
     drawMessage("Making cylinder...");
 
@@ -160,17 +174,6 @@ void App::makeGUI() {
         try {
             image = Image::fromFile(m_heightfieldSource);
             // heightfield generation here
-            int w = image->width();
-            int h = image->height();
-            float xUnit(m_heightfieldXZScale / w);
-            float zUnit(m_heightfieldXZScale / h);
-            for (int z = 0; z < w; ++z) {
-                for (int x = 0; x < w; ++x) {
-                    // start generating vertices here
-                    // x vert = x * xUnit
-                    // z vert = - z * zUnit
-                }
-            }
         }
         catch (...) {
             msgBox("Unable to load the image.", m_heightfieldSource);

@@ -8,4 +8,4 @@ Release
 *.opendb
 log.txt
 g3d-license.txt
-
+*.swp
