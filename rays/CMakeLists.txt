@@ -3,7 +3,8 @@ set(CMAKE_CXX_STANDARD 11)
 
 project(rays)
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# For YouCompleteMe (Vim) autocompletion
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON) 
 
 include_directories(
     /Users/cemil/g3d/G3D10/external/assimp.lib/include
@@ -24,10 +25,10 @@ include_directories(
     /Users/cemil/g3d/G3D10/G3D-app.lib/include 
 )
 
-file(GLOB SOURCE_FILES "source/*")
-add_executable(rays ${SOURCE_FILES})
 
 set(LIBRARIES_DIR "/Users/cemil/g3d/G3D10/build/lib")
+link_directories(${LIBRARIES_DIR})
+
 find_library(LIB_AVFILTER   NAMES avfilter   PATHS ${LIBRARIES_DIR})
 find_library(LIB_SWRESAMPLE NAMES swresample PATHS ${LIBRARIES_DIR})
 find_library(LIB_SWSCALE    NAMES swscale    PATHS ${LIBRARIES_DIR})
@@ -52,6 +53,9 @@ find_library(LIB_Z          NAMES z          PATHS ${LIBRARIES_DIR})
 find_library(LIB_GLEWD      NAMES glewd      PATHS ${LIBRARIES_DIR})
 find_library(LIB_PTHREAD    NAMES pthread    PATHS ${LIBRARIES_DIR})
 find_library(LIB_ASSIMPD    NAMES assimpd    PATHS ${LIBRARIES_DIR})
+
+file(GLOB SOURCE_FILES "source/*")
+add_executable(rays ${SOURCE_FILES})
 
 target_link_libraries(rays
     "-framework AGL"
