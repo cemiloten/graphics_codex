@@ -1,6 +1,4 @@
-/** \file App.cpp */
 #include "App.h"
-#include "IndexedTriangleList.h"
 
 // Tells C++ to invoke command-line main() function even on OS X and Win32.
 G3D_START_AT_MAIN();
@@ -25,12 +23,69 @@ shared_ptr<Model> App::makeHeightfield() {
     ArticulatedModel::Part*     part = model->addPart("root");
     ArticulatedModel::Geometry* geometry = model->addGeometry("geom");
     ArticulatedModel::Mesh*     mesh = model->addMesh("mesh", part, geometry);
-    
-    mesh->material = UniversalMaterial::create();
-
     Array<CPUVertexArray::Vertex>& vertexArray = geometry->cpuVertexArray.vertex;
     Array<int>& indexArray = mesh->cpuIndexArray;
+
+    mesh->material = UniversalMaterial::create();
+
+    int w = 3;
+    int h = 2;
+    CPUVertexArray::Vertex& v = vertexArray.next();
+    v.position = Vector3(0.0f, 0.0f, 0.0f);
+    v = vertexArray.next();
+    v.position = Vector3(1.0f, 0.0f, 0.0f);
+    v = vertexArray.next();
+    v.position = Vector3(0.0f, 0.0f, -1.0f);
+    v = vertexArray.next();
+    v.position = Vector3(1.0f, 0.0f, -1.0f);
+    indexArray.append(0, 1, 3);
+    indexArray.append(3, 2, 0);
     
+    /* Vector3 unitX = Vector3(m_heightfieldXZScale / w, 0.0f, 0.0f); */
+    /* Vector3 unitY = Vector3(0.0f, 0.0f, m_heightfieldXZScale / h); */
+    /* for (int y = 0; y <= h; ++y) */
+    /*     for (int x = 0; x <= w; ++x) { */
+    /*         CPUVertexArray::Vertex& v = vertexArray.next(); */
+    /*         v.position = x * unitX + y * unitY; */
+    /*     } */
+    /* for (int i = w + 1; i < vertexArray.size(); ++i) { */
+    /*     int n = w + 1; */
+    /*     if (i % n == 3) */
+    /*         continue; */  
+    /*     indexArray.append(i - n, i - w, i + 1); */
+    /*     indexArray.append(i + 1, i, i - n); */
+    /* } */
+
+    ArticulatedModel::CleanGeometrySettings geometrySettings;
+    geometrySettings.allowVertexMerging = false;
+    model->cleanGeometry(geometrySettings);
+    return model;
+}
+
+void App::addHeightfieldToScene() {
+    const shared_ptr<Model>& heightfieldModel = makeHeightfield();
+
+    if (scene()->modelTable().containsKey(heightfieldModel->name())) {
+        scene()->removeModel(heightfieldModel->name());
+    }
+    scene()->insert(heightfieldModel);
+
+    shared_ptr<Entity> heightfield = scene()->entity("heightfield");
+    // remove heightfield entity with the wrong type if it exists
+    if (notNull(heightfield) && isNull(dynamic_pointer_cast<VisibleEntity>(heightfield))) {
+        scene()->remove(heightfield);
+        heightfield.reset();
+    }
+
+    // entity does not exist
+    if (isNull(heightfield)) {
+        heightfield = scene()->createEntity(
+            "heightfield",
+            PARSE_ANY(VisibleEntity{ model = "heightfieldModel"; };));
+    }
+    else {
+        dynamic_pointer_cast<VisibleEntity>(heightfield)->setModel(heightfieldModel);
+    }
 }
 
 shared_ptr<Model> App::makeCylinder() {
@@ -170,14 +225,15 @@ void App::makeGUI() {
     }
     heightfieldPane->endRow();
     heightfieldPane->addButton("Generate", [this]() {
-        shared_ptr<Image> image;
-        try {
-            image = Image::fromFile(m_heightfieldSource);
-            // heightfield generation here
-        }
-        catch (...) {
-            msgBox("Unable to load the image.", m_heightfieldSource);
-        }
+        addHeightfieldToScene();
+        /* shared_ptr<Image> image; */
+        /* try { */
+        /*     /1* image = Image::fromFile(m_heightfieldSource); *1/ */
+        /*     // heightfield generation here */
+        /* } */
+        /* catch (...) { */
+        /*     msgBox("Unable to load the image.", m_heightfieldSource); */
+        /* } */
     });
     
     debugWindow->pack();
