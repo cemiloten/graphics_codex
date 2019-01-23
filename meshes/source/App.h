@@ -19,9 +19,9 @@ protected:
     String m_heightfieldSource;
     
     shared_ptr<Model> makeCylinder() ;
-    shared_ptr<Model> makeHeightfield() ;
     void addCylinderToScene();
-    void addHeightfieldToScene();
+    shared_ptr<Model> makeHeightfield(shared_ptr<Image>& image);
+    void addHeightfieldToScene(shared_ptr<Model>& heightfieldModel);
     
     /** Called from onInit */
     void makeGUI();

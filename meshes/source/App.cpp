@@ -17,7 +17,7 @@ int main(int argc, const char* argv[]) {
     return App(settings).run();
 }
 
-shared_ptr<Model> App::makeHeightfield() {
+shared_ptr<Model> App::makeHeightfield(shared_ptr<Image>& image) {
     drawMessage("Making heightfield...");
     const shared_ptr<ArticulatedModel>& model = ArticulatedModel::createEmpty("heightfieldModel");
     ArticulatedModel::Part*     part = model->addPart("root");
@@ -28,33 +28,25 @@ shared_ptr<Model> App::makeHeightfield() {
 
     mesh->material = UniversalMaterial::create();
 
-    int w = 3;
-    int h = 2;
-    CPUVertexArray::Vertex& v = vertexArray.next();
-    v.position = Vector3(0.0f, 0.0f, 0.0f);
-    v = vertexArray.next();
-    v.position = Vector3(1.0f, 0.0f, 0.0f);
-    v = vertexArray.next();
-    v.position = Vector3(0.0f, 0.0f, -1.0f);
-    v = vertexArray.next();
-    v.position = Vector3(1.0f, 0.0f, -1.0f);
-    indexArray.append(0, 1, 3);
-    indexArray.append(3, 2, 0);
-    
-    /* Vector3 unitX = Vector3(m_heightfieldXZScale / w, 0.0f, 0.0f); */
-    /* Vector3 unitY = Vector3(0.0f, 0.0f, m_heightfieldXZScale / h); */
-    /* for (int y = 0; y <= h; ++y) */
-    /*     for (int x = 0; x <= w; ++x) { */
-    /*         CPUVertexArray::Vertex& v = vertexArray.next(); */
-    /*         v.position = x * unitX + y * unitY; */
-    /*     } */
-    /* for (int i = w + 1; i < vertexArray.size(); ++i) { */
-    /*     int n = w + 1; */
-    /*     if (i % n == 3) */
-    /*         continue; */  
-    /*     indexArray.append(i - n, i - w, i + 1); */
-    /*     indexArray.append(i + 1, i, i - n); */
-    /* } */
+    int w = image->width();
+    int h = image->height();
+    float scale(m_heightfieldXZScale / w);
+    Vector3 unitX = Vector3(scale, 0.0f, 0.0f);
+    Vector3 unitZ = Vector3(0.0f, 0.0f, -scale);
+    for (int z = 0; z <= h; ++z)
+        for (int x = 0; x <= w; ++x) {
+            CPUVertexArray::Vertex& v = vertexArray.next();
+            v.position = Vector3(x * unitX, yvaluetoputhere, z * unitZ);
+            v.normal = Vector3::nan();
+            v.tangent = Vector4::nan();
+        }
+    for (int i = w + 1; i < vertexArray.size(); ++i) {
+        int n = w + 1;
+        if (i % n == w)
+            continue;
+        indexArray.append(i - n, i - w, i + 1);
+        indexArray.append(i + 1, i, i - n);
+    }
 
     ArticulatedModel::CleanGeometrySettings geometrySettings;
     geometrySettings.allowVertexMerging = false;
@@ -62,8 +54,7 @@ shared_ptr<Model> App::makeHeightfield() {
     return model;
 }
 
-void App::addHeightfieldToScene() {
-    const shared_ptr<Model>& heightfieldModel = makeHeightfield();
+void App::addHeightfieldToScene(shared_ptr<Model>& heightfieldModel) {
 
     if (scene()->modelTable().containsKey(heightfieldModel->name())) {
         scene()->removeModel(heightfieldModel->name());
@@ -225,15 +216,15 @@ void App::makeGUI() {
     }
     heightfieldPane->endRow();
     heightfieldPane->addButton("Generate", [this]() {
-        addHeightfieldToScene();
-        /* shared_ptr<Image> image; */
-        /* try { */
-        /*     /1* image = Image::fromFile(m_heightfieldSource); *1/ */
-        /*     // heightfield generation here */
-        /* } */
-        /* catch (...) { */
-        /*     msgBox("Unable to load the image.", m_heightfieldSource); */
-        /* } */
+        shared_ptr<Image> image;
+        try {
+            image = Image::fromFile(m_heightfieldSource);
+            addHeightfieldToScene(image);
+            // heightfield generation here
+        }
+        catch (...) {
+            msgBox("Unable to load the image.", m_heightfieldSource);
+        }
     });
     
     debugWindow->pack();
