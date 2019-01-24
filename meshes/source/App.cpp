@@ -28,15 +28,21 @@ shared_ptr<Model> App::makeHeightfield(shared_ptr<Image>& image) {
 
     mesh->material = UniversalMaterial::create();
 
+
     int w = image->width();
     int h = image->height();
     float scale(m_heightfieldXZScale / w);
-    Vector3 unitX = Vector3(scale, 0.0f, 0.0f);
-    Vector3 unitZ = Vector3(0.0f, 0.0f, -scale);
     for (int z = 0; z <= h; ++z)
         for (int x = 0; x <= w; ++x) {
             CPUVertexArray::Vertex& v = vertexArray.next();
-            v.position = Vector3(x * unitX, yvaluetoputhere, z * unitZ);
+            float y = 0.0f;
+            if (x != w && z != h)
+            {
+                Color3 col;
+                image->get(Point2int32(x, z), col);
+                y = (col.r, col.g, col.b) / 3.0f;
+            }
+            v.position = Vector3(x * scale, y, -z * scale);
             v.normal = Vector3::nan();
             v.tangent = Vector4::nan();
         }
@@ -219,8 +225,8 @@ void App::makeGUI() {
         shared_ptr<Image> image;
         try {
             image = Image::fromFile(m_heightfieldSource);
-            addHeightfieldToScene(image);
-            // heightfield generation here
+            std::shared_ptr<Model> hf = makeHeightfield(image);
+            addHeightfieldToScene(hf);
         }
         catch (...) {
             msgBox("Unable to load the image.", m_heightfieldSource);
