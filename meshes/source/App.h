@@ -10,19 +10,51 @@
 /** \brief Application framework. adding something for test. */
 class App : public GApp {
 protected:
-    int m_resolution;
-    float m_radius;
-    float m_height;
+    int m_cylinderResolution;
+    float m_cylinderRadius;
+    float m_cylinderHeight;
 
     float m_heightfieldYScale;
     float m_heightfieldXZScale;
     String m_heightfieldSource;
     
-    shared_ptr<Model> makeCylinder() ;
-    void addCylinderToScene();
-    shared_ptr<Model> makeHeightfield(shared_ptr<Image>& image);
-    void addHeightfieldToScene(shared_ptr<Model>& heightfieldModel);
+    int m_contourResolution;
     
+    enum ModelType {
+        CYLINDER,
+        HEIGHTFIELD,
+        CONTOUR
+    };
+
+    //char* toStr(ModelType mtype) {
+    //    switch (int(mtype)) {
+    //        case CYLINDER:    return "Cylinder";
+    //        case HEIGHTFIELD: return "Heightfield";
+    //        case CONTOUR:     return "Contour".c_str();
+    //        default:          return "None";
+    //    }
+    //}
+
+
+    shared_ptr<Model> makeModel(ModelType mtype);
+
+    void makeCylinder(
+            Array<CPUVertexArray::Vertex>& vertexArray,
+            Array<int>& indexArray);
+
+    void makeHeightfield(
+            Array<CPUVertexArray::Vertex>& vertexArray,
+            Array<int>& indexArray,
+            shared_ptr<Image>& image);
+
+    void makeContouredModel(
+            Array<CPUVertexArray::Vertex>& vertexArray,
+            Array<int>& indexArray,
+            Array<Vector2>& contour);
+
+    void addModelToScene(shared_ptr<Model>& model);
+    
+
     /** Called from onInit */
     void makeGUI();
     
