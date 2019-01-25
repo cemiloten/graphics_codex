@@ -18,19 +18,22 @@ protected:
     float m_heightfieldXZScale;
     String m_heightfieldSource;
     
-    int m_contourResolution;
+    int m_glassResolution;
+    Array<Vector2> m_contour;
     
+    shared_ptr<Model> m_model;
+
     enum ModelType {
         CYLINDER,
         HEIGHTFIELD,
-        CONTOUR
+        GLASS
     };
 
     //char* toStr(ModelType mtype) {
     //    switch (int(mtype)) {
     //        case CYLINDER:    return "Cylinder";
     //        case HEIGHTFIELD: return "Heightfield";
-    //        case CONTOUR:     return "Contour".c_str();
+    //        case GLASS:     return "Glass".c_str();
     //        default:          return "None";
     //    }
     //}
@@ -47,12 +50,11 @@ protected:
             Array<int>& indexArray,
             shared_ptr<Image>& image);
 
-    void makeContouredModel(
+    void makeGlass(
             Array<CPUVertexArray::Vertex>& vertexArray,
-            Array<int>& indexArray,
-            Array<Vector2>& contour);
+            Array<int>& indexArray);
 
-    void addModelToScene(shared_ptr<Model>& model);
+    void addModelToScene();
     
 
     /** Called from onInit */

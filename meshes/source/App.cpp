@@ -5,20 +5,18 @@ G3D_START_AT_MAIN();
 
 int main(int argc, const char* argv[]) {
     initGLG3D(G3DSpecification());
-
     GApp::Settings settings(argc, argv);
 
-    // Some common resolutions:
     settings.window.caption    = "Cylinder demo";
     settings.window.width      = 1024;
     settings.window.height     = 768;
     settings.window.resizable  = true;
-
     return App(settings).run();
 }
 
-shared_ptr<Model> App::makeModel(ModelType mtype) {
+shared_ptr<Model> App::makeModel(App::ModelType mtype) {
     drawMessage("Making {model type str}...");
+
     const shared_ptr<ArticulatedModel>& model = ArticulatedModel::createEmpty("model");
     ArticulatedModel::Part*     part = model->addPart("root");
     ArticulatedModel::Geometry* geometry = model->addGeometry("geom");
@@ -28,10 +26,21 @@ shared_ptr<Model> App::makeModel(ModelType mtype) {
     Array<CPUVertexArray::Vertex>& vertexArray = geometry->cpuVertexArray.vertex;
     Array<int>& indexArray = mesh->cpuIndexArray;
 
+    shared_ptr<Image> image;
+
     switch (int(mtype)) {
-        case CYLINDER: makeCylinder(vertexArray, indexArray); break; 
-        case HEIGHTFIELD: makeHeightfield(vertexArray, indexArray, ); break; 
-        case CONTOUR: makeContour(vertexArray, indexArray); break; 
+        case CYLINDER:
+            makeCylinder(vertexArray, indexArray);
+            break; 
+        case HEIGHTFIELD:
+            image = Image::fromFile(m_heightfieldSource);
+            makeHeightfield(vertexArray, indexArray, image);
+            break; 
+        case GLASS:
+            makeGlass(vertexArray, indexArray);
+            break; 
+        default:
+            return NULL;
     }
 
     ArticulatedModel::CleanGeometrySettings geometrySettings;
@@ -73,6 +82,7 @@ void App::makeCylinder(
     }
 }
 
+
 void App::makeHeightfield(
     Array<CPUVertexArray::Vertex>& vertexArray,
     Array<int>& indexArray,
@@ -81,8 +91,9 @@ void App::makeHeightfield(
     int w = image->width();
     int h = image->height();
     float scale(m_heightfieldXZScale / w);
-    for (int z = 0; z <= h; ++z)
-        for (int x = 0; x <= w; ++x) {
+
+    for (int x = 0; x <= w; ++x)
+        for (int z = 0; z <= h; ++z) {
             CPUVertexArray::Vertex& v = vertexArray.next();
             float y = 0.0f;
             if (x != w && z != h)
@@ -96,61 +107,93 @@ void App::makeHeightfield(
             v.tangent = Vector4::nan();
         }
 
-    for (int i = w + 1; i < vertexArray.size(); ++i) {
-        int n = w + 1;
-        if (i % n == w)
+    for (int i = 0; i < vertexArray.size() - h - 1; ++i) {
+        if (i % (h + 1) == h) // Skip top vertex
             continue;
-        indexArray.append(i - n, i - w, i + 1);
-        indexArray.append(i + 1, i, i - n);
+        int BL = i;
+        int BR = i + h;
+        int TR = i + h + 1;
+        int TL = i + 1;
+        indexArray.append(BL, BR, TR);
+        indexArray.append(TR, TL, BL);
     }
 }
 
-void App::addModelToScene(shared_ptr<Model>& model) {
-    //if (scene()->modelTable().containsKey(heightfieldModel->name())) {
-    //    scene()->removeModel(heightfieldModel->name());
-    //}
-    //scene()->insert(heightfieldModel);
 
-    //shared_ptr<Entity> heightfield = scene()->entity("heightfield");
-    //// remove heightfield entity with the wrong type if it exists
-    //if (notNull(heightfield) && isNull(dynamic_pointer_cast<VisibleEntity>(heightfield))) {
-    //    scene()->remove(heightfield);
-    //    heightfield.reset();
-    //}
-
-    //// entity does not exist
-    //if (isNull(heightfield)) {
-    //    heightfield = scene()->createEntity(
-    //        "heightfield",
-    //        PARSE_ANY(VisibleEntity{ model = "heightfieldModel"; };));
-    //}
-    //else {
-    //    dynamic_pointer_cast<VisibleEntity>(heightfield)->setModel(heightfieldModel);
-    //}
-}
-
-
-
-void App::makeContouredModel(
+void App::makeGlass(
     Array<CPUVertexArray::Vertex>& vertexArray,
-    Array<int>& indexArray,
-    Array<Vector2>& contour)
+    Array<int>& indexArray)
 {
-    for (int i = 0; i < contour.size(); ++i) {
-        // todo
+    // Fill vertices
+    const double thetha(2.0 * pi() / m_glassResolution);
+    for (int i = 0; i < 3; ++i) {
+        const double angle(i * thetha);
+        for (int i = 0; i < m_contour.size(); ++i) {
+            CPUVertexArray::Vertex& v = vertexArray.next();
+            v.position = Vector3(
+                m_contour[i].x * sin(angle),
+                m_contour[i].y,
+                m_contour[i].x * cos(angle));
+        }
     }
-    return;
+
+    int h(m_contour.size());
+    for (int i = 0; i < vertexArray.size() - h - 1; ++i) {
+        if (i % (h + 1) == h) // Skip top vertex
+            continue;
+        int BL = i;
+        int BR = i + h;
+        int TR = i + h + 1;
+        int TL = i + 1;
+        indexArray.append(BL, BR, TR);
+        indexArray.append(TR, TL, BL);
+    }
 }
 
+void App::addModelToScene() {
+    if (scene()->modelTable().containsKey(m_model->name())) {
+        scene()->removeModel(m_model->name());
+    }
+    scene()->insert(m_model);
+
+    shared_ptr<Entity> entity = scene()->entity("entity");
+    // remove entity Entity with the wrong type if it exists
+    if (notNull(entity) && isNull(dynamic_pointer_cast<VisibleEntity>(entity))) {
+        scene()->remove(entity);
+        entity.reset();
+    }
+
+    // Entity does not exist
+    if (isNull(entity)) {
+        entity = scene()->createEntity(
+            "entity",
+            PARSE_ANY(VisibleEntity{ model = "model"; };));
+    }
+    else {
+        dynamic_pointer_cast<VisibleEntity>(entity)->setModel(m_model);
+    }
+}
 
 App::App(const GApp::Settings& settings) : GApp(settings) {
-    m_cylinderResolution = 5;
+    m_cylinderResolution = 7;
     m_cylinderRadius = 2.0f;
     m_cylinderHeight = 3.0f;
 
-    m_heightfieldYScale = 1.0f;
-    m_heightfieldXZScale = 2.0f;
+    m_heightfieldYScale = 0.1f;
+    m_heightfieldXZScale = 3.0f;
     m_heightfieldSource = FileSystem::currentDirectory();
+
+    m_glassResolution = 16;
+    m_contour = Array<Vector2> {
+        //Vector2(0.0f, 0.0f),
+        Vector2(2.0f, 0.0f),
+        Vector2(1.0f, 1.0f),
+        Vector2(1.0f, 3.0f),
+        Vector2(2.0f, 4.0f),
+        Vector2(2.0f, 6.0f),
+        Vector2(1.0f, 6.0f),
+        Vector2(1.0f, 4.0f),
+        /*Vector2(0.0f, 3.0f)*/ };
 }
 
 
@@ -161,7 +204,7 @@ void App::onInit() {
     GApp::onInit();
 
     debugPrintf("Target frame rate = %f Hz\n", 1.0f / realTimeTargetDuration());
-    setFrameDuration(1.0f / 10.0f);
+    setFrameDuration(1.0f / 60.0f);
     
     makeGUI();
     loadScene("Make cylinder");
@@ -174,6 +217,7 @@ void App::makeGUI() {
     developerWindow->cameraControlWindow->setVisible(false);
     developerWindow->sceneEditorWindow->setVisible(false);
 
+    // Cylinder UI.
     GuiPane* cylinderPane = debugPane->addPane("Make cylinder settings");
     cylinderPane->setNewChildSize(240);
     cylinderPane->addNumberBox("Resolution", &m_cylinderResolution, "", GuiTheme::LINEAR_SLIDER, 3, 32)->setUnitsSize(30);
@@ -181,30 +225,44 @@ void App::makeGUI() {
     cylinderPane->addNumberBox("Height", &m_cylinderHeight, "m", GuiTheme::LOG_SLIDER, 0.1f, 10.0f)->setUnitsSize(30);
     
     cylinderPane->addButton("Generate", [this]() {
-        addCylinderToScene();
+        m_model = makeModel(App::ModelType::CYLINDER);
+        addModelToScene();
     });
 
+    // Cylinder UI.
     GuiPane* heightfieldPane = debugPane->addPane("Heightfield");
     heightfieldPane->setNewChildSize(240);
-    heightfieldPane->addNumberBox("Max Y", &m_cylinderHeightfieldYScale, "m", GuiTheme::LOG_SLIDER, 0.01f, 3.0f)->setUnitsSize(30);
-    heightfieldPane->addNumberBox("XZ Scale", &m_cylinderHeightfieldXZScale, "m", GuiTheme::LOG_SLIDER, 0.01f, 10.0f)->setUnitsSize(30);
+    heightfieldPane->addNumberBox("Max Y", &m_heightfieldYScale, "m", GuiTheme::LOG_SLIDER, 0.01f, 3.0f)->setUnitsSize(30);
+    heightfieldPane->addNumberBox("XZ Scale", &m_heightfieldXZScale, "m", GuiTheme::LOG_SLIDER, 0.01f, 10.0f)->setUnitsSize(30);
     heightfieldPane->beginRow();
     {
-        heightfieldPane->addTextBox("Input image", &m_cylinderHeightfieldSource)->setWidth(210);
+        heightfieldPane->addTextBox("Input image", &m_heightfieldSource)->setWidth(210);
         heightfieldPane->addButton("...", [this]() {
-            FileDialog::getFilename(m_cylinderHeightfieldSource, "png", false);
+            FileDialog::getFilename(m_heightfieldSource, "png", false);
         })->setWidth(30);
     }
     heightfieldPane->endRow();
     heightfieldPane->addButton("Generate", [this]() {
         shared_ptr<Image> image;
         try {
-            image = Image::fromFile(m_cylinderHeightfieldSource);
-            std::shared_ptr<Model> hf = makeHeightfield(image);
-            addHeightfieldToScene(hf);
+            image = Image::fromFile(m_heightfieldSource);
+            m_model = makeModel(App::ModelType::HEIGHTFIELD);
+            addModelToScene();
         }
         catch (...) {
-            msgBox("Unable to load the image.", m_cylinderHeightfieldSource);
+            msgBox("Unable to load the image.", m_heightfieldSource);
+        }
+    });
+
+    GuiPane* glassPane = debugPane->addPane("Glass");
+    heightfieldPane->setNewChildSize(10);
+    heightfieldPane->addButton("Generate", [this]() {
+        try {
+            m_model = makeModel(App::ModelType::GLASS);
+            addModelToScene();
+        }
+        catch (...) {
+            msgBox("Unable to do glass.");
         }
     });
     
