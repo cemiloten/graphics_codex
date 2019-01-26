@@ -37,6 +37,7 @@ shared_ptr<Model> App::makeModel(App::ModelType mtype) {
             makeHeightfield(vertexArray, indexArray, image);
             break; 
         case GLASS:
+            debugPrintf("model type GLASS\n");
             makeGlass(vertexArray, indexArray);
             break; 
         default:
@@ -124,27 +125,40 @@ void App::makeGlass(
     Array<CPUVertexArray::Vertex>& vertexArray,
     Array<int>& indexArray)
 {
+    int height(m_contour.size());
+
     // Fill vertices
     const double thetha(2.0 * pi() / m_glassResolution);
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < m_glassResolution; ++i) {
         const double angle(i * thetha);
-        for (int i = 0; i < m_contour.size(); ++i) {
+        for (int j = 0; j < height; ++j) {
             CPUVertexArray::Vertex& v = vertexArray.next();
             v.position = Vector3(
-                m_contour[i].x * sin(angle),
-                m_contour[i].y,
-                m_contour[i].x * cos(angle));
+                m_contour[j].x * sin(angle),
+                m_contour[j].y,
+                m_contour[j].x * cos(angle));
         }
     }
 
-    int h(m_contour.size());
-    for (int i = 0; i < vertexArray.size() - h - 1; ++i) {
-        if (i % (h + 1) == h) // Skip top vertex
+    // Fill triangles
+    for (int i = 0; i < vertexArray.size(); ++i) {
+        // Skip top vertex
+        if (i % (height) == height - 1) {
+            debugPrintf("%d was skipped", i);
             continue;
+        }
+
         int BL = i;
-        int BR = i + h;
-        int TR = i + h + 1;
         int TL = i + 1;
+        int BR = i + height;
+        int TR = i + height + 1;
+
+        // Loop back to first vertices for last column
+        if (i > vertexArray.size() - height - 1) {
+            BR %= vertexArray.size();
+            TR %= vertexArray.size();
+            debugPrintf("i:%d, BL:%d, BR:%d, TL:%d, TR:%d\n", i, BL, BR, TL, TR);
+        }
         indexArray.append(BL, BR, TR);
         indexArray.append(TR, TL, BL);
     }
@@ -183,17 +197,25 @@ App::App(const GApp::Settings& settings) : GApp(settings) {
     m_heightfieldXZScale = 3.0f;
     m_heightfieldSource = FileSystem::currentDirectory();
 
-    m_glassResolution = 16;
+    m_glassResolution = 8;
     m_contour = Array<Vector2> {
-        //Vector2(0.0f, 0.0f),
-        Vector2(2.0f, 0.0f),
-        Vector2(1.0f, 1.0f),
-        Vector2(1.0f, 3.0f),
-        Vector2(2.0f, 4.0f),
-        Vector2(2.0f, 6.0f),
-        Vector2(1.0f, 6.0f),
+        Vector2(1.0f, 0.0f),
+        Vector2(2.0f, 1.0f),
+        Vector2(2.5f, 2.0f),
+        Vector2(2.0f, 3.0f),
         Vector2(1.0f, 4.0f),
-        /*Vector2(0.0f, 3.0f)*/ };
+    };
+
+    //m_contour = Array<Vector2> {
+        ////Vector2(0.0f, 0.0f),
+        //Vector2(2.0f, 0.0f),
+        //Vector2(1.0f, 1.0f),
+        //Vector2(1.0f, 3.0f),
+        //Vector2(2.0f, 4.0f),
+        //Vector2(2.0f, 6.0f),
+        //Vector2(1.0f, 6.0f),
+        //Vector2(1.0f, 4.0f),
+        //Vector2(0.0f, 3.0f) };
 }
 
 
@@ -255,15 +277,10 @@ void App::makeGUI() {
     });
 
     GuiPane* glassPane = debugPane->addPane("Glass");
-    heightfieldPane->setNewChildSize(10);
+    heightfieldPane->setNewChildSize(200);
     heightfieldPane->addButton("Generate", [this]() {
-        try {
-            m_model = makeModel(App::ModelType::GLASS);
-            addModelToScene();
-        }
-        catch (...) {
-            msgBox("Unable to do glass.");
-        }
+        m_model = makeModel(App::ModelType::GLASS);
+        addModelToScene();
     });
     
     debugWindow->pack();
