@@ -162,6 +162,24 @@ void App::makeGlass(
         indexArray.append(BL, BR, TR);
         indexArray.append(TR, TL, BL);
     }
+
+    // bottom capping
+    CPUVertexArray::Vertex& v = vertexArray.next();
+    v.position = Vector3(0.0f, m_contour.first().y, 0.0f);
+    for (int i = 0; i < m_glassResolution; ++i) {
+        int curr_index(i * m_contour.size());
+        int next_index((curr_index + m_contour.size()) % (vertexArray.size() - 1)); 
+        indexArray.append(vertexArray.lastIndex(), next_index, curr_index);
+    }
+
+    // top capping
+    CPUVertexArray::Vertex& v2 = vertexArray.next();
+    v2.position = Vector3(0.0f, m_contour.last().y, 0.0f);
+    for (int i = 0; i < m_glassResolution; ++i) {
+        int curr_index((m_contour.size() - 1) + i * m_contour.size());
+        int next_index((curr_index + m_contour.size()) % (vertexArray.size() - 2)); 
+        indexArray.append(vertexArray.lastIndex(), curr_index, next_index);
+    }
 }
 
 void App::addModelToScene() {
@@ -197,25 +215,16 @@ App::App(const GApp::Settings& settings) : GApp(settings) {
     m_heightfieldXZScale = 3.0f;
     m_heightfieldSource = FileSystem::currentDirectory();
 
-    m_glassResolution = 8;
+    m_glassResolution = 12;
     m_contour = Array<Vector2> {
-        Vector2(1.0f, 0.0f),
-        Vector2(2.0f, 1.0f),
-        Vector2(2.5f, 2.0f),
-        Vector2(2.0f, 3.0f),
+        Vector2(2.0f, 0.0f),
+        Vector2(1.0f, 1.0f),
+        Vector2(1.0f, 3.0f),
+        Vector2(2.0f, 4.0f),
+        Vector2(2.0f, 6.0f),
+        Vector2(1.0f, 6.0f),
         Vector2(1.0f, 4.0f),
     };
-
-    //m_contour = Array<Vector2> {
-        ////Vector2(0.0f, 0.0f),
-        //Vector2(2.0f, 0.0f),
-        //Vector2(1.0f, 1.0f),
-        //Vector2(1.0f, 3.0f),
-        //Vector2(2.0f, 4.0f),
-        //Vector2(2.0f, 6.0f),
-        //Vector2(1.0f, 6.0f),
-        //Vector2(1.0f, 4.0f),
-        //Vector2(0.0f, 3.0f) };
 }
 
 
@@ -277,7 +286,8 @@ void App::makeGUI() {
     });
 
     GuiPane* glassPane = debugPane->addPane("Glass");
-    heightfieldPane->setNewChildSize(200);
+    heightfieldPane->setNewChildSize(240);
+    heightfieldPane->addNumberBox("Resolution", &m_glassResolution, "", GuiTheme::LOG_SLIDER, 3, 64)->setUnitsSize(30);
     heightfieldPane->addButton("Generate", [this]() {
         m_model = makeModel(App::ModelType::GLASS);
         addModelToScene();
