@@ -20,6 +20,7 @@ protected:
     
     int m_glassResolution;
     Array<Vector2> m_contour;
+    String m_glassImage;
     
     shared_ptr<Model> m_model;
 
@@ -55,6 +56,7 @@ protected:
             Array<int>& indexArray);
 
     void addModelToScene();
+    Array<Vector2> makeContourFromImage(shared_ptr<Image>& image);
     
 
     /** Called from onInit */

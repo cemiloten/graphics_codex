@@ -37,7 +37,6 @@ shared_ptr<Model> App::makeModel(App::ModelType mtype) {
             makeHeightfield(vertexArray, indexArray, image);
             break; 
         case GLASS:
-            debugPrintf("model type GLASS\n");
             makeGlass(vertexArray, indexArray);
             break; 
         default:
@@ -144,7 +143,7 @@ void App::makeGlass(
     for (int i = 0; i < vertexArray.size(); ++i) {
         // Skip top vertex
         if (i % (height) == height - 1) {
-            debugPrintf("%d was skipped", i);
+            //debugPrintf("%d was skipped", i);
             continue;
         }
 
@@ -157,7 +156,7 @@ void App::makeGlass(
         if (i > vertexArray.size() - height - 1) {
             BR %= vertexArray.size();
             TR %= vertexArray.size();
-            debugPrintf("i:%d, BL:%d, BR:%d, TL:%d, TR:%d\n", i, BL, BR, TL, TR);
+            //debugPrintf("i:%d, BL:%d, BR:%d, TL:%d, TR:%d\n", i, BL, BR, TL, TR);
         }
         indexArray.append(BL, BR, TR);
         indexArray.append(TR, TL, BL);
@@ -206,6 +205,21 @@ void App::addModelToScene() {
     }
 }
 
+Array<Vector2> App::makeContourFromImage(shared_ptr<Image>& image) {
+    Array<Vector2> contour = Array<Vector2>();
+   for (int y = 0; y < image->height(); ++y)
+       for (int x = 0; x < image->height(); ++x) {
+           Color3 col;
+           image->get(Point2int32(x, y), col);
+           if (col.r > 0.999f && col.g < 0.001f && col.b < 0.001f) {
+               debugPrintf("%f, %f, %f\n", col.r, col.g, col.b);
+               debugPrintf("%f, %f\n", (float)x / image->height(), (float)y / image->height());
+               contour.append(Vector2((float)x, (float)y));
+           }
+       }
+   return contour;
+}
+
 App::App(const GApp::Settings& settings) : GApp(settings) {
     m_cylinderResolution = 7;
     m_cylinderRadius = 2.0f;
@@ -216,6 +230,7 @@ App::App(const GApp::Settings& settings) : GApp(settings) {
     m_heightfieldSource = FileSystem::currentDirectory();
 
     m_glassResolution = 12;
+    m_glassImage = "C:\\Users\\Cemil Oten\\repos\\graphics_codex\\meshes\\data-files\\glass.png";
     m_contour = Array<Vector2> {
         Vector2(2.0f, 0.0f),
         Vector2(1.0f, 1.0f),
@@ -260,7 +275,7 @@ void App::makeGUI() {
         addModelToScene();
     });
 
-    // Cylinder UI.
+    // Heightfield UI.
     GuiPane* heightfieldPane = debugPane->addPane("Heightfield");
     heightfieldPane->setNewChildSize(240);
     heightfieldPane->addNumberBox("Max Y", &m_heightfieldYScale, "m", GuiTheme::LOG_SLIDER, 0.01f, 3.0f)->setUnitsSize(30);
@@ -286,11 +301,27 @@ void App::makeGUI() {
     });
 
     GuiPane* glassPane = debugPane->addPane("Glass");
-    heightfieldPane->setNewChildSize(240);
-    heightfieldPane->addNumberBox("Resolution", &m_glassResolution, "", GuiTheme::LOG_SLIDER, 3, 64)->setUnitsSize(30);
-    heightfieldPane->addButton("Generate", [this]() {
-        m_model = makeModel(App::ModelType::GLASS);
-        addModelToScene();
+    glassPane->setNewChildSize(240);
+    glassPane->addNumberBox("Resolution", &m_glassResolution, "", GuiTheme::LOG_SLIDER, 3, 64)->setUnitsSize(30);
+    glassPane->beginRow();
+    {
+        glassPane->addTextBox("glass image", &m_glassImage)->setWidth(210);
+        glassPane->addButton("...", [this]() {
+            FileDialog::getFilename(m_glassImage, "png", false);
+        })->setWidth(30);
+    }
+    glassPane->endRow();
+    glassPane->addButton("Generate", [this]() {
+        shared_ptr<Image> image;
+        try {
+            image = Image::fromFile(m_glassImage);
+            m_contour = makeContourFromImage(image);
+            m_model = makeModel(App::ModelType::GLASS);
+            addModelToScene();
+        }
+        catch (...) {
+            msgBox("Unable to load the image.", m_glassImage);
+        }
     });
     
     debugWindow->pack();
