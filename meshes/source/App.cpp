@@ -207,17 +207,31 @@ void App::addModelToScene() {
 
 Array<Vector2> App::makeContourFromImage(shared_ptr<Image>& image) {
     Array<Vector2> contour = Array<Vector2>();
-   for (int y = 0; y < image->height(); ++y)
-       for (int x = 0; x < image->height(); ++x) {
-           Color3 col;
-           image->get(Point2int32(x, y), col);
-           if (col.r > 0.999f && col.g < 0.001f && col.b < 0.001f) {
-               debugPrintf("%f, %f, %f\n", col.r, col.g, col.b);
-               debugPrintf("%f, %f\n", (float)x / image->height(), (float)y / image->height());
-               contour.append(Vector2((float)x, (float)y));
-           }
-       }
-   return contour;
+    for (int y = image->height() - 1; y >= 0; --y) {
+        for (int x = 0; x < image->width(); ++x) {
+            Color3 col;
+            image->get(Point2int32(x, y), col);
+            if (y > image->height() - 10 && x == 0) {
+                debugPrintf("col: %f, %f, %f\n", col.r, col.g, col.b);
+            }
+            if (col.r > 0.999f && col.g < 0.001f && col.b < 0.001f) {
+                float X((float)x / image->height());
+                float Y((float)(image->width() - y) / image->width());
+                debugPrintf("found red at %d, %d\n", x, y);
+                contour.append(Vector2(X, Y));
+            }
+        }
+    }
+    
+    //for (int i = 1; i < contour.size(); ++i) {
+        //contour[i].x *= 2.0f;
+        //contour[i].y *= 2.0f;
+        //debugPrintf("%f, %f\n", contour[i].x, contour[i].y);
+        //contour[i].x -= contour.first().x;
+        //contour[i].y -= contour.first().y;
+    //}
+
+    return contour;
 }
 
 App::App(const GApp::Settings& settings) : GApp(settings) {
@@ -230,7 +244,10 @@ App::App(const GApp::Settings& settings) : GApp(settings) {
     m_heightfieldSource = FileSystem::currentDirectory();
 
     m_glassResolution = 12;
-    m_glassImage = "C:\\Users\\Cemil Oten\\repos\\graphics_codex\\meshes\\data-files\\glass.png";
+    //m_glassImage = "C:\\Users\\Cemil Oten\\repos\\graphics_codex\\meshes\\data-files\\glass.png";
+    m_glassImage = "/Users/cemil/repos/graphics_codex/meshes/data-files/glass.png";
+    
+    // define default contour in case image is not used
     m_contour = Array<Vector2> {
         Vector2(2.0f, 0.0f),
         Vector2(1.0f, 1.0f),
@@ -254,6 +271,9 @@ void App::onInit() {
     
     makeGUI();
     loadScene("Make cylinder");
+    //debugCamera()->
+    shared_ptr<Camera> debugCam(debugCamera());
+    setActiveCamera(debugCam);
 }
 
 
