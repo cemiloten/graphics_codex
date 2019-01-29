@@ -57,6 +57,7 @@ protected:
 
     void addModelToScene();
     Array<Vector2> makeContourFromImage(shared_ptr<Image>& image);
+    void saveAsOFF(shared_ptr<Model>& model);
     
 
     /** Called from onInit */

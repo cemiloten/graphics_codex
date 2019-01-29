@@ -205,34 +205,43 @@ void App::addModelToScene() {
     }
 }
 
+
 Array<Vector2> App::makeContourFromImage(shared_ptr<Image>& image) {
     Array<Vector2> contour = Array<Vector2>();
-    for (int y = image->height() - 1; y >= 0; --y) {
-        for (int x = 0; x < image->width(); ++x) {
+    int w(image->width());
+    int h(image->height());
+
+    // Fill bottom to top, looking for red pixels
+    for (int y = h - 1; y >= 0; --y) {
+        for (int x = 0; x < w; ++x) {
             Color3 col;
             image->get(Point2int32(x, y), col);
-            if (y > image->height() - 10 && x == 0) {
-                debugPrintf("col: %f, %f, %f\n", col.r, col.g, col.b);
-            }
-            if (col.r > 0.999f && col.g < 0.001f && col.b < 0.001f) {
-                float X((float)x / image->height());
-                float Y((float)(image->width() - y) / image->width());
+            if (col.r > 0.999f && col.g < 0.001f && col.b < 0.001f) { // red
+                float X((float)x / w);
+                float Y((float)(w - y) / w);
                 debugPrintf("found red at %d, %d\n", x, y);
                 contour.append(Vector2(X, Y));
             }
         }
     }
     
-    //for (int i = 1; i < contour.size(); ++i) {
-        //contour[i].x *= 2.0f;
-        //contour[i].y *= 2.0f;
-        //debugPrintf("%f, %f\n", contour[i].x, contour[i].y);
-        //contour[i].x -= contour.first().x;
-        //contour[i].y -= contour.first().y;
-    //}
+    // Fill top to bottom looking for green pixels
+    for (int y = 0; y < h; ++y) {
+        for (int x = 0; x < w; ++x) {
+            Color3 col;
+            image->get(Point2int32(x, y), col);
+            if (col.r < 0.001f && col.g > 0.999f && col.b < 0.001f) { // green
+                float X((float)x / w);
+                float Y((float)(w - y) / w);
+                debugPrintf("found green at %d, %d\n", x, y);
+                contour.append(Vector2(X, Y));
+            }
+        }
+    }
 
     return contour;
 }
+
 
 App::App(const GApp::Settings& settings) : GApp(settings) {
     m_cylinderResolution = 7;
@@ -244,8 +253,8 @@ App::App(const GApp::Settings& settings) : GApp(settings) {
     m_heightfieldSource = FileSystem::currentDirectory();
 
     m_glassResolution = 12;
-    //m_glassImage = "C:\\Users\\Cemil Oten\\repos\\graphics_codex\\meshes\\data-files\\glass.png";
-    m_glassImage = "/Users/cemil/repos/graphics_codex/meshes/data-files/glass.png";
+    m_glassImage = "C:\\Users\\Cemil Oten\\repos\\graphics_codex\\meshes\\data-files\\glass.png";
+    //m_glassImage = "/Users/cemil/repos/graphics_codex/meshes/data-files/glass.png";
     
     // define default contour in case image is not used
     m_contour = Array<Vector2> {
